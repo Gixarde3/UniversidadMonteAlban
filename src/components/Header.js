@@ -1,5 +1,5 @@
 import './css/Components.css';
-
+import { Link } from 'react-router-dom';
 function Header() {
         return (
         <header>
@@ -7,7 +7,7 @@ function Header() {
                         <img src="img/logo.png" alt="Imagen del logo de la universidad" id="logo"/>
                 </div>
                 <div id="contacto">
-                        <p>Facebook</p>
+                        <Link to="https://www.google.com.ar/">Ir a Google</Link>
                         <p>Whatsapp</p>
                         <p>Correo</p>
                 </div>

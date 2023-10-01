@@ -1,16 +1,18 @@
 import 'normalize.css';
 import './App.css';
-import Header from './components/Header';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from './components/Home';
 
 function App() {
+  
   return (
-    <div className="App">
-      <Header/>
-      <main>
-      </main>
-      <footer>
-      </footer>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/">
+          <Route index element={<Home />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
