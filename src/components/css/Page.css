@@ -1,0 +1,88 @@
+:root{
+    --principal: #2E3092;
+}
+@font-face {
+    font-family: 'Open Sans';
+    src: url('/public/fonts/OpenSans.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Open Sans';
+    src: url('/public/fonts/OpenSans-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+h1{
+    margin: 0;
+    font-size: 45px;
+    text-align: center;
+}
+h2{
+    font-size: 35px;
+    margin-bottom: 0.5rem;
+    color: var(--principal);
+}
+main{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    align-items: center;
+    justify-content: space-around;
+}
+p{
+    margin:0;
+    font-family: "Open Sans";
+    font-size: 16px;
+    line-height: 1.57143;
+    text-align: justify;
+}
+section{
+    padding: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    max-width: 960px;
+    width: 95%;
+}
+img{
+    width:100%;
+    height: auto;
+}
+article{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0.5rem;
+}
+footer{
+    display: flex;
+    width: 100vw;
+    height: auto;
+    background-color: var(--principal);
+    padding: 0.5rem;
+}
+footer section{
+    align-items: center;
+}
+.img_container{
+    display: flex;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+}
+@media (max-width: 1199.98px) {
+    section{
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+    }
+    footer{
+        flex-direction: column;
+    }
+}

@@ -75,14 +75,14 @@ h3{
     text-shadow: 0px 0px 9px white;
 }
 
-#contact_information{
+.contact_information{
     display: flex;
     justify-content: flex-start;
     align-items: center;
     width: auto;
 }
 
-#contact_information a{
+.contact_information a{
     padding: 0.5rem;
 }
 
@@ -149,7 +149,7 @@ h3{
     transition: transform 0.3s ease-in-out;
 }
 
-#adorno{
+.img_adorno{
     width: 40%;
     height: auto;
     transform: rotate(0deg);
@@ -167,7 +167,7 @@ h3{
     }
 }
 @media (max-width: 1199.98px) {
-    #adorno{
+    .img_adorno{
         display: none;
     }
     #logo_container{
@@ -187,7 +187,7 @@ h3{
     #parts{
         align-items:center ;
     }
-    h3{
+    .title_c_information{
         display: none;
     }
     #down{
