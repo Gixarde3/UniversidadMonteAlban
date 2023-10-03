@@ -1,4 +1,3 @@
-import './css/Components.css';
 import Header from './Header'
 function Home() {
         return (

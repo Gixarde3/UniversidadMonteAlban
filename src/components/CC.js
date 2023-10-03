@@ -1,4 +1,3 @@
-import './css/Components.css';
 import Header from './Header'
 import { Link } from 'react-router-dom';
 function CC() {
