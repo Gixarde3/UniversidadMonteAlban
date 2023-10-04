@@ -2,6 +2,7 @@ import './css/Page.css';
 import './css/Home.css';
 import Header from './Header'
 import Footer from './Footer'
+import ImageSlider from './ImageSlider'
 import {useEffect} from 'react';
 function Home() {
         useEffect(() => {
@@ -21,6 +22,7 @@ function Home() {
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, reiciendis in, consectetur sint dolor explicabo veritatis consequatur unde laboriosam quisquam fuga repellendus quis inventore voluptate. Dolor porro officia provident tempora.</p>
                         </article>
                     </section>
+                    <ImageSlider />
                     <section id="map">
                         <h2>Encuéntranos</h2>
                         <p id = "address">Calle Ámbar #1 Col. la joya Yautepec Morelos. CP. 62735</p>

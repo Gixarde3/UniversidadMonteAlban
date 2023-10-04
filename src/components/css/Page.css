@@ -60,6 +60,17 @@ article{
     justify-content: flex-start;
     padding: 0.5rem;
 }
+button{
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    text-decoration: none;
+    box-sizing: border-box;
+    border: none;
+}
+button:hover{
+    background-color: transparent;
+}
 footer{
     display: flex;
     width: 100vw;
