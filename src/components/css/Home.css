@@ -13,6 +13,12 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    background-color: var(--principal);
+    color: white;
+    padding: 1rem;
+}
+#map h2{
+    color: white;
 }
 iframe{
     border: 0;   
@@ -28,5 +34,8 @@ iframe{
     }
     #img_somos{
         width: 100%;
+    }
+    #address{
+        text-align: center;
     }
 }

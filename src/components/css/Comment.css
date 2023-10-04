@@ -1,0 +1,30 @@
+.comment{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 0rem;
+    text-align: left;
+}
+.comment-text{
+    width: 100%;
+    text-align: left;
+}
+.username{
+    width: auto;
+}
+.interactions-line{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 12px;
+    margin:0;
+    padding: 0;
+}
+.interactions-line p{
+    font-size: 12px;
+}
+.interactions-line *{
+    margin-right: 0.3rem;
+}

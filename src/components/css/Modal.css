@@ -1,0 +1,98 @@
+.modal{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top:0;
+    left: 0;
+    background-color: rgba(0,0,0,0.8);
+    z-index: 10;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.close-button{
+    filter: invert(1);
+    width: 30px;
+    height: auto;
+    position: absolute;
+    top:5%;
+    right: 5%;
+    cursor: pointer;
+}
+.modal-img{
+    width: auto;
+    height: auto;
+    max-height: 95vh;
+    max-width: 80%;
+}
+.modal aside{
+    max-height: 100vh;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.modal aside div{
+    background-color: white;
+    width: 100%;
+    padding: 1rem;
+}
+.modal-title{
+    color:black;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+#modal-details{
+    max-height: 55vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+#comments-container{
+    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: hidden;
+}
+#comments{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    max-height: 40vh;
+    overflow-y: scroll;
+}
+@media (max-width: 1199.98px) {
+    .modal-img{
+        width: auto;
+        height: auto;
+        max-height: 45vh;
+        max-width: 95%;
+    }
+    .close-button{
+        top: 2%;
+        width: 20px;
+    }
+    .modal{
+        flex-direction: column;
+        justify-content: center;
+    }
+    .modal aside{
+        margin: 0;
+        padding: 0;
+        width: 95vw;
+        max-width: 95vw;
+    }
+    #modal-details{
+        max-height: 25vh;
+        max-width: 95vw;
+    }
+    #comments-container{
+        max-height: 25vh;
+        max-width: 95vw;
+    }
+
+}

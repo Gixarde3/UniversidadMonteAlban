@@ -1,5 +1,6 @@
 import './css/Page.css';
 import './css/Home.css';
+import React from 'react';
 import Header from './Header'
 import Footer from './Footer'
 import ImageSlider from './ImageSlider'
@@ -9,7 +10,7 @@ function Home() {
             document.title = 'Universidad Monte Albán';
         }, []);
         return (
-            <div id="index">
+            <>
                 <Header/>
                 <main>
                     <section id="somos">
@@ -30,7 +31,7 @@ function Home() {
                     </section>
                 </main>
                 <Footer/>
-            </div>
+            </>
         );
 }
  

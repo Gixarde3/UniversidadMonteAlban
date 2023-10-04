@@ -31,6 +31,7 @@ function Header() {
                                 <Link to="/Noticias">Noticias</Link>
                                 <Link to="/Buzon">Buzón de quejas</Link>
                                 <Link to="/Admisiones">Admisiones</Link>
+                                <Link to="/Admin"><img src="img/login.png" alt="Icono para iniciar sesion" className = "icon_social_header"/></Link>
                         </div>
                 </div>
         </header>
