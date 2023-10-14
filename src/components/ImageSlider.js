@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import './css/ImageSlider.css'
 import Modal from './Modal'; // Importa el componente Modal
-
+//import axios from 'axios';
 function ImageSlider(){
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [slides, setSlides] = useState([]);
+  useEffect(() => {
+    getAllSlides();
+  }, []);
 
   const openModal = (imageSrc, imageAlt, title, description) => {
     setSelectedImage({ src: imageSrc, alt: imageAlt, title, description });
@@ -18,6 +22,19 @@ function ImageSlider(){
     setModalOpen(false);
   };
 
+  const getAllSlides = async () => {
+    fetch('http://localhost/MonteAlban/api/slider/').then(response => {
+      if (!response.ok) {
+        throw new Error('La solicitud no fue exitosa');
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log(data);
+      setSlides(data.data);
+    })
+
+  }
   return (
     <section id="slider">
       <Carousel dynamicHeight={false}
@@ -26,10 +43,14 @@ function ImageSlider(){
         showArrows={true} // Muestra las flechas de navegación
         selectedItem={0} // Muestra la primera imagen al carg
         >
-        <div onClick={() => openModal('img/slider_1.webp', 'Imagen del slider #1', 'Leyenda 1', 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi labore sunt velit temporibus magni? Modi maiores vero assumenda deserunt ipsum quia hic earum quaerat. Fugiat error accusamus dicta! Aliquam, placeat. Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, reiciendis in, consectetur sint dolor explicabo veritatis consequatur unde laboriosam quisquam fuga repellendus quis inventore voluptate. Dolor porro officia provident tempora. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi labore sunt velit temporibus magni? Modi maiores vero assumenda deserunt ipsum quia hic earum quaerat. Fugiat error accusamus dicta! Aliquam, placeat. Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, reiciendis in, consectetur sint dolor explicabo veritatis consequatur unde laboriosam quisquam fuga repellendus quis inventore voluptate. Dolor porro officia provident tempora.')}><img src="img/slider_1.webp" alt="Imagen del slider #1" className="img_sld" /><p className="legend">Leyenda 1</p></div>
-        <div onClick={() => openModal('img/slider_2.webp', 'Imagen del slider #2', 'Leyenda 2', 'Descripción 2')}><img src="img/slider_2.webp" alt="Imagen del slider #2" className="img_sld" /><p className="legend">Leyenda 2</p></div>
-        <div onClick={() => openModal('img/slider_3.webp', 'Imagen del slider #3', 'Leyenda 3', 'Descripción 3')}><img src="img/slider_3.webp" alt="Imagen del slider #3" className="img_sld" /><p className="legend">Leyenda 3</p></div>
-        <div onClick={() => openModal('img/slider_4.webp', 'Imagen del slider #4', 'Leyenda 5', 'Descripción 4')}><img src="img/slider_4.webp" alt="Imagen del slider #4" className="img_sld" /><p className="legend">Leyenda 4</p></div>
+        {
+          slides.map((slide)=>(
+            <div onClick={() => openModal(slide.img, slide.title, slide.legend, slide.description)}>
+              <img src={slide.img} alt={slide.legend} className="img_sld" />
+              <p className="legend">{slide.legend}</p>
+            </div>
+          ))
+        }
       </Carousel>
       <Modal
         isOpen={modalOpen}

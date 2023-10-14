@@ -1,11 +1,14 @@
 import './css/Page.css';
 import './css/Home.css';
+
 import React from 'react';
 import Header from './Header'
 import Footer from './Footer'
 import ImageSlider from './ImageSlider'
-import {useEffect} from 'react';
+import {useEffect, useState} from 'react';
 function Home() {
+
+        const [slides, setSlides] = useState([]);
         useEffect(() => {
             document.title = 'Universidad Monte Albán';
         }, []);
