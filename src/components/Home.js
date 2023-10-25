@@ -1,20 +1,46 @@
 import './css/Page.css';
 import './css/Home.css';
-
 import React from 'react';
 import Header from './Header'
+import HeaderFixed from './HeaderFixed'
 import Footer from './Footer'
 import ImageSlider from './ImageSlider'
-import {useEffect, useState} from 'react';
+import {useEffect, useRef} from 'react';
 function Home() {
-
-        const [slides, setSlides] = useState([]);
+        const headerRef = useRef(null);
+        const newHeaderRef = useRef(null);
+  
         useEffect(() => {
             document.title = 'Universidad Monte Albán';
+            const observer = new IntersectionObserver(
+                ([entry]) => {
+                  if (entry.isIntersecting) {
+                    newHeaderRef.current.style.display = 'none';
+                  } else {
+                    newHeaderRef.current.style.display = 'block';
+                  }
+                },
+                { rootMargin: '-1px' }
+              );
+          
+              if (headerRef.current) {
+                observer.observe(headerRef.current);
+              }
+          
+              return () => {
+                if (headerRef.current) {
+                  observer.unobserve(headerRef.current);
+                }
+              };
         }, []);
         return (
             <>
-                <Header/>
+                <div ref={headerRef}>
+                    <Header />
+                </div>
+                <div ref={newHeaderRef}>
+                    <HeaderFixed />
+                </div>
                 <main>
                     <section id="somos">
                         <div className="image_container" id="img_somos">

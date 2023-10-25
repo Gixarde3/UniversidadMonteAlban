@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 function Footer() {
     return (
             <footer>
-                <img src="img/Lineas.webp" alt="Lineas de adorno en el header" className="img_adorno"/>
                 <section>
                     <h3>Universidad Monte Albán</h3>
                 </section>
