@@ -1,0 +1,82 @@
+*{
+    box-sizing: border-box;
+}
+form > img{
+    filter:none !important;
+    max-width: 500px;
+}
+form > h1, h4{
+    color: black;
+    text-align: center;
+    margin-top: 0.3rem;
+}
+form h1{
+    font-size: 35px;
+}
+#login{
+    flex-direction: column;
+    align-items: center;
+}
+label{
+    width: 100%;
+    font-weight: 600;
+
+    margin-top: 0.3rem;
+    
+}
+form input[type="text"], input[type="password"]{
+    width:100%;
+    border: 1px solid black;
+    border-left: 0px;
+    height: 1.7rem;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+}
+#btn-iniciar{
+    background-color: var(--principal);
+    color: white;
+    padding: 0.5rem;
+    width: auto;
+    max-width: 9rem;
+    cursor: pointer;
+}
+.input-div{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+.input-div img{
+    padding: 0.3rem;
+    width: 1.65rem;
+    height: auto;
+    border: 1px solid black;
+    border-right: 0px;
+}
+#btn-mostrar{
+    width:auto;
+    height: 1.7rem;
+    border: none;
+    border: 1px solid black;
+    border-left: 0px;
+    padding: 0;
+    margin: 0;
+}
+#btn-mostrar img{
+    border:none;
+}
+#password{
+    border-right: none;
+}
+
+@media (max-width: 1199.98px) {
+    #login {
+        max-width: 90vw;
+    }
+}

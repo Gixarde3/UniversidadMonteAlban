@@ -1,0 +1,79 @@
+@media (max-width: 1199.98px) {
+header{
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    width: 100vw;
+    margin: 0;
+}
+header #up{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+header h3{
+    width: 33%;
+    text-align: center;
+}
+#logo_container{
+    width: auto;
+    width: 33%;
+}
+#parts{
+    align-items:center ;
+    width: auto;
+    width: 33%;
+}
+.title_c_information{
+    display: none;
+}
+#down{
+    display: flex;
+    flex-direction: column;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    width: 100%;
+}
+#btn_toggle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border:none;
+    width: 3rem;
+}
+#btn_toggle img{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    border:none;
+}
+#down a{
+    width: 100%;
+    text-align: center;
+}
+#down.open {
+    max-height: 1000px;
+    transition: max-height 0.3s ease-in-out;
+}
+#down.open .opc{
+    border:none;
+    flex-direction: column;
+    border: none;
+}
+.img_op{
+    transform: rotate(180deg);
+    transition: transform 0.3s ease-in-out;
+}
+.img_nop{
+    transform: rotate(360deg);
+    transition: transform 0.3s ease-in-out;
+}
+.sticky-header {
+    position: fixed;
+    z-index: 6;
+  }
+}

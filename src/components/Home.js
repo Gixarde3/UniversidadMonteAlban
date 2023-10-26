@@ -2,46 +2,15 @@ import './css/Page.css';
 import './css/Home.css';
 import React from 'react';
 import Header from './Header'
-import HeaderFixed from './HeaderFixed'
+
 import Footer from './Footer'
 import ImageSlider from './ImageSlider'
-import {useEffect, useRef} from 'react';
 function Home() {
-        const headerRef = useRef(null);
-        const newHeaderRef = useRef(null);
-  
-        useEffect(() => {
-            document.title = 'Universidad Monte Albán';
-            const observer = new IntersectionObserver(
-                ([entry]) => {
-                  if (entry.isIntersecting) {
-                    newHeaderRef.current.style.display = 'none';
-                  } else {
-                    newHeaderRef.current.style.display = 'block';
-                  }
-                },
-                { rootMargin: '-1px' }
-              );
-          
-              if (headerRef.current) {
-                observer.observe(headerRef.current);
-              }
-          
-              return () => {
-                if (headerRef.current) {
-                  observer.unobserve(headerRef.current);
-                }
-              };
-        }, []);
         return (
             <>
-                <div ref={headerRef}>
-                    <Header />
-                </div>
-                <div ref={newHeaderRef}>
-                    <HeaderFixed />
-                </div>
+                <Header />
                 <main>
+                    <ImageSlider />
                     <section id="somos">
                         <div className="image_container" id="img_somos">
                             <img src="img/imagen_somos.webp" alt="Universidad Monte Albán: Estudiantes de licenciatura escribiendo" />
@@ -52,7 +21,7 @@ function Home() {
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, reiciendis in, consectetur sint dolor explicabo veritatis consequatur unde laboriosam quisquam fuga repellendus quis inventore voluptate. Dolor porro officia provident tempora.</p>
                         </article>
                     </section>
-                    <ImageSlider />
+                    
                     <section id="map">
                         <h2>Encuéntranos</h2>
                         <p id = "address">Calle Ámbar #1 Col. la joya Yautepec Morelos. CP. 62735</p>

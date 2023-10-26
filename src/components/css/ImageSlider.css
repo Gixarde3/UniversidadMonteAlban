@@ -2,23 +2,46 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
+    padding: 0;
+    margin: 0;
 }
 .carousel{
     display: flex;
     align-items: center;
     justify-content: space-around;
 }
+.carousel-root{
+    max-width: 90vw;
+}
+
 .slider{
-    display: flex;
     align-items: center;
     justify-content: space-between;
 }
+.slide div {
+    max-height: 500px;
+}
 .slide div > img{
+    max-height: 500px;
     transition: transform 0.3s ease-in-out;
 }
 .slide div:hover > img{
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 .slide div:hover{
     cursor:pointer;
+}
+
+.img_sld{
+    width: auto;
+}
+
+@media (max-width: 1199.98px) {
+    .slide div {
+        max-height: 300px;
+    }
+    .slide div > img{
+        max-height: 300px;
+        transition: transform 0.3s ease-in-out;
+    }
 }

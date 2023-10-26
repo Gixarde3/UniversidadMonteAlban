@@ -3,11 +3,12 @@ import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import './css/ImageSlider.css'
 import Modal from './Modal'; // Importa el componente Modal
-//import axios from 'axios';
+import axios from 'axios';
 function ImageSlider(){
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
   const [slides, setSlides] = useState([]);
+  const prefix = 'https://seleucid-magnitude.000webhostapp.com/';
   useEffect(() => {
     getAllSlides();
   }, []);
@@ -23,18 +24,11 @@ function ImageSlider(){
   };
 
   const getAllSlides = async () => {
-    fetch('http://localhost/MonteAlban/api/slider/').then(response => {
-      if (!response.ok) {
-        throw new Error('La solicitud no fue exitosa');
-      }
-      return response.json();
-    })
-    .then(data => {
-      console.log(data);
-      setSlides(data.data);
-    })
-
+    const response = await axios.get(`${prefix}slider/index.php`);
+    console.log(response.data.data);
+    setSlides(response.data.data);
   }
+
   return (
     <section id="slider">
       <Carousel dynamicHeight={false}
@@ -42,12 +36,16 @@ function ImageSlider(){
         infiniteLoop={true}
         showArrows={true} // Muestra las flechas de navegación
         selectedItem={0} // Muestra la primera imagen al carg
+        showThumbs={false}
+        interval={500}
         >
         {
           slides.map((slide)=>(
-            <div onClick={() => openModal(slide.img, slide.title, slide.legend, slide.description)}>
-              <img src={slide.img} alt={slide.legend} className="img_sld" />
-              <p className="legend">{slide.legend}</p>
+            <div onClick={() => openModal(slide.img, slide.legend, slide.title, slide.description)}>
+              <img src={slide.img} alt={slide.legend} className="img_sld" style={{
+                width:'auto',
+                maxWidth:'100%',
+              }}/>
             </div>
           ))
         }

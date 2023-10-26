@@ -1,8 +1,6 @@
 import './css/Header.css';
 import { Link } from 'react-router-dom';
-import React, { useState } from 'react';
 function HeaderFixed() {
-    const [menuOpen, setMenuOpen] = useState(false);
     return (
             <header style={{
                 display: 'flex',
@@ -14,19 +12,19 @@ function HeaderFixed() {
                 top: 0,
                 left: 0
             }}>
-                <div id="down" className={`menu-options ${menuOpen ? 'open' : ''}`} >
-                                <Link to="/" id="logo_container_fixed">
-                                        <img src="img/logo.webp" alt="Imagen del logo de la universidad" id="logo" />
-                                </Link>
-                                <Link to="/">Inicio</Link>
-                                <Link to="/Oferta">Oferta Educativa</Link>
-                                <Link to="/Nosotros">Nosotros</Link>
-                                <Link to="/Publicaciones">Publicaciones</Link>
-                                <Link to="/Noticias">Noticias</Link>
-                                <Link to="/Buzon">Buzón de quejas</Link>
-                                <Link to="/Admisiones">Admisiones</Link>
-                                <Link to="/Admin"><img src="img/login.png" alt="Icono para iniciar sesion" className = "icon_social_header"/></Link>
-                        </div>
+                <div id="down">
+                    <Link to="/" id="logo_container_fixed">
+                            <img src="img/logo.webp" alt="Imagen del logo de la universidad" id="logo" />
+                    </Link>
+                    <Link to="/">Inicio</Link>
+                    <Link to="/oferta">Oferta Educativa</Link>
+                    <Link to="/nosotros">Nosotros</Link>
+                    <Link to="/publicaciones">Publicaciones</Link>
+                    <Link to="/noticias">Noticias</Link>
+                    <Link to="/buzon">Buzón de quejas</Link>
+                    <Link to="/admisiones">Admisiones</Link>
+                    <Link to="/login"><img src="img/login.png" alt="Icono para iniciar sesion" className = "icon_social_header"/></Link>
+                </div>
             </header>
         );
 }
