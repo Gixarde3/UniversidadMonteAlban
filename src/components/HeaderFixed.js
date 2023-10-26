@@ -1,5 +1,6 @@
 import './css/Header.css';
 import { Link } from 'react-router-dom';
+import Pages from './Pages';
 function HeaderFixed() {
     return (
             <header style={{
@@ -16,14 +17,7 @@ function HeaderFixed() {
                     <Link to="/" id="logo_container_fixed">
                             <img src="img/logo.webp" alt="Imagen del logo de la universidad" id="logo" />
                     </Link>
-                    <Link to="/">Inicio</Link>
-                    <Link to="/oferta">Oferta Educativa</Link>
-                    <Link to="/nosotros">Nosotros</Link>
-                    <Link to="/publicaciones">Publicaciones</Link>
-                    <Link to="/noticias">Noticias</Link>
-                    <Link to="/buzon">Buzón de quejas</Link>
-                    <Link to="/admisiones">Admisiones</Link>
-                    <Link to="/login"><img src="img/login.png" alt="Icono para iniciar sesion" className = "icon_social_header"/></Link>
+                    <Pages />
                 </div>
             </header>
         );

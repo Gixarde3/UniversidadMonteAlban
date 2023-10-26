@@ -1,16 +1,7 @@
-import './css/Page.css';
-import React from 'react';
-import Header from './Header'
-import Footer from './Footer'
 import { Link } from 'react-router-dom';
-import {useEffect} from 'react';
 function CC() {
-        useEffect(() => {
-            document.title = 'Universidad Monte Albán - Creative Commons';
-        }, []);
+        
         return (
-            <>
-                <Header/>
                 <main>
                     <Link to="https://www.freepik.es/icono/facebook_747374#fromView=search&term=facebook&page=1&position=10&track=ais&track=ais">Icono de Freepik</Link>
                     <Link to="https://www.freepik.es/icono/whatsapp_1384023#fromView=search&term=whatsapp&page=1&position=0&track=ais&track=ais">Icono de Freepik</Link>
@@ -20,9 +11,9 @@ function CC() {
                     <Link to="https://www.freepik.es/icono/bloquear_481195">Icono de Those Icons</Link>
                     <Link to="https://www.freepik.es/icono/esconder_4743038">Icono de Freepik</Link>
                     <Link to="https://www.freepik.es/icono/ojo_5733390#fromView=search&term=icono+de+visible&page=1&position=65&track=ais">Icono de bastian 5</Link>
+                    <Link to="https://www.freepik.es/icono/cancelar_5290141#fromView=resource_detail&position=10">Icono de Octopocto</Link>
+                    <Link to="https://www.freepik.es/icono/doble-verificacion_5290147#fromView=resource_detail&position=4">Icono de Octopocto</Link>
                 </main>
-                <Footer/>
-            </>
         );
 }
  

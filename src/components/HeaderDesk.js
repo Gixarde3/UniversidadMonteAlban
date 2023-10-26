@@ -1,5 +1,6 @@
 import './css/Header.css';
 import { Link } from 'react-router-dom';
+import Pages from './Pages';
 function HeaderDesk() {
         return (
         <header>
@@ -9,14 +10,7 @@ function HeaderDesk() {
                 </Link>
                 <div id="parts">
                         <div id="down">
-                                <Link to="/">Inicio</Link>
-                                <Link to="/oferta">Oferta Educativa</Link>
-                                <Link to="/nosotros">Nosotros</Link>
-                                <Link to="/publicaciones">Publicaciones</Link>
-                                <Link to="/noticias">Noticias</Link>
-                                <Link to="/buzon">Buzón de quejas</Link>
-                                <Link to="/admisiones">Admisiones</Link>
-                                <Link to="/login"><img src="img/login.png" alt="Icono para iniciar sesion" className = "icon_social_header"/></Link>
+                                <Pages />
                         </div>
                 </div>
         </header>

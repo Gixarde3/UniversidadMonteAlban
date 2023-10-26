@@ -1,0 +1,52 @@
+.alert{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top:0;
+    left: 0;
+    background-color: rgba(0,0,0,0.8);
+    z-index: 20;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.alert h3{
+    color:black;
+}
+.alert .content-alert{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    max-width: 90vw;
+    background-color: white;
+    height: auto;
+    align-items: center;
+    padding: 1rem;
+}
+.close-alert{
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 30px;
+    height: auto;
+    cursor: pointer;
+}
+.alert p{
+    font-size: 20px;
+    margin-bottom: 1rem;
+}
+.alert .icon{
+    width: 100px;
+}
+.accept{
+    background-color: var(--principal);
+    color: white;
+    padding: 0.5rem;
+    width: auto;
+    max-width: 9rem;
+    cursor: pointer;
+}
+.accept:hover{
+    background-color: var(--principal-hover);
+}

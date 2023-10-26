@@ -2,6 +2,7 @@ import './css/Header.css';
 import './css/HeaderMobile.css';
 import { Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
+import Pages from './Pages';
 function HeaderMobile() {
         const [menuOpen, setMenuOpen] = useState(false);
 
@@ -38,14 +39,7 @@ function HeaderMobile() {
                 </div>
             </div>
             <div id="down" className={`menu-options ${menuOpen ? 'open' : ''}`}>
-                <Link to="/">Inicio</Link>
-                <Link to="/oferta">Oferta Educativa</Link>
-                <Link to="/nosotros">Nosotros</Link>
-                <Link to="/publicaciones">Publicaciones</Link>
-                <Link to="/noticias">Noticias</Link>
-                <Link to="/buzon">Buzón de quejas</Link>
-                <Link to="/admisiones">Admisiones</Link>
-                <Link to="/login"><img src="img/login.png" alt="Icono para iniciar sesion" className = "icon_social_header"/></Link>
+                <Pages />
             </div>
         </header>
         );

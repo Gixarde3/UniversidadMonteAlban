@@ -41,7 +41,7 @@ header h3{
     align-items: center;
     justify-content: center;
     border:none;
-    width: 3rem;
+    width: 2.5rem;
 }
 #btn_toggle img{
     display: flex;

@@ -45,6 +45,9 @@ form {
     max-width: 9rem;
     cursor: pointer;
 }
+#btn-iniciar:hover{
+    background-color: var(--principal-hover);
+}
 .input-div{
     width: 100%;
     display: flex;

@@ -1,5 +1,6 @@
 :root{
     --principal: #2E3092;
+    --principal-hover: #21236c;
 }
 @font-face {
     font-family: 'Open Sans';
@@ -39,6 +40,7 @@ main{
     padding: 1rem;
     align-items: center;
     justify-content: space-around;
+    min-height: 100vh;
 }
 p{
     margin:0;
