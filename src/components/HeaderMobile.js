@@ -28,6 +28,7 @@ function HeaderMobile() {
             };
         }, []);
         return (
+            
         <header className={isSticky ? "sticky-header" : ""}>
             <div id="up">
                 <Link to="/" id="logo_container">

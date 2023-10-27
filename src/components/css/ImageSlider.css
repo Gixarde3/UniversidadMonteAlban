@@ -1,47 +1,26 @@
 #slider{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    padding: 0;
-    margin: 0;
-}
-.carousel{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-}
-.carousel-root{
-    max-width: 90vw;
+    max-height: 600px;
 }
 
-.slider{
+.swiper-slide{
+    display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
 }
-.slide div {
-    max-height: 500px;
-}
-.slide div > img{
-    max-height: 500px;
-    transition: transform 0.3s ease-in-out;
-}
-.slide div:hover > img{
-    transform: scale(1.05);
-}
-.slide div:hover{
+.img_sld{
+    transition: all ease-in-out 300ms;
     cursor:pointer;
 }
-
-.img_sld{
-    width: auto;
+.img_sld:hover{
+    transform: scale(1.05);
 }
+@media (max-width: 1199.98px){
 
-@media (max-width: 1199.98px) {
-    .slide div {
+    #slider{
+        max-width: 99vw;
         max-height: 300px;
     }
-    .slide div > img{
-        max-height: 300px;
-        transition: transform 0.3s ease-in-out;
+    .swiper{
+        max-width: 100%;
     }
 }
