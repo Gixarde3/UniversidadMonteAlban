@@ -58,8 +58,13 @@ function Login() {
                 openAlert("Inicio de sesion fallido", "Los datos ingresados no son correctos, prueba con otra contraseña o usuario.", "error", null);
             }
         } catch (error) {
-            console.error('Error in Axios request:', error);
-            openAlert("Error de conexión", `La petición ha fallado por ${error}`, "error", null);
+            if(error.response.status === 401){
+                console.error('Login failed');
+                openAlert("Inicio de sesion fallido", "Los datos ingresados no son correctos, prueba con otra contraseña o usuario.", "error", null);
+            }else{
+                console.error('Error in Axios request:', error);
+                openAlert("Error de conexión", `La petición ha fallado por ${error}`, "error", null);
+            }
         }
     };
 
