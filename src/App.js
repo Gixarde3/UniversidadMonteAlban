@@ -5,6 +5,7 @@ import CC from './components/CC';
 import Login from './components/Login';
 import Layout from './components/Layout';
 import Buzon from './components/Buzon';
+import LayoutAdmin from './components/LayoutAdmin';
 function App() {
   
   return (
@@ -15,6 +16,9 @@ function App() {
           <Route path="CC" element={<Layout Page={CC} Title = "Universidad Monte ALbán - Creative Commons"/>} />
           <Route path="login" element={<Layout Page={Login} Title = "Universidad Monte ALbán - Acceso"/>}/>
           <Route path="buzon" element={<Layout Page={Buzon} Title = "Universidad Monte ALbán - Buzón de sugerencias"/>}/>
+          <Route path="admin/">
+            <Route index element={<LayoutAdmin Page={Home} Title="Inicio"/>}/>
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>

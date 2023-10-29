@@ -48,11 +48,12 @@ function ImageSlider(){
       pagination={{ clickable: true }}
     >
       {slides.map((slide, index) => (
-          <SwiperSlide>
+          <SwiperSlide key={index}>  
             <img
               src={slide.img}
               alt={slide.legend}
               className="img_sld"
+              
               style={{
                 maxHeight: '100%',
                 height: '100%',

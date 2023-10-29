@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import HeaderDesk from './HeaderDesk';
 import HeaderMobile from './HeaderMobile';
 import HeaderFixed from './HeaderFixed'
-function Header() {
+function Header({isFromAdmin}) {
         const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth > 768); // Define un punto de corte según el tamaño de la pantalla
         const headerRef = useRef(null);
         const newHeaderRef = useRef(null);
@@ -44,15 +44,15 @@ function Header() {
         {isLargeScreen ? (
                 <>
                         <div ref={headerRef}>
-                                <HeaderDesk />
+                                <HeaderDesk ref={headerRef} isFromAdmin = {isFromAdmin}/>
                         </div>
                         <div ref={newHeaderRef}>
-                                <HeaderFixed />
+                                <HeaderFixed isFromAdmin = {isFromAdmin}/>
                         </div>
                 </>
                 
         ) : (
-                <HeaderMobile /> // Componente para pantallas pequeñas
+                <HeaderMobile isFromAdmin = {isFromAdmin} /> // Componente para pantallas pequeñas
         )}
         </div>
         );

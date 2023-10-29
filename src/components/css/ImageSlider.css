@@ -1,5 +1,6 @@
 #slider{
     max-height: 600px;
+    max-width: 100vw;
 }
 
 .swiper-slide{

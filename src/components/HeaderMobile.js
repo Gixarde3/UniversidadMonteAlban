@@ -3,7 +3,8 @@ import './css/HeaderMobile.css';
 import { Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import Pages from './Pages';
-function HeaderMobile() {
+import PagesAdmin from './PagesAdmin';
+function HeaderMobile({isFromAdmin}) {
         const [menuOpen, setMenuOpen] = useState(false);
 
         const toggleMenu = () => {
@@ -39,8 +40,10 @@ function HeaderMobile() {
                         <button onClick={toggleMenu} id="btn_toggle"><img src="img/flecha_abajo.png" alt="Botón para desplegar opciones" id="img_btn" className={`${menuOpen ? 'img_op' : 'img_nop'}`}/></button>
                 </div>
             </div>
-            <div id="down" className={`menu-options ${menuOpen ? 'open' : ''}`}>
-                <Pages />
+            <div id="down" className={`menu-options ${menuOpen ? 'open' : ''}`} style={isFromAdmin ? {flexWrap: 'wrap'} : {}}>
+                    {
+                        isFromAdmin ? <PagesAdmin />: <Pages />
+                    }
             </div>
         </header>
         );

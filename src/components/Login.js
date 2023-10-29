@@ -22,22 +22,6 @@ function Login() {
         setAlertOpen(true);
     };
 
-    /*const getCookieValue = (cookieName) => {
-        const cookies = document.cookie.split('; ');
-        for (const cookie of cookies) {
-          const [name, value] = cookie.split('=');
-          if (name === cookieName) {
-            // La cookie existe, devuelve su valor
-            return decodeURIComponent(value);
-          }
-        }
-  
-        // La cookie no se encontró
-        return null;
-    }*/
-  
-    
-
     const handleSubmit = async (event) => {
         event.preventDefault();
         // Ejemplo de uso para verificar si existe la cookie "session"
@@ -52,23 +36,23 @@ function Login() {
             if (data.cookie) {
                 document.cookie = `session=${data.cookie}`;
                 document.cookie = `role=${data.role}`;
-                openAlert("Inicio exitoso", "Sesión iniciada con éxito", "success", '/');
+                console.log(typeof(data.role));
+                if(data.role === '2' || data.role  === '3'){
+                    openAlert("Inicio exitoso", "Sesión iniciada con éxito como administrador", "success", '/admin');
+                }else{
+                    openAlert("Inicio exitoso", "Sesión iniciada con éxito", "success", '/');
+                }
             } else {
-                console.error('Login failed');
                 openAlert("Inicio de sesion fallido", "Los datos ingresados no son correctos, prueba con otra contraseña o usuario.", "error", null);
             }
         } catch (error) {
             if(error.response.status === 401){
-                console.error('Login failed');
                 openAlert("Inicio de sesion fallido", "Los datos ingresados no son correctos, prueba con otra contraseña o usuario.", "error", null);
             }else{
-                console.error('Error in Axios request:', error);
                 openAlert("Error de conexión", `La petición ha fallado por ${error}`, "error", null);
             }
         }
     };
-
-    
 
     const togglePasswordVisibility = () => {
       setShowPassword(!showPassword);
@@ -77,7 +61,6 @@ function Login() {
     return (
             <main>
                 <section id="login">
-                    
                     <form onSubmit={handleSubmit}>
                         <img src="img/logo_azul.png" alt="Imagen del logo de la universidad" id="logo" />
                         <h1>Acceso</h1>
@@ -95,7 +78,6 @@ function Login() {
                                 required
                             />
                         </div>
-                        
                         <label htmlFor="password">Contraseña</label>
                         <div className="input-div">
                             <img src="img/icon_pass.png" alt="Icono de contraseña para iniciar sesión" />
@@ -106,7 +88,6 @@ function Login() {
                                 placeholder="Contraseña"
                                 value={password}
                                 onChange={(event) => setPassword(event.target.value)}
-                                
                                 required
                             />
                             <button onClick={togglePasswordVisibility} id="btn-mostrar">
