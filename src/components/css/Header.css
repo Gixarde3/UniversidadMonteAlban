@@ -105,7 +105,7 @@ h3{
 #down a, #btn_toggle{
     width: auto;
     color: white;
-    padding: 0.5rem;
+    margin-left: 0.3rem !important;
     box-sizing: border-box;
     font-family: "Roboto Slab","Times New Roman",Times,serif;
     text-align: left;
@@ -126,7 +126,7 @@ h3{
     color:white;
     position: sticky;
     transition: all ease-in-out;
-    width: 90%;
+    width: 100%;
 }
 
 #opc_start{

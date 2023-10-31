@@ -1,0 +1,54 @@
+:root{
+    --btn_colour:white;
+    --btn_colour-hover:rgb(186, 186, 186);
+}
+
+.form-admin{
+    background-color: var(--principal);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.section-admin{
+    justify-content: center;
+}
+
+.form-admin *{
+    margin-bottom: 0.3rem;
+}
+
+.form-admin label{
+    text-align: center;
+}
+
+.div-admin{
+    display: flex;
+    justify-content: center;
+}
+#file{
+    display: none;
+}
+.btnForm{
+    background-color: var(--btn_colour);
+    color: black;
+    font-weight: 600;
+    padding: 1rem;
+    cursor: pointer;
+}
+
+.btnForm:hover{
+    background-color: var(--btn_colour-hover);
+}
+
+#btnArchivo{
+    text-align: center;
+    cursor: pointer;
+}
+.titleSection{
+    color: black;
+    text-align: center;
+}

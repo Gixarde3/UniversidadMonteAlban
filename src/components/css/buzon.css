@@ -24,7 +24,7 @@ textarea{
     width: 100%;
     resize: vertical;
     border: 1px solid black;
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.7rem;
 }
 #btn-enviar{
     background-color: var(--principal);

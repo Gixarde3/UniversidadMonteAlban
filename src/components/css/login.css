@@ -37,7 +37,7 @@ form {
     align-items: center;
     padding: 0.5rem;
 }
-#btn-iniciar{
+.button{
     background-color: var(--principal);
     color: white;
     padding: 0.5rem;
@@ -45,7 +45,7 @@ form {
     max-width: 9rem;
     cursor: pointer;
 }
-#btn-iniciar:hover{
+.button:hover{
     background-color: var(--principal-hover);
 }
 .input-div{
@@ -53,7 +53,7 @@ form {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.7rem;
 }
 .input-div img{
     padding: 0.3rem;

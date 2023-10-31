@@ -4,14 +4,17 @@ import React from 'react';
 import { useState} from 'react';
 import Alert from './Alert';
 import axios from 'axios';
-
+import config from './config.json';
+import Cookies from 'js-cookie';
+import {useNavigate} from 'react-router-dom';
 function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [alert, setAlert] = useState(null);
     const [alertOpen, setAlertOpen] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
-    const prefix = 'http://localhost:8000/api';
+    const prefix = config.endpoint;
+    const navigate = useNavigate();
     const closeAlert = () => {
         setAlert(null);
         setAlertOpen(false);
@@ -34,19 +37,19 @@ function Login() {
             const data = response.data;
             console.log(response);
             if (data.cookie) {
-                document.cookie = `session=${data.cookie}`;
-                document.cookie = `role=${data.role}`;
+                Cookies.set('session', data.cookie, { expires: 1 });
+                Cookies.set('role', data.role, { expires: 1 });
                 console.log(typeof(data.role));
                 if(data.role === '2' || data.role  === '3'){
-                    openAlert("Inicio exitoso", "Sesión iniciada con éxito como administrador", "success", '/admin');
+                    navigate('/admin');
                 }else{
-                    openAlert("Inicio exitoso", "Sesión iniciada con éxito", "success", '/');
+                    navigate('/')
                 }
             } else {
                 openAlert("Inicio de sesion fallido", "Los datos ingresados no son correctos, prueba con otra contraseña o usuario.", "error", null);
             }
         } catch (error) {
-            if(error.response.status === 401){
+            if(error.response !== undefined && error.response.status === 401){
                 openAlert("Inicio de sesion fallido", "Los datos ingresados no son correctos, prueba con otra contraseña o usuario.", "error", null);
             }else{
                 openAlert("Error de conexión", `La petición ha fallado por ${error}`, "error", null);
@@ -63,8 +66,7 @@ function Login() {
                 <section id="login">
                     <form onSubmit={handleSubmit}>
                         <img src="img/logo_azul.png" alt="Imagen del logo de la universidad" id="logo" />
-                        <h1>Acceso</h1>
-                        <h4>Ingresa todos los datos para iniciar sesión</h4>
+                        <h1>Inicio de sesión</h1>
                         <label htmlFor="Username">Nombre de usuario</label>
                         <div className="input-div">
                             <img src="img/icon_user.png" alt="Icono de usuario para iniciar sesión" />
@@ -94,7 +96,7 @@ function Login() {
                                 <img src={"img/" + (showPassword ? "ver.png" : "no_ver.png")} alt="Icono para ver o esconder contraseña" />
                             </button>
                         </div>
-                        <button type="submit" id="btn-iniciar">Iniciar Sesión</button>
+                        <button type="submit" id="btn-iniciar" className='button'>Iniciar Sesión</button>
                     </form>
                 </section>
                 <Alert

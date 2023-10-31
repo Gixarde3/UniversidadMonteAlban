@@ -29,23 +29,42 @@ function HeaderMobile({isFromAdmin}) {
             };
         }, []);
         return (
-            
-        <header className={isSticky ? "sticky-header" : ""}>
-            <div id="up">
-                <Link to="/" id="logo_container">
-                        <img src="img/logo.webp" alt="Imagen del logo de la universidad" id="logo" />
-                </Link>
-                <h3>Menú</h3>
-                <div id="parts">
-                        <button onClick={toggleMenu} id="btn_toggle"><img src="img/flecha_abajo.png" alt="Botón para desplegar opciones" id="img_btn" className={`${menuOpen ? 'img_op' : 'img_nop'}`}/></button>
+        <>
+            <header>
+                <div id="up">
+                    <Link to="/" id="logo_container">
+                            <img src="img/logo.webp" alt="Imagen del logo de la universidad" id="logo" />
+                    </Link>
+                    <h3>Menú</h3>
+                    <div id="parts">
+                            <button onClick={toggleMenu} id="btn_toggle"><img src="img/flecha_abajo.png" alt="Botón para desplegar opciones" id="img_btn" className={`${menuOpen ? 'img_op' : 'img_nop'}`}/></button>
+                    </div>
                 </div>
-            </div>
-            <div id="down" className={`menu-options ${menuOpen ? 'open' : ''}`} style={isFromAdmin ? {flexWrap: 'wrap'} : {}}>
-                    {
-                        isFromAdmin ? <PagesAdmin />: <Pages />
-                    }
-            </div>
-        </header>
+                <div id="down" className={`menu-options ${menuOpen ? 'open' : ''}`} style={isFromAdmin ? {flexWrap: 'wrap'} : {}}>
+                        {
+                            isFromAdmin ? <PagesAdmin />: <Pages />
+                        }
+                </div>
+            </header>
+            <header className={isSticky ? "sticky-header" : ""} style = {isSticky ? {top:0, left:0} : {display:'none'}}>
+                <div id="up">
+                    <Link to="/" id="logo_container">
+                            <img src="img/logo.webp" alt="Imagen del logo de la universidad" id="logo" />
+                    </Link>
+                    <h3>Menú</h3>
+                    <div id="parts">
+                            <button onClick={toggleMenu} id="btn_toggle"><img src="img/flecha_abajo.png" alt="Botón para desplegar opciones" id="img_btn" className={`${menuOpen ? 'img_op' : 'img_nop'}`}/></button>
+                    </div>
+                </div>
+                <div id="down" className={`menu-options ${menuOpen ? 'open' : ''}`} style={isFromAdmin ? {flexWrap: 'wrap'} : {}}>
+                        {
+                            isFromAdmin ? <PagesAdmin />: <Pages />
+                        }
+                </div>
+            </header>
+        </>
+
+        
         );
 }
  

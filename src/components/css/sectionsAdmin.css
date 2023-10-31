@@ -1,0 +1,11 @@
+.section-admin{
+    flex-direction: column;
+}
+.row{
+    flex-direction: row;
+}
+@media(max-width: 1199.99px){
+    .row{
+        flex-direction: column;
+    }
+}
