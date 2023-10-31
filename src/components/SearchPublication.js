@@ -3,6 +3,7 @@ import axios from 'axios';
 import config from './config.json';
 import Alert from './Alert';
 import Cookies from 'js-cookie';
+import './css/Search.css';
 function SearhPublication(){
     const [title, setTitle] = useState('');
     const [alert, setAlert] = useState(null);
@@ -36,11 +37,10 @@ function SearhPublication(){
     return(
         <>
             <search id="search">
-                <h3>Buscar una publicación</h3>
+                <h3 style={{width:'100%', color:'black', textAlign:'center'}}>Buscar una publicación</h3>
                 <form id="row-search" onSubmit={handleSubmit}>
-                    <img src="" alt="icono_buscar" />
-                    <input type="text" name="title-search" id="title-search" placeholder="Ingresa el titulo de la publicación a buscar" onChange = {(event) => {setTitle(event.target.value)}} rquired/>
-                    <button type="submit">Buscar</button>
+                    <input type="text" name="title-search" id="title-search" placeholder="Ingresa el titulo de la publicación a buscar" onChange = {(event) => {setTitle(event.target.value)}} required/>
+                    <button type="submit" id="btn-buscar"><img src="img/search.png" alt="icono_buscar" id="icono-buscar"/></button>
                 </form>
             </search>
             <div id="results">

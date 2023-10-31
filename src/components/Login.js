@@ -40,7 +40,7 @@ function Login() {
                 Cookies.set('session', data.cookie, { expires: 1 });
                 Cookies.set('role', data.role, { expires: 1 });
                 console.log(typeof(data.role));
-                if(data.role === '2' || data.role  === '3'){
+                if(data.role === 2 || data.role  === 3){
                     navigate('/admin');
                 }else{
                     navigate('/')
@@ -92,7 +92,7 @@ function Login() {
                                 onChange={(event) => setPassword(event.target.value)}
                                 required
                             />
-                            <button onClick={togglePasswordVisibility} id="btn-mostrar">
+                            <button type="button" onClick={togglePasswordVisibility} id="btn-mostrar">
                                 <img src={"img/" + (showPassword ? "ver.png" : "no_ver.png")} alt="Icono para ver o esconder contraseña" />
                             </button>
                         </div>

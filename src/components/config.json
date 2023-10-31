@@ -1,3 +1,4 @@
 {
-    "endpoint": "http://192.168.0.7:8000/api" 
+    "endpoint": "http://172.23.50.181:8000/api",
+    "endpointImage": "http://172.23.50.181:8000/images/post/"
 }

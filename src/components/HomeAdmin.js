@@ -9,7 +9,7 @@ function HomeAdmin(){
                     <section id="create-publication" className="section-admin">
                         <FormImage />
                     </section>
-                    <aside>
+                    <aside style={{width:'30%'}}>
                         <SearchPublication />
                     </aside>
                 </section>

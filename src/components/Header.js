@@ -3,42 +3,48 @@ import HeaderDesk from './HeaderDesk';
 import HeaderMobile from './HeaderMobile';
 import HeaderFixed from './HeaderFixed'
 function Header({isFromAdmin}) {
-        const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth > 768); // Define un punto de corte según el tamaño de la pantalla
+        const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth > 768);
         const headerRef = useRef(null);
         const newHeaderRef = useRef(null);
+        
         useEffect(() => {
-                // Agrega un evento para detectar cambios en el tamaño de la ventana
-                window.addEventListener('resize', handleWindowResize);
-                const currentRef = headerRef.current;
-                document.title = 'Universidad Monte Albán';
-                const observer = new IntersectionObserver(
-                        ([entry]) => {
-                                if (entry.isIntersecting) {
-                                        newHeaderRef.current.style.display = 'none';
-                                } else {
-                                        newHeaderRef.current.style.display = 'block';
-                                }
-                        },
-                        { rootMargin: '-1px' }
-                );
-          
-
-                if (currentRef) {
-                        observer.observe(currentRef);
-                }
-          
-                return () => {
-                        if (currentRef) {
-                                observer.unobserve(currentRef);
-                                window.removeEventListener('resize', handleWindowResize);
+            window.addEventListener('resize', handleWindowResize);
+            document.title = 'Universidad Monte Albán';
+            
+            const currentRef = headerRef.current;
+            const newRef = newHeaderRef.current;
+        
+            const observer = new IntersectionObserver(
+                ([entry]) => {
+                    if (entry.isIntersecting) {
+                        if (newRef) {
+                            newRef.style.display = 'none';
                         }
-                };
+                    } else {
+                        if (newRef) {
+                            newRef.style.display = 'block';
+                        }
+                    }
+                },
+                { rootMargin: '-1px' }
+            );
+        
+            if (currentRef) {
+                observer.observe(currentRef);
+            }
+        
+            return () => {
+                if (currentRef) {
+                    observer.unobserve(currentRef);
+                }
+                window.removeEventListener('resize', handleWindowResize);
+            };
         }, []);
-
+        
         const handleWindowResize = () => {
-                setIsLargeScreen(window.innerWidth > 1199.99);
+            setIsLargeScreen(window.innerWidth > 1199.99);
         };
-
+        
         return (
         <div>
         {isLargeScreen ? (

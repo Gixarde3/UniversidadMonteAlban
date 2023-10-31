@@ -12,11 +12,19 @@ import 'swiper/css/pagination';
 import './css/ImageSlider.css'
 import Modal from './Modal'; // Importa el componente Modal
 import axios from 'axios';
+import config from './config.json';
 function ImageSlider(){
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
   const [slides, setSlides] = useState([]);
-  const prefix = 'https://seleucid-magnitude.000webhostapp.com/';
+  const endpointImage = config.endpointImage;
+  const getAllSlides = async () => {
+    const prefix = config.endpoint;
+    const response = await axios.get(`${prefix}/slider`);
+    console.log(response.data);
+    setSlides(response.data);
+  }
+  
   useEffect(() => {
     getAllSlides();
   }, []);
@@ -31,12 +39,6 @@ function ImageSlider(){
     setModalOpen(false);
   };
 
-  const getAllSlides = async () => {
-    const response = await axios.get(`${prefix}slider/index.php`);
-    console.log(response.data.data);
-    setSlides(response.data.data);
-  }
-
   return (
     <section id="slider">
       <Swiper
@@ -50,7 +52,7 @@ function ImageSlider(){
       {slides.map((slide, index) => (
           <SwiperSlide key={index}>  
             <img
-              src={slide.img}
+              src={endpointImage+slide.img}
               alt={slide.legend}
               className="img_sld"
               
@@ -61,7 +63,7 @@ function ImageSlider(){
                 maxWidth: '100%',
               }}
               onClick={() =>
-                openModal(slide.img, slide.legend, slide.title, slide.description)
+                openModal(endpointImage+slide.img, slide.legend, slide.title, slide.description)
               }
             />
           </SwiperSlide>

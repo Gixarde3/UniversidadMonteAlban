@@ -1,4 +1,5 @@
 .section-admin{
+    width: 70%;
     flex-direction: column;
 }
 .row{
@@ -6,6 +7,6 @@
 }
 @media(max-width: 1199.99px){
     .row{
-        flex-direction: column;
+        flex-direction: column-reverse;
     }
 }
