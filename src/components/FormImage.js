@@ -24,8 +24,12 @@ function FormImage(){
     };
 
     const handleImageUpload = (e) => {
-        const selectedImage = e.target.files[0];
-        setImage(URL.createObjectURL(selectedImage));
+        try{
+            const selectedImage = e.target.files[0];
+            setImage(URL.createObjectURL(selectedImage));
+        }catch(error){
+            console.log(error);
+        }
     };
 
     const handleSubmit = async (event) => {
@@ -55,7 +59,7 @@ function FormImage(){
             <form onSubmit={handleSubmit} className='form-admin'>
                 <label htmlFor="title">Título</label>
                 <input type="text" placeholder="Ingresa el título de la publicación" id="title" onChange={(event) => setTitle(event.target.value)} required/>
-                <label htmlFor="file">Imagen:</label>
+                <label htmlFor="filePublication">Imagen:</label>
                 {image ? (
                     <div>
                         <img src={image} alt="Preview" style={{ maxWidth: '90%' }} />
@@ -64,8 +68,8 @@ function FormImage(){
                         <h3>Selecciona una imagen</h3>
                     </div>}
                 <div className="btnForm">
-                    <label htmlFor="file" id="btnArchivo">Seleccionar archivo</label>
-                    <input type="file" accept="image/*" onChange={handleImageUpload} id="file" required/>
+                    <label htmlFor="filePublication" id="btnArchivo">Seleccionar archivo</label>
+                    <input type="file" accept="image/*" onChange={handleImageUpload} className="file" id="filePublication" required/>
                 </div>
                 <label htmlFor="short-descrition">Descripción corta de la publicación</label>
                 <input type="text" placeholder="Ingresa una descripción corta de la publicación" id="short-description" onChange={(event) => setLegend(event.target.value)} required/>

@@ -2,13 +2,14 @@ import {useState} from 'react';
 import axios from 'axios';
 import config from './config.json';
 import Alert from './Alert';
-import Cookies from 'js-cookie';
 import './css/Search.css';
 function SearhPublication(){
     const [title, setTitle] = useState('');
     const [alert, setAlert] = useState(null);
     const [alertOpen, setAlertOpen] = useState(false);
     const [results, setResults] = useState([]);
+    
+    
     const closeAlert = () => {
         setAlert(null);
         setAlertOpen(false);
@@ -23,12 +24,7 @@ function SearhPublication(){
     const handleSubmit = async (event) => {
         event.preventDefault();
         try{
-            const response = await axios.get(`${endpoint}/search-publication`,
-                {
-                    title:title,
-                    cookie: Cookies.get('session')
-                }
-            );
+            const response = await axios.get(`${endpoint}/search-publication/${title}`);
             setResults(response.data);
         }catch(error){
             openAlert('Error inesperado con la conexión', `Error de conexión: ${error}`, 'error', null);

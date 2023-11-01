@@ -3,8 +3,8 @@ function PagesAdmin() {
     return (
         <>
             <Link to="/">Inicio</Link>
-            <Link to="/admin">Inicio de administración</Link>
-            <Link to="/admin/publicaciones">Publicaciones</Link>
+            <Link to="">Inicio de administración</Link>
+            <Link to="#manage-publications">Publicaciones</Link>
             <Link to="/admin/oferta">Oferta educativa</Link>
             <Link to="/admin/sugerencias">Sugerencias</Link>
             <Link to="/admin/admisiones">Admisiones</Link>

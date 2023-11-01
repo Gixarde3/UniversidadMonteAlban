@@ -5,18 +5,19 @@
     max-width: 400px;
     padding: 0.3rem;
     box-shadow: 0px 0px 13px -3px rgba(0,0,0,0.5);
+    margin-bottom: 1rem;
 }
 .testimonial{
     font-family: "Roboto Slab","Times New Roman",Times,serif;
     font-size: 16px;
 }
-
 .testimonial-content{  
     width: 100%;
     text-align: center;
     line-height: normal;
 }
 .testimonial-foto{
+    position: relative;
     box-sizing: border-box;
     display: flex;
     align-items: center;
@@ -33,20 +34,39 @@
     align-items: center;
     justify-content: center;
     margin-left: 0.5rem;
+    margin-top: 0.5rem;
     width: 80%;
 }
 .testimonial-name{
     font-weight: bold;
     font-size: 18px;
+    text-align: center;
+    margin-bottom: 0.2rem;
 }
 .testimonial-relation{
     font-size: 14px;
     font-style: italic;
+    text-align: center;
+    margin-bottom: 0.5rem;
 }
+.hover-testimonial{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 8;
+    background-color: rgba(0,0,0,0.3);
+    display: none;
+    padding: 0.5rem;
+}
+
+.label-photo:hover > .hover-testimonial{
+    display: block;
+    cursor: pointer;
+}
+
 @media(max-width: 1199.99px){
     .testimonial-left{
         margin-left: 0;
-        margin-top: 0.5rem;
     }
     .testimonial{
         flex-direction: column;
