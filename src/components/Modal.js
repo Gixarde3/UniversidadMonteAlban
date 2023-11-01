@@ -62,7 +62,7 @@ function Modal({ isOpen, id_post, closeModal, imageSrc, imageAlt, title, descrip
               ))
             )}
           </div>
-          <AddComent id_post={id_post} reloadComents={getAllComents}/>
+          {session ? <AddComent id_post={id_post} reloadComents={getAllComents}/> : ''}
           
         </div>
       </aside>

@@ -49,7 +49,7 @@ function Comment({id_coment, userName, coment, isCreator, reloadComents}) {
         const cookie = Cookies.get('session');
         try {
             const response = await axios.post(`${endpoint}/coment/delete/${id_coment}`, {cookie:cookie});
-            if(response && response.data && response.data.success === false){
+            if(!response || !response.data || response.data.success === false){
                 openAlert("Error inesperado", `El comentario no se ha podido eliminar debido a un error inesperado`, "error", null, false);
             }else{
                 openAlert("Comentario eliminado", "El comentario se ha eliminado con éxito", "success", null, false);

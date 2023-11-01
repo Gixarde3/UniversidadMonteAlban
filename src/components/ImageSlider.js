@@ -42,7 +42,7 @@ function ImageSlider(){
   
   return (
     <section id="slider">
-      <Swiper
+    <Swiper
       modules={[Navigation, Pagination, Autoplay]}
       spaceBetween={50}
       slidesPerView={1}
@@ -53,7 +53,7 @@ function ImageSlider(){
       {slides.slice(0,5).map((slide, index) => (
           <SwiperSlide key={index}>  
             <img
-              src={endpointImage+slide.img}
+              src={endpointImage+"post/"+slide.img}
               alt={slide.legend}
               className="img_sld"
               id={"img_sld" + slide.id} 
@@ -64,7 +64,7 @@ function ImageSlider(){
                 maxWidth: '100%',
               }}
               onClick={() =>
-                openModal(endpointImage+slide.img, slide.legend, slide.id, slide.title, slide.description)
+                openModal(endpointImage+"post/"+slide.img, slide.legend, slide.id, slide.title, slide.description)
               }
             />
           </SwiperSlide>
