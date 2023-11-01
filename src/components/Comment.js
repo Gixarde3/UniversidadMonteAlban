@@ -1,13 +1,12 @@
 import './css/Comment.css';
-function Comment({userName, comment, time, likes}) {
+function Comment({userName, coment, isCreator}) {
     return (
             <div className="comment" style={{padding:0, marginBottom:'0.5rem'}}>
-                <h4 className="username">{userName}</h4>
-                <p className="comment-text">{comment}</p>
+                <h4 className="username" style={{textAlign:'left'}}>{userName}</h4>
+                <p className="comment-text">{coment}</p>
                 <div className="interactions-line" style={{padding:0}}>
-                    <p className='comment-ago'>hace {time}</p>
-                    <button type="button" onClick = {()=>{}}>Like</button>
-                    <p className="likes">{likes}</p>
+                    {isCreator ? <button type="button" onClick = {()=>{}}>Editar</button> : ''}
+                    {isCreator ? <button type="submit" onClick = {()=>{}} style={{color:'#FE2A2A', fontWeight:'600'}}>Eliminar</button> : ''}
                 </div>
             </div>
         );

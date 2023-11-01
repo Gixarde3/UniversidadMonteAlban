@@ -14,6 +14,8 @@ function CC() {
                         <Link to="https://www.freepik.es/icono/ojo_5733390#fromView=search&term=icono+de+visible&page=1&position=65&track=ais"><img src="img/ver.png" alt="Icono facebook" />Icono de bastian 5</Link>
                         <Link to="https://www.freepik.es/icono/cancelar_5290141#fromView=resource_detail&position=10"><img src="img/error.png" alt="Icono facebook" />Icono de Octopocto</Link>
                         <Link to="https://www.freepik.es/icono/doble-verificacion_5290147#fromView=resource_detail&position=4"><img src="img/success.png" alt="Icono facebook" />Icono de Octopocto</Link>
+                        <Link to="https://www.freepik.es/icono/lupa_151773#fromView=search&term=search&page=1&position=1&track=ais"><img src="img/search.png" alt="Icono de buscar" />Icono de Chanut</Link>
+                        <Link to="https://www.freepik.es/icono/charla_1650215#fromView=search&term=comentar&page=1&position=0&track=ais"><img src="img/coment.webp" alt="Icono de comentar" />Icono de Freepik</Link>
                 </main>
         );
 }
