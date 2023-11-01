@@ -1,15 +1,14 @@
-//import React, { useState } from 'react';
 import Comment from './Comment';
 import {useEffect, useState} from 'react';
 import axios from 'axios';
 import config from './config.json';
 import Cookie from 'js-cookie';
 import AddComent from './AddComent';
+import {MagicMotion} from 'react-magic-motion';
 import './css/Modal.css';
 function Modal({ isOpen, id_post, closeModal, imageSrc, imageAlt, title, description }) {
   const [coments, setComents] = useState([]);
   const [isLoading, setLoading] = useState(true);
-  const session = Cookie.get('session');
   useEffect(() => {
     const getAllComents = async () => {
       if(isOpen){
@@ -25,7 +24,9 @@ function Modal({ isOpen, id_post, closeModal, imageSrc, imageAlt, title, descrip
   
     getAllComents();
   }, [id_post, isOpen]);
+  const session = Cookie.get('session');
   return isOpen ? (
+    <MagicMotion>
     <div className="modal">
       <button className="close-button" onClick={closeModal}>
           <img src="img/close.png" alt="Icono cerrar modal" />
@@ -39,20 +40,22 @@ function Modal({ isOpen, id_post, closeModal, imageSrc, imageAlt, title, descrip
         <div id="comments-container">
           <h4 className="modal-title">Comentarios</h4>
           <div id="comments">
-          {isLoading ? (
-            <h4 className='modal-title'>Cargando comentarios...</h4>
-          ) : ( coments.length === 0) ? (
-            <h4 className='modal-title'>No hay comentarios</h4>
-          ) : (
-            coments.map((coment, index) => (
-              <Comment key={index} userName={coment.username} coment={coment.content} isCreator={session === coment.cookie} />
-            ))
-          )}
+          
+            {isLoading ? (
+              <h4 className='modal-title'>Cargando comentarios...</h4>
+            ) : ( coments.length === 0) ? (
+              <h4 className='modal-title'>No hay comentarios</h4>
+            ) : (
+              coments.map((coment, index) => (
+                <Comment key={index} userName={coment.username} coment={coment.content} isCreator={session === coment.cookie} />
+              ))
+            )}
           </div>
           <AddComent id_post={id_post} />
         </div>
       </aside>
     </div>
+    </MagicMotion>
   ) : null;
 }
  

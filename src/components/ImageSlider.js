@@ -13,20 +13,16 @@ import './css/ImageSlider.css'
 import Modal from './Modal'; // Importa el componente Modal
 import axios from 'axios';
 import config from './config.json';
-import {MagicMotion} from 'react-magic-motion';
 function ImageSlider(){
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
   const [slides, setSlides] = useState([]);
-  const endpointImage = config.endpointImage;
   const getAllSlides = async () => {
     const prefix = config.endpoint;
     const response = await axios.get(`${prefix}/slider`);
     console.log(response.data);
     setSlides(response.data);
   }
-
-  
   
   useEffect(() => {
     getAllSlides();
@@ -42,6 +38,7 @@ function ImageSlider(){
     setModalOpen(false);
   };
 
+  const endpointImage = config.endpointImage;
   
   return (
     <section id="slider">
@@ -73,7 +70,6 @@ function ImageSlider(){
           </SwiperSlide>
         ))}
     </Swiper>
-    <MagicMotion>
         <Modal
           isOpen={modalOpen}
           closeModal={closeModal}
@@ -83,7 +79,6 @@ function ImageSlider(){
           imageAlt={selectedImage ? selectedImage.alt : ''}
           description={selectedImage ? selectedImage.description : ''}
         />
-    </MagicMotion>
     </section>
     
   );  
