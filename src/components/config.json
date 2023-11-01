@@ -1,4 +1,4 @@
 {
-    "endpoint": "http://localhost:8000/api",
-    "endpointImage": "http://localhost:8000/images/post/"
+    "endpoint": "http://192.168.0.7:8000/api",
+    "endpointImage": "http://192.168.0.7:8000/images/post/"
 }

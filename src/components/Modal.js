@@ -4,7 +4,6 @@ import axios from 'axios';
 import config from './config.json';
 import Cookie from 'js-cookie';
 import AddComent from './AddComent';
-import {MagicMotion} from 'react-magic-motion';
 import './css/Modal.css';
 function Modal({ isOpen, id_post, closeModal, imageSrc, imageAlt, title, description }) {
   const [coments, setComents] = useState([]);
@@ -26,8 +25,8 @@ function Modal({ isOpen, id_post, closeModal, imageSrc, imageAlt, title, descrip
   }, [id_post, isOpen]);
   const session = Cookie.get('session');
   return isOpen ? (
-    <MagicMotion>
-    <div className="modal">
+    
+    <div className="modal" >
       <button className="close-button" onClick={closeModal}>
           <img src="img/close.png" alt="Icono cerrar modal" />
       </button>
@@ -40,22 +39,21 @@ function Modal({ isOpen, id_post, closeModal, imageSrc, imageAlt, title, descrip
         <div id="comments-container">
           <h4 className="modal-title">Comentarios</h4>
           <div id="comments">
-          
             {isLoading ? (
               <h4 className='modal-title'>Cargando comentarios...</h4>
             ) : ( coments.length === 0) ? (
               <h4 className='modal-title'>No hay comentarios</h4>
             ) : (
-              coments.map((coment, index) => (
-                <Comment key={index} userName={coment.username} coment={coment.content} isCreator={session === coment.cookie} />
+              coments.slice(0,30).map((coment, index) => (
+                <Comment key={index} id_coment = {coment.id} userName={coment.username} coment={coment.content} isCreator={session === coment.cookie} />
               ))
             )}
           </div>
           <AddComent id_post={id_post} />
+          
         </div>
       </aside>
     </div>
-    </MagicMotion>
   ) : null;
 }
  
