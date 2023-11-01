@@ -29,6 +29,7 @@ function AddComent({id_post, reloadComents}){
                 openAlert("Error inesperado", `El comentario no se ha podido crear debido a un error inesperado`, "error", null);
             }else{
                 openAlert("Comentario creado", "El comentario se ha creado con éxito", "success", null);
+                document.getElementById('new-coment').value = '';
             }
         } catch (error) {
             openAlert("Error de conexión", `La petición ha fallado por ${error}`, "error", null);
