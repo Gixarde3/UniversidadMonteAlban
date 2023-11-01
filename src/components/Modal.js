@@ -23,7 +23,20 @@ function Modal({ isOpen, id_post, closeModal, imageSrc, imageAlt, title, descrip
   
     getAllComents();
   }, [id_post, isOpen]);
+  const getAllComents = async () => {
+    if(isOpen){
+      console.log(id_post);
+      const prefix = config.endpoint;
+      const response = await axios.get(`${prefix}/coment/${id_post}`);
+      setComents(response.data);
+      setLoading(false);
+    }else{
+      setLoading(true);
+    }
+  }
   const session = Cookie.get('session');
+
+  
   return isOpen ? (
     
     <div className="modal" >
@@ -44,12 +57,12 @@ function Modal({ isOpen, id_post, closeModal, imageSrc, imageAlt, title, descrip
             ) : ( coments.length === 0) ? (
               <h4 className='modal-title'>No hay comentarios</h4>
             ) : (
-              coments.slice(0,30).map((coment, index) => (
-                <Comment key={index} id_coment = {coment.id} userName={coment.username} coment={coment.content} isCreator={session === coment.cookie} />
+              coments.map((coment, index) => (
+                <Comment key={index} id_coment = {coment.id} userName={coment.username} coment={coment.content} isCreator={session === coment.cookie} reloadComents={getAllComents}/>
               ))
             )}
           </div>
-          <AddComent id_post={id_post} />
+          <AddComent id_post={id_post} reloadComents={getAllComents}/>
           
         </div>
       </aside>

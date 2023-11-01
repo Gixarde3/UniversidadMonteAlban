@@ -3,7 +3,7 @@ import axios from 'axios';
 import {useState} from 'react';
 import Cookies from 'js-cookie';
 import Alert from './Alert';
-function AddComent(id_post){
+function AddComent({id_post, reloadComents}){
     const endpoint = config.endpoint;
     const [coment, setComent] = useState('');
     const [alert, setAlert] = useState(null);
@@ -21,8 +21,10 @@ function AddComent(id_post){
         event.preventDefault();
         const newComent = coment;
         const cookie = Cookies.get('session');
+        console.log(id_post);
         try {
-            const response = await axios.post(`${endpoint}/coment`, {id_post, coment: newComent, cookie});
+            const response = await axios.post(`${endpoint}/coment`, {
+                id_post, coment: newComent, cookie});
             if(response.data.success === false){
                 openAlert("Error inesperado", `El comentario no se ha podido crear debido a un error inesperado`, "error", null);
             }else{
@@ -31,6 +33,7 @@ function AddComent(id_post){
         } catch (error) {
             openAlert("Error de conexión", `La petición ha fallado por ${error}`, "error", null);
         }
+        reloadComents();
     };
     return(
         <form onSubmit={handleSubmit} style={
@@ -52,6 +55,7 @@ function AddComent(id_post){
                 kind = {alert ? alert.kind : ''}
                 redirectRoute={alert ? alert.redirectRoute : ''}
             />
+            
         </form>
     );
 }

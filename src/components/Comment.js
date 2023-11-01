@@ -4,7 +4,7 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 import Alert from './Alert';
 import config from './config.json';
-function Comment({id_coment, userName, coment, isCreator}) {
+function Comment({id_coment, userName, coment, isCreator, reloadComents}) {
     const [isEditing, setEditing] = useState(false);
     const [newComent, setNewComent] = useState('');
     const [alert, setAlert] = useState(null);
@@ -29,30 +29,36 @@ function Comment({id_coment, userName, coment, isCreator}) {
     const editComent = async() => {
         try {
             const cookie = Cookies.get('session');
-            const response = await axios.put(`${endpoint}/coment`, {id_coment, coment: newComent, cookie});
+            const response = await axios.post(`${endpoint}/coment/edit/${id_coment}`, {id_coment:id_coment, 
+                coment: newComent, 
+                cookie: cookie});
             openAlert("Error inesperado", `El comentario no se ha podido editar debido a un error inesperado`, "error", null, false);
             if(response && response.data && response.data.success === false){
                 openAlert("Error inesperado", `El comentario no se ha podido editar debido a un error inesperado`, "error", null, false);
             }else{
                 openAlert("Comentario editado", "El comentario se ha editado con éxito", "success", null, false);
+                setEditing(false);
             }
         } catch (error) {
             openAlert("Error de conexión", `La petición ha fallado por ${error}`, "error", null, false);
         }
+        reloadComents();
     }
 
     const deleteComent = async() => {
         const cookie = Cookies.get('session');
         try {
-            const response = await axios.delete(`${endpoint}/coment`, {id_coment, cookie});
+            const response = await axios.post(`${endpoint}/coment/delete/${id_coment}`, {cookie:cookie});
             if(response && response.data && response.data.success === false){
                 openAlert("Error inesperado", `El comentario no se ha podido eliminar debido a un error inesperado`, "error", null, false);
             }else{
-                openAlert("Comentario editado", "El comentario se ha eliminado con éxito", "success", null, false);
+                openAlert("Comentario eliminado", "El comentario se ha eliminado con éxito", "success", null, false);
+                
             }
         } catch (error) {
             openAlert("Error de conexión", `La petición ha fallado por ${error}`, "error", null, false);
         }
+        reloadComents();
     } 
 
     const handleSubmitDelete = async(event) => {
