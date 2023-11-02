@@ -9,6 +9,7 @@ function FormTestimonial(){
     const [relation, setRelation] = useState('');
     const [content, setContent] = useState('');
     const [image, setImage] = useState(null);
+    const [imageFile, setImageFile] = useState(null);
     const [alert, setAlert] = useState(null);
     const [alertOpen, setAlertOpen] = useState(false);
 
@@ -28,6 +29,7 @@ function FormTestimonial(){
     const handleImageUpload = (e) => {
         try{
             const selectedImage = e.target.files[0];
+            setImageFile(e.target.files[0]);
             setImage(URL.createObjectURL(selectedImage));
         }catch(error){
             console.log(error);
@@ -42,9 +44,16 @@ function FormTestimonial(){
             formData.append('name', name);
             formData.append('relation', relation);
             formData.append('testimonial', content);
-            formData.append('image', image);
+            formData.append('image', imageFile);
             formData.append('cookie', cookie);
-            const response = axios.post(`${endpoint}/testimonial`, formData);
+            
+            const response = await axios.post(`${endpoint}/testimonial`,formData,{
+                headers: {
+                    'Content-Type': 'multipart/form-data', // Configura el encabezado para enviar datos multipart/form-data
+                }
+            }
+            
+            );
             if(response.data && response.data.success){
                 openAlert("Testimonio creado", "El testimonio se ha creado con éxito", "success", null);
             }else{
