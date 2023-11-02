@@ -2,7 +2,10 @@
     max-height: 600px;
     max-width: 100vw;
 }
-
+.swiper-wrapper{
+    display: flex;
+    align-items: center;
+}
 .swiper-slide{
     display: flex;
     align-items: center;
@@ -19,7 +22,6 @@
 
     #slider{
         max-width: 99vw;
-        max-height: 300px;
     }
     .swiper{
         max-width: 100%;

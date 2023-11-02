@@ -70,5 +70,6 @@
     }
     .testimonial{
         flex-direction: column;
+        width: 95%;
     }
 }

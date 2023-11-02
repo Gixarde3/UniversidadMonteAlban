@@ -5,7 +5,7 @@ import config from './config.json';
 import Cookie from 'js-cookie';
 import AddComent from './AddComent';
 import './css/Modal.css';
-function Modal({ isOpen, id_post, closeModal, imageSrc, imageAlt, title, description }) {
+function Modal({ isOpen, id_post, closeModal, imageSrc, imageAlt, title, description, file }) {
   const [coments, setComents] = useState([]);
   const [isLoading, setLoading] = useState(true);
   useEffect(() => {
@@ -36,7 +36,29 @@ function Modal({ isOpen, id_post, closeModal, imageSrc, imageAlt, title, descrip
   }
   const session = Cookie.get('session');
 
+  const handleDownload = () => {
+    // URL del archivo que deseas descargar
+    const fileURL = file;
   
+    // Crea un elemento de enlace oculto
+    const link = document.createElement('a');
+    link.href = fileURL;
+    const pathParts = fileURL.split('/');
+
+    // El último elemento en el array `pathParts` será el nombre del archivo
+    const fileName = pathParts[pathParts.length - 1];
+    link.download = fileName; // Nombre del archivo descargado
+    link.style.display = 'none';
+  
+    // Agrega el enlace al DOM
+    document.body.appendChild(link);
+  
+    // Simula un clic en el enlace para iniciar la descarga
+    link.click();
+  
+    // Elimina el enlace del DOM una vez que se ha iniciado la descarga
+    document.body.removeChild(link);
+  };
   return isOpen ? (
     
     <div className="modal" >
@@ -48,6 +70,7 @@ function Modal({ isOpen, id_post, closeModal, imageSrc, imageAlt, title, descrip
         <div id="modal-details">
           <h3 className="modal-title">{title}</h3>
           <p className='modal-description'>{description}</p>
+          {file ? <button className="aceptar" onClick={handleDownload}>Descargar archivo</button> : ''}
         </div>
         <div id="comments-container">
           <h4 className="modal-title">Comentarios</h4>

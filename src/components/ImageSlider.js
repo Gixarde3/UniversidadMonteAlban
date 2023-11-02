@@ -57,13 +57,13 @@ function ImageSlider(){
               className="img_sld"
               id={"img_sld" + slide.id} 
               style={{
-                maxHeight: '100%',
-                height: '100%',
-                width: 'auto',
-                maxWidth: '100%',
+                maxHeight: "100%",
+                maxWidth: "100%",
+                width: "auto",
+                height:'auto'
               }}
               onClick={() =>
-                openModal(endpointImage+"post/"+slide.img, slide.legend, slide.id, slide.title, slide.description)
+                openModal(endpointImage+"post/"+slide.img, slide.legend, slide.id, slide.title, slide.description, slide.document)
               }
             />
           </SwiperSlide>
