@@ -35,7 +35,7 @@ function TestimonialSlider(){
             autoplay={{ delay: 5000 }}
             pagination={{ clickable: true }}
         >
-            {testimonials.map((testimonial, index) => (
+            {testimonials.slice(-10).reverse().map((testimonial, index) => (
                 <SwiperSlide key={index}>  
                      <Testimonial 
                         name = {testimonial.name}

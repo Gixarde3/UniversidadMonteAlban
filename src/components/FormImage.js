@@ -5,6 +5,7 @@ import config from './config.json';
 import Cookies from 'js-cookie';
 function FormImage(){
     const [image, setImage] = useState(null);
+    const [imageFile, setImageFile] = useState(null); // Variable para almacenar el archivo de imagen
     const [legend, setLegend] = useState('');
     const [description, setDescription] = useState('');
     const [title, setTitle] = useState('');
@@ -26,6 +27,7 @@ function FormImage(){
     const handleImageUpload = (e) => {
         try{
             const selectedImage = e.target.files[0];
+            setImageFile(e.target.files[0]);
             setImage(URL.createObjectURL(selectedImage));
         }catch(error){
             console.log(error);
@@ -38,7 +40,7 @@ function FormImage(){
         formData.append('title', title);
         formData.append('legend', legend);
         formData.append('description', description);
-        formData.append('image', image);
+        formData.append('image', imageFile);
         formData.append('cookie', Cookies.get('session'));
         try {
             const response = await axios.post(`${endpoint}/create-publication`, formData, {

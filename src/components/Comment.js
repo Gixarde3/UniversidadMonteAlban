@@ -40,7 +40,8 @@ function Comment({id_coment, userName, coment, isCreator, reloadComents}) {
                 setEditing(false);
             }
         } catch (error) {
-            openAlert("Error de conexión", `La petición ha fallado por ${error}`, "error", null, false);
+            console.log(error);
+            openAlert("Error de conexión", `La petición ha fallado por ${error} ${error.response}`, "error", null, false);
         }
         reloadComents();
     }

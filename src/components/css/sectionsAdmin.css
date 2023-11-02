@@ -4,7 +4,7 @@
     align-items: center;
 }
 .row{
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
 }
 #search-aside{
@@ -12,9 +12,6 @@
     align-items: center;
 }
 @media(max-width: 1199.99px){
-    .row{
-        flex-direction: column-reverse;
-    }
     #search-aside{
         width: 100%;
     }

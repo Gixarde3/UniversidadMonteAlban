@@ -6,21 +6,18 @@ function HomeAdmin(){
         <>
             <main>
                 <h1>Panel de administración</h1>
-                <section id="manage-publications" className="row">
+                <section id="manage-publications" className="section-admin">
+                    <h2>Gestión de publicaciones</h2>
+                    <SearchPublication />
                     <section id="create-publication" className="section-admin">
                         <FormImage />
                     </section>
-                    <aside className="search-aside">
-                        <SearchPublication />
-                    </aside>
                 </section>
-                <section id="manage-testimonials" className="row">
+                <section id="manage-testimonials" className="section-admin"> 
+                    <h2>Gestión de testimonios</h2>
                     <section id="create-publication" className="section-admin">
                         <FormTestimonial />
                     </section>
-                    <aside className ="search-aside">
-                        
-                    </aside>
                 </section>
             </main>
         </>
