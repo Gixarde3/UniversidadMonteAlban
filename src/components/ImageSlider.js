@@ -20,7 +20,6 @@ function ImageSlider(){
   const getAllSlides = async () => {
     const prefix = config.endpoint;
     const response = await axios.get(`${prefix}/slider`);
-    console.log(response.data);
     setSlides(response.data);
   }
   
@@ -50,7 +49,7 @@ function ImageSlider(){
       autoplay={{ delay: 5000 }}
       pagination={{ clickable: true }}
     >
-      {slides.slice(0,5).map((slide, index) => (
+      {slides.slice(-5).reverse().map((slide, index) => (
           <SwiperSlide key={index}>  
             <img
               src={endpointImage+"post/"+slide.img}

@@ -41,7 +41,11 @@ function FormImage(){
         formData.append('image', image);
         formData.append('cookie', Cookies.get('session'));
         try {
-            const response = await axios.post(`${endpoint}/create-publication`, formData);
+            const response = await axios.post(`${endpoint}/create-publication`, formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data', // Configura el encabezado para enviar datos multipart/form-data
+                }
+            });
             if(response.data.success === false){
                 openAlert("Error inesperado", `La publicación no se ha podido crear debido a un error inesperado`, "error", null);
             }else{
