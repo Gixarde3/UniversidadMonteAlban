@@ -6,6 +6,7 @@ import Cookies from 'js-cookie';
 function FormImage(){
     const [image, setImage] = useState(null);
     const [imageFile, setImageFile] = useState(null); // Variable para almacenar el archivo de imagen
+    const [adjuntFile, setFile] = useState(null);
     const [legend, setLegend] = useState('');
     const [description, setDescription] = useState('');
     const [title, setTitle] = useState('');
@@ -33,6 +34,13 @@ function FormImage(){
             console.log(error);
         }
     };
+    const handleFileUpload = (e) => {
+        try{
+            setFile(e.target.files[0]);
+        }catch(error){
+            console.log(error);
+        }
+    };
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -41,9 +49,10 @@ function FormImage(){
         formData.append('legend', legend);
         formData.append('description', description);
         formData.append('image', imageFile);
+        formData.append('file', adjuntFile);
         formData.append('cookie', Cookies.get('session'));
         try {
-            const response = await axios.post(`${endpoint}/create-publication`, formData, {
+            const response = await axios.post(`${endpoint}/publication`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data', // Configura el encabezado para enviar datos multipart/form-data
                 }
@@ -71,18 +80,29 @@ function FormImage(){
                         <img src={image} alt="Preview" style={{ maxWidth: '90%' }} />
                     </div>
                 ) : <div>
-                        <h3>Selecciona una imagen</h3>
+                        <h3>Selecciona {image ? 'otra':'una'} imagen</h3>
                     </div>}
                 <div className="btnForm">
-                    <label htmlFor="filePublication" id="btnArchivo">Seleccionar archivo</label>
+                    <label htmlFor="filePublication" id="btnArchivo">{image ? 'Cambiar':'Seleccionar'} imagen</label>
                     <input type="file" accept="image/*" onChange={handleImageUpload} className="file" id="filePublication" required/>
+                </div>
+                <label htmlFor="fileAdjuntPublication">Archivo adjunto:</label>
+                {adjuntFile ? (
+                    <div>
+                        <p>{adjuntFile.name}</p>
+                    </div>
+                ) : <div>
+                        <h3>Selecciona {adjuntFile ? 'otro':'un'} archivo adunto</h3>
+                    </div>}
+                <div className="btnForm">
+                    <label htmlFor="fileAdjuntPublication" id="btnArchivo">{adjuntFile ? 'Cambiar':'Seleccionar'} archivo</label>
+                    <input type="file" accept="*/*" onChange={handleFileUpload} className="file" id="fileAdjuntPublication"/>
                 </div>
                 <label htmlFor="short-descrition">Descripción corta de la publicación</label>
                 <input type="text" placeholder="Ingresa una descripción corta de la publicación" id="short-description" onChange={(event) => setLegend(event.target.value)} required/>
                 <label htmlFor="title">Descripción de la publicación</label>
                 <textarea placeholder="Ingresa la descripción de la publicación" id="description" onChange={(event) => setDescription(event.target.value)} required></textarea>
                 {image && <button type="submit" className='btnForm'>Crear publicación</button>}
-                
             </form>
             <Alert
                         isOpen={alertOpen}
