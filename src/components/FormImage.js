@@ -52,7 +52,7 @@ function FormImage(){
         formData.append('file', adjuntFile);
         formData.append('cookie', Cookies.get('session'));
         try {
-            const response = await axios.post(`${endpoint}/publication`, formData, {
+            const response = await axios.post(`${endpoint}/post`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data', // Configura el encabezado para enviar datos multipart/form-data
                 }
