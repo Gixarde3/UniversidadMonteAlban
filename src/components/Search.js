@@ -3,7 +3,7 @@ import axios from 'axios';
 import config from './config.json';
 import Alert from './Alert';
 import './css/Search.css';
-function SearhPublication({aBuscar, titleSearch, children}){
+function SearhPublication({aBuscar, titleSearch, renderResults}){
     const [search, setSearch] = useState('');
     const [alert, setAlert] = useState(null);
     const [alertOpen, setAlertOpen] = useState(false);
@@ -39,11 +39,7 @@ function SearhPublication({aBuscar, titleSearch, children}){
                     <button type="submit" id="btn-buscar"><img src="img/search.png" alt="icono_buscar" id="icono-buscar"/></button>
                 </form>
             </search>
-            <div id="results">
-                {
-                    children(results)
-                }
-            </div>
+            {results.length > 0 && renderResults(results)}
             <Alert
                     isOpen={alertOpen}
                     closeAlert={closeAlert}

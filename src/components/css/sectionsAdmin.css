@@ -11,6 +11,18 @@
     width: 30%;
     align-items: center;
 }
+.results{
+    max-height: 400px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding: 1rem;
+    box-sizing: border-box;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
+}
 .result{
     display: flex;
     flex-direction: column;
@@ -21,7 +33,10 @@
     margin-bottom: 1rem;
 }
 @media(max-width: 1199.99px){
-    #search-aside{
+    .section-admin{
+        width: 100%;
+    }
+    .results{
         width: 100%;
     }
     #create-publication{
