@@ -39,7 +39,9 @@ function SearhPublication({aBuscar, titleSearch, renderResults}){
                     <button type="submit" id="btn-buscar"><img src="img/search.png" alt="icono_buscar" id="icono-buscar"/></button>
                 </form>
             </search>
+            {((results.length == 0 )?(<h3 style={{width:'100%', color:'black', textAlign:'center'}}>No hay resultados con esa búsqueda</h3>):'')} 
             {results.length > 0 && renderResults(results)}
+
             <Alert
                     isOpen={alertOpen}
                     closeAlert={closeAlert}

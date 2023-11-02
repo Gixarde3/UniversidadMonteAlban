@@ -15,7 +15,7 @@ function HomeAdmin(){
                     renderResults={(results) => (
                         <div className="results">
                           {
-                          results.map((result, index) => (
+                          results.reverse().map((result, index) => (
                             <div className="result" key={index}>
                                 <img src={result.img} alt={result.legend} />
                                 <h4>{result.title}</h4>
@@ -33,25 +33,31 @@ function HomeAdmin(){
                     <h2>Gestión de testimonios</h2>
                     <Search aBuscar="testimonial" titleSearch="testimonio" 
                      renderResults={(results) => (
+                        
                         <div className="results">
-                            {results.map((result, index) => (
-                                <div className="testimonial" key={index} style={{
-                                    width: '100%'
-                                }}>
-                                    <div className="testimonial-foto">
-                                        <img src={endpointImage + "testimonial/" +result.img}alt="Face of testimonial creator" />
+                            {
+                            (
+                                
+                                results.reverse().map((result, index) => (
+                                    <div className="testimonial" key={index} style={{
+                                        width: '100%'
+                                    }}>
+                                        <div className="testimonial-foto">
+                                            <img src={endpointImage + "testimonial/" +result.img}alt="Face of testimonial creator" />
+                                        </div>
+                                        <div className="testimonial-left">
+                                            <p className="testimonial-content">{result.content}</p>
+                                            <p className="testimonial-name">
+                                                - {result.name}
+                                            </p>
+                                            <p className="testimonial-relation">
+                                                {result.relation}
+                                            </p>
+                                        </div>
                                     </div>
-                                    <div className="testimonial-left">
-                                        <p className="testimonial-content">{result.content}</p>
-                                        <p className="testimonial-name">
-                                            - {result.name}
-                                        </p>
-                                        <p className="testimonial-relation">
-                                            {result.relation}
-                                        </p>
-                                    </div>
-                                </div>
-                            ))}
+                                ))
+                                
+                            )}
                         </div>)}
                     />
                         {
