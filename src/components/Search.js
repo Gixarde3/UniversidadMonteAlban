@@ -3,8 +3,8 @@ import axios from 'axios';
 import config from './config.json';
 import Alert from './Alert';
 import './css/Search.css';
-function SearhPublication(){
-    const [title, setTitle] = useState('');
+function SearhPublication({aBuscar, titleSearch, children}){
+    const [search, setSearch] = useState('');
     const [alert, setAlert] = useState(null);
     const [alertOpen, setAlertOpen] = useState(false);
     const [results, setResults] = useState([]);
@@ -24,7 +24,7 @@ function SearhPublication(){
     const handleSubmit = async (event) => {
         event.preventDefault();
         try{
-            const response = await axios.get(`${endpoint}/search-publication/${title}`);
+            const response = await axios.get(`${endpoint}/${aBuscar}s/?search=${search}`);
             setResults(response.data);
         }catch(error){
             openAlert('Error inesperado con la conexión', `Error de conexión: ${error}`, 'error', null);
@@ -33,21 +33,15 @@ function SearhPublication(){
     return(
         <>
             <search id="search">
-                <h3 style={{width:'100%', color:'black', textAlign:'center'}}>Buscar una publicación</h3>
+                <h3 style={{width:'100%', color:'black', textAlign:'center'}}>Buscar {titleSearch}</h3>
                 <form id="row-search" onSubmit={handleSubmit}>
-                    <input type="text" name="title-search" id="title-search" placeholder="Ingresa el titulo de la publicación a buscar" onChange = {(event) => {setTitle(event.target.value)}} required/>
+                    <input type="text" name="title-search" id="title-search" placeholder={`Buscar ${titleSearch}`} onChange = {(event) => {setSearch(event.target.value)}}/>
                     <button type="submit" id="btn-buscar"><img src="img/search.png" alt="icono_buscar" id="icono-buscar"/></button>
                 </form>
             </search>
             <div id="results">
                 {
-                    results.map((result, index) => (
-                        <div className="result" key={index}>
-                            <img src={result.img} alt={result.legend} />
-                            <h4>{result.title}</h4>
-                            <p>{result.description}</p>
-                        </div>
-                    ))
+                    children(results)
                 }
             </div>
             <Alert
