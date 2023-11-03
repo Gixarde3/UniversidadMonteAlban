@@ -3,13 +3,13 @@ import axios from 'axios';
 import config from './config.json';
 import Alert from './Alert';
 import './css/Search.css';
-function SearhPublication({aBuscar, titleSearch, renderResults}){
+function Search({aBuscar, titleSearch, renderResults}){
     const [search, setSearch] = useState('');
     const [alert, setAlert] = useState(null);
+    
     const [alertOpen, setAlertOpen] = useState(false);
     const [results, setResults] = useState([]);
-    
-    
+    const [searched, setSearched] = useState(false);
     const closeAlert = () => {
         setAlert(null);
         setAlertOpen(false);
@@ -26,6 +26,7 @@ function SearhPublication({aBuscar, titleSearch, renderResults}){
         try{
             const response = await axios.get(`${endpoint}/${aBuscar}s/?search=${search}`);
             setResults(response.data);
+            setSearched(true);
         }catch(error){
             openAlert('Error inesperado con la conexión', `Error de conexión: ${error}`, 'error', null);
         }
@@ -39,7 +40,7 @@ function SearhPublication({aBuscar, titleSearch, renderResults}){
                     <button type="submit" id="btn-buscar"><img src="img/search.png" alt="icono_buscar" id="icono-buscar"/></button>
                 </form>
             </search>
-            {((results.length == 0 )?(<h3 style={{width:'100%', color:'black', textAlign:'center'}}>No hay resultados con esa búsqueda</h3>):'')} 
+            {((results.length === 0 && searched)?(<h3 style={{width:'100%', color:'black', textAlign:'center'}}>No hay resultados con esa búsqueda</h3>):'')} 
             {results.length > 0 && renderResults(results)}
 
             <Alert
@@ -54,4 +55,4 @@ function SearhPublication({aBuscar, titleSearch, renderResults}){
     );
 }
 
-export default SearhPublication;
+export default Search;

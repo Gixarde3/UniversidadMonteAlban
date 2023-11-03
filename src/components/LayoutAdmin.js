@@ -1,6 +1,6 @@
 import './css/Page.css';
 import './css/formAdmin.css';
-import './css/sectionsAdmin.css';
+import './css/admin.css';
 import React from 'react';
 import Header from "./Header";
 import Footer from "./Footer";

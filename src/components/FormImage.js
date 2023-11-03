@@ -49,7 +49,7 @@ function FormImage(){
         formData.append('legend', legend);
         formData.append('description', description);
         formData.append('image', imageFile);
-        formData.append('file', adjuntFile);
+        if(adjuntFile) {formData.append('file', adjuntFile)};
         formData.append('cookie', Cookies.get('session'));
         try {
             const response = await axios.post(`${endpoint}/post`, formData, {
@@ -60,7 +60,7 @@ function FormImage(){
             if(response.data.success === false){
                 openAlert("Error inesperado", `La publicación no se ha podido crear debido a un error inesperado`, "error", null);
             }else{
-                openAlert("Publicación creada", "La imagen se ha subido con éxito", "success", null);
+                openAlert("Publicación creada", "La publicación se ha creado con éxito", "success", null);
             }
         } catch (error) {
             openAlert("Error de conexión", `La petición ha fallado por ${error}`, "error", null);
