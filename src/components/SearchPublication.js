@@ -33,19 +33,20 @@ function SearchPublication(){
                 openAlert("Error inesperado", `La publicación no se ha podido eliminar debido a un error inesperado`, "error", null, false);
             }else{
                 const updatedPosts = posts.filter((post) => post.id !== id_post);
-                setPots(updatedPosts); // Elimina el testimonio de la lista
+                setPosts(updatedPosts); // Elimina el testimonio de la lista
                 openAlert("Publicación eliminada", "La publicación se ha eliminado con éxito", "success", null, false);
                 getResults();
             }
         } catch (error) {
             openAlert("Error de conexión", `La petición ha fallado por ${error}`, "error", null, false);
+            console.log(error);
         }
     } 
 
     const getResults= async() => {
         try{
             const response = await axios.get(`${endpoint}/posts/?search=${search}`);
-            setTestimonials(response.data);
+            setPosts(response.data);
         }catch(error){
             openAlert('Error inesperado con la conexión', `Error de conexión: ${error}`, 'error', null);
         }
@@ -77,7 +78,7 @@ function SearchPublication(){
             </form>
         </search>
         <div className="results">
-            {searched && testimonials.length === 0 ? (<h3>No hay resultados para esa búsqueda</h3>):''}
+            {searched && posts.length === 0 ? (<h3>No hay resultados para esa búsqueda</h3>):''}
             {posts.map((result, index) => (
                 <div className="res" key={index} style={{width: '100%'}}>
                     <form className="buttons" onSubmit={(event) => handleSubmitDelete(event, result.id)}>
