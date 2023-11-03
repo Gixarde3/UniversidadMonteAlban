@@ -2,6 +2,7 @@ import FormImage from "./FormImage";
 import Search from "./Search";
 import FormTestimonial from "./FormTestimonial";
 import SearchTestimonial from "./SearchTestimonial";
+import { SearchContextProvider } from "./SearchContext";
 function HomeAdmin(){
     return(
         <>
@@ -27,13 +28,15 @@ function HomeAdmin(){
                         <FormImage />
                     </section>
                 </section>
-                <section id="manage-testimonials" className="section-admin"> 
-                    <h2>Gestión de testimonios</h2>
-                    <SearchTestimonial />
-                    <section id="create-publication" className="section-admin">
-                        <FormTestimonial />
+                <SearchContextProvider>
+                    <section id="manage-testimonials" className="section-admin"> 
+                        <h2>Gestión de testimonios</h2>
+                        <SearchTestimonial />
+                        <section id="create-publication" className="section-admin">
+                            <FormTestimonial />
+                        </section>
                     </section>
-                </section>
+                </SearchContextProvider>
             </main>
         </>
     );

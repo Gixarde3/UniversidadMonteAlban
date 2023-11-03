@@ -21,14 +21,15 @@ function ImageSlider(){
     const prefix = config.endpoint;
     const response = await axios.get(`${prefix}/slider`);
     setSlides(response.data);
+    console.log(response.data);
   }
   
   useEffect(() => {
     getAllSlides();
   }, []);
 
-  const openModal = (imageSrc, imageAlt, id, title, description) => {
-    setSelectedImage({ src: imageSrc, id, alt: imageAlt, title, description });
+  const openModal = (imageSrc, imageAlt, id, title, description, route) => {
+    setSelectedImage({ src: imageSrc, id, alt: imageAlt, title, description, route });
     setModalOpen(true);
   };
 
@@ -38,7 +39,6 @@ function ImageSlider(){
   };
 
   const endpointImage = config.endpointImage;
-  
   return (
     <section id="slider">
     <Swiper
@@ -63,7 +63,7 @@ function ImageSlider(){
                 height:'auto'
               }}
               onClick={() =>
-                openModal(endpointImage+"post/"+slide.img, slide.legend, slide.id, slide.title, slide.description, slide.document)
+                openModal(endpointImage+"post/"+slide.img, slide.legend, slide.id, slide.title, slide.description, slide.route ? slide.route : '')
               }
             />
           </SwiperSlide>
@@ -77,6 +77,7 @@ function ImageSlider(){
           title={selectedImage ? selectedImage.title : ''}
           imageAlt={selectedImage ? selectedImage.alt : ''}
           description={selectedImage ? selectedImage.description : ''}
+          file={selectedImage ? selectedImage.route : ''}
         />
     </section>
     

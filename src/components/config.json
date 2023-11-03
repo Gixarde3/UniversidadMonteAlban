@@ -1,5 +1,5 @@
 {
     "endpoint": "http://192.168.0.7:8000/api",
     "endpointImage": "http://192.168.0.7:8000/images/",
-    "endpointFile": "http://192.168.0.7:8000/files/"
+    "endpointFile": "http://192.168.0.7:8000/documents/"
 }

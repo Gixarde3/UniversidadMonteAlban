@@ -3,14 +3,14 @@ import Search from "./Search";
 import config from './config.json';
 import axios from 'axios';
 import Cookies from 'js-cookie';
-import {useState, useEffect} from 'react';
+import {useState, useContext} from 'react';
 import Alert from './Alert';
+import {SearchContext} from './SearchContext';
 function SearchTestimonial(){
     const [alert, setAlert] = useState(null);
-    const [isEditing, setEditing] = useState(false);
     const [alertOpen, setAlertOpen] = useState(false);
-    const [justOnce, setJustOnce] = useState(false);
     const endpoint = config.endpoint;
+    const {justOnce, updateJustOnce } = useContext(SearchContext);
     const [testimonials, setTestimonials] = useState([]);
     const closeAlert = () => {
         setAlert(null);
@@ -54,7 +54,7 @@ function SearchTestimonial(){
     const setTestimonialsOnce = (testimonials) => {
         if(!justOnce){
             setTestimonials(testimonials);
-            setJustOnce(true);
+            updateJustOnce(true);
         }
     }
 
