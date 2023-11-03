@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import config from './config.json';
 import axios from 'axios';
+<<<<<<< HEAD
 import Alert from './Alert';
 import Cookies from 'js-cookie';
 function TestimonialResult({result}){
@@ -12,6 +13,10 @@ function TestimonialResult({result}){
     const [imageFile, setImageFile] = useState(null);
     const [alert, setAlert] = useState(null);
     const [alertOpen, setAlertOpen] = useState(false);
+=======
+import Cookies from 'js-cookie';
+function TestimonialResult({result}){
+>>>>>>> a750d68b76b2afaf44b67ba7dae699de545da5aa
     const endpoint = config.endpoint;
     const handleImageUpload = (e) => {
         try{

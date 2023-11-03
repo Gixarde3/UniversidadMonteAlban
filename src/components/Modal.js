@@ -35,29 +35,26 @@ function Modal({ isOpen, id_post, closeModal, imageSrc, imageAlt, title, descrip
     }
   }
   const session = Cookie.get('session');
+  const handleDownload = async() => {
+    try{
+    const response = await axios.get(`${config.endpoint}/download/${file}`)
+    const archivoURL = response.data.url; // Asegúrate de ajustar la estructura de la respuesta según cómo esté configurado en tu backend
+    // Crea un enlace temporal para descargar el archivo
+    const enlace = document.createElement('a');
+    enlace.href = archivoURL;
+    enlace.download = file; // Cambia el nombre de descarga si es necesario
 
-  const handleDownload = () => {
-    // URL del archivo que deseas descargar
-    const fileURL = file;
-  
-    // Crea un elemento de enlace oculto
-    const link = document.createElement('a');
-    link.href = fileURL;
-    const pathParts = fileURL.split('/');
-
-    // El último elemento en el array `pathParts` será el nombre del archivo
-    const fileName = pathParts[pathParts.length - 1];
-    link.download = fileName; // Nombre del archivo descargado
-    link.style.display = 'none';
-  
-    // Agrega el enlace al DOM
-    document.body.appendChild(link);
-  
     // Simula un clic en el enlace para iniciar la descarga
-    link.click();
-  
-    // Elimina el enlace del DOM una vez que se ha iniciado la descarga
-    document.body.removeChild(link);
+    enlace.style.display = 'none';
+    document.body.appendChild(enlace);
+    enlace.click();
+
+    // Elimina el enlace después de la descarga
+    document.body.removeChild(enlace);
+
+    }catch(error){
+        console.error('Error al descargar el archivo:', error);
+    }
   };
   return isOpen ? (
     
@@ -70,7 +67,7 @@ function Modal({ isOpen, id_post, closeModal, imageSrc, imageAlt, title, descrip
         <div id="modal-details">
           <h3 className="modal-title">{title}</h3>
           <p className='modal-description'>{description}</p>
-          {file !== '' ? <button className="aceptar" onClick={handleDownload}>Descargar archivo</button> : ''}
+          {file && file !== '' ? <button className="aceptar" onClick={handleDownload}>Descargar archivo</button> : ''}
         </div>
         <div id="comments-container">
           <h4 className="modal-title">Comentarios</h4>
