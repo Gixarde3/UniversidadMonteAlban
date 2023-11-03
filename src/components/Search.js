@@ -2,6 +2,7 @@ import {useState} from 'react';
 import axios from 'axios';
 import config from './config.json';
 import Alert from './Alert';
+import Cookies from 'js-cookie';
 import './css/Search.css';
 function Search({aBuscar, titleSearch, renderResults}){
     const [search, setSearch] = useState('');
@@ -31,6 +32,18 @@ function Search({aBuscar, titleSearch, renderResults}){
             openAlert('Error inesperado con la conexión', `Error de conexión: ${error}`, 'error', null);
         }
     }
+
+    const reloadResults = async() => {
+        try{
+            const response = await axios.get(`${endpoint}/${aBuscar}s/?search=${search}`);
+            setResults(response.data);
+            setSearched(true);
+        }catch(error){
+            openAlert('Error inesperado con la conexión', `Error de conexión: ${error}`, 'error', null);
+        }
+    }
+
+    
     return(
         <>
             <search id="search">

@@ -38,7 +38,7 @@ function ImageSlider(){
   };
 
   const endpointImage = config.endpointImage;
-  
+  const endpointFile = config.endpointFile;
   return (
     <section id="slider">
     <Swiper
@@ -63,7 +63,7 @@ function ImageSlider(){
                 height:'auto'
               }}
               onClick={() =>
-                openModal(endpointImage+"post/"+slide.img, slide.legend, slide.id, slide.title, slide.description, slide.document)
+                openModal(endpointImage+"post/"+slide.img, slide.legend, slide.id, slide.title, slide.description, endpointFile+slide.document)
               }
             />
           </SwiperSlide>
