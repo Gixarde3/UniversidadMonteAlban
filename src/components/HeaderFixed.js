@@ -2,7 +2,9 @@ import './css/Header.css';
 import { Link } from 'react-router-dom';
 import Pages from './Pages';
 import PagesAdmin from './PagesAdmin';
+import config from './config.json';
 function HeaderFixed({isFromAdmin}) {
+    const endpoitnLocal = config.endpointLocal;
     return (
             <header style={{
                 display: 'flex',
@@ -16,7 +18,7 @@ function HeaderFixed({isFromAdmin}) {
             }}>
                 <div id="down" style={isFromAdmin ? {flexWrap: 'wrap', justifyContent:'center'} : {}}>
                     <Link to="/" id="logo_container_fixed">
-                            <img src="img/logo.webp" alt="Imagen del logo de la universidad" id="logo" />
+                            <img src={`${endpoitnLocal}img/logo.webp`} alt="Imagen del logo de la universidad" id="logo" />
                     </Link>
                     {
                         isFromAdmin ? <PagesAdmin /> : <Pages />

@@ -4,6 +4,7 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 import {useState} from 'react';
 import Alert from './Alert';
+import { useNavigate } from 'react-router-dom';
 import './css/Search.css';
 function SearchTestimonial(){
     const [alert, setAlert] = useState(null);
@@ -11,6 +12,7 @@ function SearchTestimonial(){
     const [alertOpen, setAlertOpen] = useState(false);
     const [searched, setSearched]  = useState(false);
     const endpoint = config.endpoint;
+    const navigate = useNavigate();
     const [testimonials, setTestimonials ] = useState([]);
     const closeAlert = () => {
         setAlert(null);
@@ -80,7 +82,7 @@ function SearchTestimonial(){
             {testimonials.map((result, index) => (
                 <div className="res" key={index} style={{width: '100%'}}>
                     <form className="buttons" onSubmit={(event) => handleSubmitDelete(event, result.id)}>
-                        <button type="button" className="btn-admin editar">
+                        <button type="button" className="btn-admin editar" onClick={()=>{navigate(`editTestimonial/${result.id}`, {state: {testimonial: result}})}}>
                             <img src="img/edit.png" alt="Icono editar" />
                         </button>
                         <button type="submit" className="btn-admin eliminar">

@@ -7,6 +7,7 @@ import Login from './components/Login';
 import Layout from './components/Layout';
 import Buzon from './components/Buzon';
 import LayoutAdmin from './components/LayoutAdmin';
+import EditTestimonial from './components/EditTestimonial';
 function App() {
   
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="buzon" element={<Layout Page={Buzon} Title = "Universidad Monte Albán - Buzón de sugerencias"/>}/>
           <Route path="admin/">
             <Route index element={<LayoutAdmin Page={HomeAdmin} Title="Inicio"/>}/>
+            <Route path="editTestimonial/:id" element={<LayoutAdmin Page={EditTestimonial} Title="Editar testimonio"/>}/>
           </Route>
         </Route>
       </Routes>

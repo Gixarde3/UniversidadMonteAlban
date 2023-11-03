@@ -4,8 +4,10 @@ import { Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import Pages from './Pages';
 import PagesAdmin from './PagesAdmin';
+import config from './config.json';
 function HeaderMobile({isFromAdmin}) {
-        const [menuOpen, setMenuOpen] = useState(false);
+    const endpoitnLocal = config.endpointLocal;    
+    const [menuOpen, setMenuOpen] = useState(false);
 
         const toggleMenu = () => {
                 setMenuOpen(prevState => !prevState);
@@ -33,11 +35,11 @@ function HeaderMobile({isFromAdmin}) {
             <header>
                 <div id="up">
                     <Link to="/" id="logo_container">
-                            <img src="img/logo.webp" alt="Imagen del logo de la universidad" id="logo" />
+                            <img src={`${endpoitnLocal}img/logo.webp`}alt="Imagen del logo de la universidad" id="logo" />
                     </Link>
                     <h3>Menú</h3>
                     <div id="parts">
-                            <button onClick={toggleMenu} id="btn_toggle"><img src="img/flecha_abajo.png" alt="Botón para desplegar opciones" id="img_btn" className={`${menuOpen ? 'img_op' : 'img_nop'}`}/></button>
+                            <button onClick={toggleMenu} id="btn_toggle"><img src={`${endpoitnLocal}img/flecha_abajo.png`} alt="Botón para desplegar opciones" id="img_btn" className={`${menuOpen ? 'img_op' : 'img_nop'}`}/></button>
                     </div>
                 </div>
                 <div id="down" className={`menu-options ${menuOpen ? 'open' : ''}`} style={isFromAdmin ? {flexWrap: 'wrap'} : {}}>
@@ -49,11 +51,11 @@ function HeaderMobile({isFromAdmin}) {
             <header className={isSticky ? "sticky-header" : ""} style = {isSticky ? {top:0, left:0} : {display:'none'}}>
                 <div id="up">
                     <Link to="/" id="logo_container">
-                            <img src="img/logo.webp" alt="Imagen del logo de la universidad" id="logo" />
+                        <img src={`${endpoitnLocal}img/logo.webp`}alt="Imagen del logo de la universidad" id="logo" />
                     </Link>
                     <h3>Menú</h3>
                     <div id="parts">
-                            <button onClick={toggleMenu} id="btn_toggle"><img src="img/flecha_abajo.png" alt="Botón para desplegar opciones" id="img_btn" className={`${menuOpen ? 'img_op' : 'img_nop'}`}/></button>
+                    <button onClick={toggleMenu} id="btn_toggle"><img src={`${endpoitnLocal}img/flecha_abajo.png`} alt="Botón para desplegar opciones" id="img_btn" className={`${menuOpen ? 'img_op' : 'img_nop'}`}/></button>
                     </div>
                 </div>
                 <div id="down" className={`menu-options ${menuOpen ? 'open' : ''}`} style={isFromAdmin ? {flexWrap: 'wrap'} : {}}>

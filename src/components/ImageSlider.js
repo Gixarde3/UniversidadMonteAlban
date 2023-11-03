@@ -17,6 +17,7 @@ function ImageSlider(){
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
   const [slides, setSlides] = useState([]);
+  
   const getAllSlides = async () => {
     const prefix = config.endpoint;
     const response = await axios.get(`${prefix}/slider`);
@@ -63,7 +64,6 @@ function ImageSlider(){
                 height:'auto'
               }}
               onClick={() =>
-
                 openModal(endpointImage+"post/"+slide.img, slide.legend, slide.id, slide.title, slide.description, slide.route ? slide.route : '')
               }
             />

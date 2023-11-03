@@ -1,7 +1,9 @@
 import {useNavigate } from 'react-router-dom';
+import config from './config.json'
 import './css/alert.css';
 function Alert({ isOpen, title, message, kind, closeAlert, redirectRoute, asking, onAccept}) {
     const navigate = useNavigate();
+    const endpointLocal = config.endpointLocal;
     const redirectTo = () => {
       if(redirectRoute){
         navigate(redirectRoute);
@@ -24,10 +26,10 @@ function Alert({ isOpen, title, message, kind, closeAlert, redirectRoute, asking
             
             
             <button className="close-alert" onClick={closeAlert}>
-              <img src="img/close.png" alt="Icono cerrar la alerta" />
+              <img src={`${endpointLocal}img/close.png`} alt="Icono cerrar la alerta" />
             </button>
             <h3>{title}</h3>
-            <img src={"img/" + (images[kind])} alt="Icono de alerta" className="icon"/>
+            <img src={`${endpointLocal}img/` + (images[kind])} alt="Icono de alerta" className="icon"/>
             <p>{message}</p>
             <div style={{display:'flex', width:'80%', justifyContent:'space-around'}}>
               <button className="accept" onClick={asking ? accept : redirectTo}>

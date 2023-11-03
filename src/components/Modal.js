@@ -4,10 +4,22 @@ import axios from 'axios';
 import config from './config.json';
 import Cookie from 'js-cookie';
 import AddComent from './AddComent';
+import Alert from './Alert';
 import './css/Modal.css';
 function Modal({ isOpen, id_post, closeModal, imageSrc, imageAlt, title, description, file }) {
   const [coments, setComents] = useState([]);
   const [isLoading, setLoading] = useState(true);
+  const [alert, setAlert] = useState(null);
+  const [alertOpen, setAlertOpen] = useState(false);
+  const openAlert = (title, message, kind, redirectRoute, asking, onAccept) => {
+    setAlert({ title: title, message: message, kind: kind, redirectRoute: redirectRoute});
+    setAlertOpen(true);
+  };
+  const closeAlert = () => {
+    setAlert(null);
+    setAlertOpen(false);
+  };
+
   useEffect(() => {
     const getAllComents = async () => {
       if(isOpen){
@@ -35,13 +47,11 @@ function Modal({ isOpen, id_post, closeModal, imageSrc, imageAlt, title, descrip
     }
   }
   const session = Cookie.get('session');
-  const handleDownload = async() => {
+  const handleDownload = () => {
     try{
-    const response = await axios.get(`${config.endpoint}/download/${file}`)
-    const archivoURL = response.data.url; // Asegúrate de ajustar la estructura de la respuesta según cómo esté configurado en tu backend
     // Crea un enlace temporal para descargar el archivo
     const enlace = document.createElement('a');
-    enlace.href = archivoURL;
+    enlace.href = `${config.endpoint}/download/${file}`;
     enlace.download = file; // Cambia el nombre de descarga si es necesario
 
     // Simula un clic en el enlace para iniciar la descarga
@@ -53,7 +63,7 @@ function Modal({ isOpen, id_post, closeModal, imageSrc, imageAlt, title, descrip
     document.body.removeChild(enlace);
 
     }catch(error){
-        console.error('Error al descargar el archivo:', error);
+      openAlert('Error inesperado con la descarga', `Error de descarga: ${error}`, 'error', null);
     }
   };
   return isOpen ? (
@@ -67,7 +77,7 @@ function Modal({ isOpen, id_post, closeModal, imageSrc, imageAlt, title, descrip
         <div id="modal-details">
           <h3 className="modal-title">{title}</h3>
           <p className='modal-description'>{description}</p>
-          {file && file !== '' ? <button className="aceptar" onClick={handleDownload}>Descargar archivo</button> : ''}
+          {file && file !== '' ? <button className="accept" onClick={handleDownload} style={{width:'100%'}}>Descargar archivo</button> : ''}
         </div>
         <div id="comments-container">
           <h4 className="modal-title">Comentarios</h4>
@@ -86,6 +96,16 @@ function Modal({ isOpen, id_post, closeModal, imageSrc, imageAlt, title, descrip
           
         </div>
       </aside>
+      <Alert
+                    isOpen={alertOpen}
+                    closeAlert={closeAlert}
+                    title={alert ? alert.title : ''}
+                    message={alert ? alert.message : ''}
+                    kind = {alert ? alert.kind : ''}
+                    redirectRoute={alert ? alert.redirectRoute : ''}
+                    asking = {alert ? alert.asking : ''}
+                    onAccept={alert ? () => alert.onAccept() : () => console.log('')}
+                />
     </div>
   ) : null;
 }
