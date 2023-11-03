@@ -1,22 +1,12 @@
 import React, {useState} from 'react';
 import config from './config.json';
 import axios from 'axios';
-<<<<<<< HEAD
-import Alert from './Alert';
 import Cookies from 'js-cookie';
+import Alert from './Alert';
 function TestimonialResult({result}){
     const [isEditing, setEditing] = useState(false);
-    const [name, setName] = useState('');
-    const [relation, setRelation] = useState('');
-    const [content, setContent] = useState('');
-    const [image, setImage] = useState(null);
-    const [imageFile, setImageFile] = useState(null);
     const [alert, setAlert] = useState(null);
     const [alertOpen, setAlertOpen] = useState(false);
-=======
-import Cookies from 'js-cookie';
-function TestimonialResult({result}){
->>>>>>> a750d68b76b2afaf44b67ba7dae699de545da5aa
     const endpoint = config.endpoint;
     const handleImageUpload = (e) => {
         try{
@@ -97,6 +87,16 @@ function TestimonialResult({result}){
                     </p>
                 </div>
             </div>
+            <Alert
+                    isOpen={alertOpen}
+                    closeAlert={closeAlert}
+                    title={alert ? alert.title : ''}
+                    message={alert ? alert.message : ''}
+                    kind = {alert ? alert.kind : ''}
+                    redirectRoute={alert ? alert.redirectRoute : ''}
+                    asking = {alert ? alert.asking : ''}
+                    onAccept={alert ? () => alert.onAccept() : () => console.log('')}
+                />
         </div>
     );
 }

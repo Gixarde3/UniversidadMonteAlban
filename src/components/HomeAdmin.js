@@ -1,8 +1,6 @@
 import FormImage from "./FormImage";
-import Search from "./Search";
 import FormTestimonial from "./FormTestimonial";
 import SearchTestimonial from "./SearchTestimonial";
-import { SearchContextProvider } from "./SearchContext";
 function HomeAdmin(){
     return(
         <>
@@ -10,7 +8,7 @@ function HomeAdmin(){
                 <h1>Panel de administración</h1>
                 <section id="manage-publications" className="section-admin">
                     <h2>Gestión de publicaciones</h2>
-                    <Search aBuscar="post" titleSearch="publicación" 
+                    {/*<Search aBuscar="post" titleSearch="publicación" 
                     renderResults={(results) => (
                         <div className="results">
                           {
@@ -23,12 +21,11 @@ function HomeAdmin(){
                           ))
                           }
                         </div>)}
-                    />
+                    />*/}
                     <section id="create-publication" className="section-admin">
                         <FormImage />
                     </section>
                 </section>
-                <SearchContextProvider>
                     <section id="manage-testimonials" className="section-admin"> 
                         <h2>Gestión de testimonios</h2>
                         <SearchTestimonial />
@@ -36,7 +33,6 @@ function HomeAdmin(){
                             <FormTestimonial />
                         </section>
                     </section>
-                </SearchContextProvider>
             </main>
         </>
     );

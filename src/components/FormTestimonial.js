@@ -1,10 +1,9 @@
 import './css/testimonial.css';
-import {useState, useContext} from 'react';
+import {useState} from 'react';
 import Alert from './Alert';
 import config from './config.json';
 import Cookies from 'js-cookie';
 import axios from 'axios';
-import {SearchContext} from './SearchContext';
 function FormTestimonial(){
     const [name, setName] = useState('');
     const [relation, setRelation] = useState('');
@@ -13,7 +12,6 @@ function FormTestimonial(){
     const [imageFile, setImageFile] = useState(null);
     const [alert, setAlert] = useState(null);
     const [alertOpen, setAlertOpen] = useState(false);
-    const {updateJustOnce } = useContext(SearchContext);
 
     const endpoint = config.endpoint;
 
@@ -58,7 +56,6 @@ function FormTestimonial(){
             );
             if(response.data && response.data.success){
                 openAlert("Testimonio creado", "El testimonio se ha creado con éxito", "success", null);
-                updateJustOnce(false);
             }else{
                 openAlert("Testimonio fallido", "El testimonio no se pudo crear por un error con la sesión", "error", null);
             }
