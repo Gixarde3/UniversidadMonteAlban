@@ -32,6 +32,7 @@ function ChangePassword() {
         const role = Cookies.get('role'); 
         try {
             const response = await axios.post(`${prefix}/change-password`, {
+                lastPassword: lastPassword,
                 password: password,
                 cookie: cookie
             });
@@ -46,7 +47,7 @@ function ChangePassword() {
                     navigate('/')
                 }
             } else {
-                openAlert("Cambio de contraseña fallido", "Hubo un error con tu sesión, inicia sesión otra vez e intenta de nuevo", "error", null);
+                openAlert("Cambio de contraseña fallido", "Hubo un error con la contraseña anterior o tu sesión, corrige la contraseña anterior o inicia sesión de nuevo", "error", null);
             }
         } catch (error) {
             openAlert("Error de conexión", `La petición ha fallado por ${error}`, "error", null);
