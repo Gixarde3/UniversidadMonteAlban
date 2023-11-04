@@ -7,7 +7,6 @@ import axios from 'axios';
 import config from './config.json';
 import Cookies from 'js-cookie';
 import {useNavigate} from 'react-router-dom';
-import {Link} from 'react-router-dom';
 function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -31,30 +30,20 @@ function Login() {
         // Ejemplo de uso para verificar si existe la cookie "session"
 
         try {
-            const response = await axios.post(`${prefix}/login`, {
+            const response = await axios.post(`${prefix}/register`, {
                 username: username,
                 password: password
             });
             const data = response.data;
-            console.log(response);
-            if (data.cookie) {
+            if (data.success && data.cookie) {
                 Cookies.set('session', data.cookie, { expires: 1 });
-                Cookies.set('role', data.role, { expires: 1 });
-                console.log(typeof(data.role));
-                if(data.role === 2 || data.role  === 3){
-                    navigate('/admin');
-                }else{
-                    navigate('/')
-                }
+                Cookies.set('role', 1, { expires: 1 });
+                navigate('/')
             } else {
-                openAlert("Inicio de sesion fallido", "Los datos ingresados no son correctos, prueba con otra contraseña o usuario.", "error", null);
+                openAlert("Registro fallido", "El usuario ya se encuentra registrado", "error", null);
             }
         } catch (error) {
-            if(error.response !== undefined && error.response.status === 401){
-                openAlert("Inicio de sesion fallido", "Los datos ingresados no son correctos, prueba con otra contraseña o usuario.", "error", null);
-            }else{
-                openAlert("Error de conexión", `La petición ha fallado por ${error}`, "error", null);
-            }
+            openAlert("Error de conexión", `La petición ha fallado por ${error}`, "error", null);
         }
     };
 
@@ -67,7 +56,7 @@ function Login() {
                 <section id="login">
                     <form onSubmit={handleSubmit}>
                         <img src="img/logo_azul.png" alt="Imagen del logo de la universidad" id="logo" />
-                        <h1>Inicio de sesión</h1>
+                        <h1>Registrase</h1>
                         <label htmlFor="Username">Nombre de usuario</label>
                         <div className="input-div">
                             <img src="img/icon_user.png" alt="Icono de usuario para iniciar sesión" />
@@ -97,8 +86,7 @@ function Login() {
                                 <img src={"img/" + (showPassword ? "ver.png" : "no_ver.png")} alt="Icono para ver o esconder contraseña" />
                             </button>
                         </div>
-                        <button type="submit" id="btn-iniciar" className='button'>Iniciar Sesión</button>
-                        <Link to="/register">¿No tienes cuenta? Regístrate</Link>
+                        <button type="submit" id="btn-iniciar" className='button'>Registrarse</button>
                     </form>
                 </section>
                 <Alert

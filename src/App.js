@@ -9,6 +9,7 @@ import Buzon from './components/Buzon';
 import LayoutAdmin from './components/LayoutAdmin';
 import EditTestimonial from './components/EditTestimonial';
 import EditPost from './components/EditPost';
+import Register from './components/Register';
 function App() {
   
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="CC" element={<Layout Page={CC} Title = "Universidad Monte Albán - Creative Commons"/>} />
           <Route path="login" element={<Layout Page={Login} Title = "Universidad Monte Albán - Acceso"/>}/>
           <Route path="buzon" element={<Layout Page={Buzon} Title = "Universidad Monte Albán - Buzón de sugerencias"/>}/>
+          <Route path="register" element={<Layout Page={Register} Title = "Universidad Monte Albán - Registrarse"/>}/>
           <Route path="admin/">
             <Route index element={<LayoutAdmin Page={HomeAdmin} Title="Inicio"/>}/>
             <Route path="editTestimonial/:id" element={<LayoutAdmin Page={EditTestimonial} Title="Editar testimonio"/>}/>

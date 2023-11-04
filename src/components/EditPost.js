@@ -17,16 +17,17 @@ function EditPost(){
     const location = useLocation();
     const post = location.state.post;
     const endpoint = config.endpoint;
+    const endpointImage = config.endpointImage;
 
     useEffect(() => {
         if(post){
             setLegend(post.legend);
             setDescription(post.description);
             setTitle(post.title);
-            setImage(endpoint + "post/" +post.img);
+            setImage(endpointImage + "post/" +post.img);
             setFileName(post.route);
         }
-    },[post, endpoint]);
+    },[post, endpointImage]);
 
     const closeAlert = () => {
         setAlert(null);
@@ -77,54 +78,57 @@ function EditPost(){
             }
         } catch (error) {
             openAlert("Error de conexión", `La petición ha fallado por ${error}`, "error", null);
+            console.log(error);
         }
     };
 
     
     return(
         <main>
-            <h2 className='titleSection'>Editar publicación: </h2>
-            <form onSubmit={handleSubmit} className='form-admin'>
-                <label htmlFor="title">Título</label>
-                <input type="text" placeholder="Ingresa el título de la publicación" value={title} id="title" onChange={(event) => setTitle(event.target.value)} required/>
-                <label htmlFor="filePublication">Imagen:</label>
-                {image ? (
-                    <div>
-                        <img src={image} alt="Preview" style={{ maxWidth: '90%' }} />
+            <div className="section-admin">
+                <h2 className='titleSection'>Editar publicación: </h2>
+                <form onSubmit={handleSubmit} className='form-admin'>
+                    <label htmlFor="title">Título</label>
+                    <input type="text" placeholder="Ingresa el título de la publicación" value={title} id="title" onChange={(event) => setTitle(event.target.value)} required/>
+                    <label htmlFor="filePublication">Imagen:</label>
+                    {image ? (
+                        <div>
+                            <img src={image} alt="Preview" style={{ maxWidth: '90%' }} />
+                        </div>
+                    ) : <div>
+                            <h3>Selecciona {image ? 'otra':'una'} imagen</h3>
+                        </div>}
+                    <div className="btnForm">
+                        <label htmlFor="filePublication" id="btnArchivo">{image ? 'Cambiar':'Seleccionar'} imagen</label>
+                        <input type="file" accept="image/*" onChange={handleImageUpload} className="file" id="filePublication"/>
                     </div>
-                ) : <div>
-                        <h3>Selecciona {image ? 'otra':'una'} imagen</h3>
-                    </div>}
-                <div className="btnForm">
-                    <label htmlFor="filePublication" id="btnArchivo">{image ? 'Cambiar':'Seleccionar'} imagen</label>
-                    <input type="file" accept="image/*" onChange={handleImageUpload} className="file" id="filePublication"/>
-                </div>
-                <label htmlFor="fileAdjuntPublication">Archivo adjunto:</label>
-                {adjuntFile ? (
-                    <div>
-                        <p>{adjuntFile.name}</p>
+                    <label htmlFor="fileAdjuntPublication">Archivo adjunto:</label>
+                    {adjuntFile ? (
+                        <div>
+                            <p>{adjuntFile.name}</p>
+                        </div>
+                    ) : <div>
+                            <p>{fileName}</p>
+                        </div>}
+                    <div className="btnForm">
+                        <label htmlFor="fileAdjuntPublication" id="btnArchivo">{adjuntFile || fileName !== '' ? 'Cambiar':'Seleccionar'} archivo</label>
+                        <input type="file" accept="*/*" onChange={handleFileUpload} className="file" id="fileAdjuntPublication"/>
                     </div>
-                ) : <div>
-                        <p>{fileName}</p>
-                    </div>}
-                <div className="btnForm">
-                    <label htmlFor="fileAdjuntPublication" id="btnArchivo">{adjuntFile || fileName !== '' ? 'Cambiar':'Seleccionar'} archivo</label>
-                    <input type="file" accept="*/*" onChange={handleFileUpload} className="file" id="fileAdjuntPublication"/>
-                </div>
-                <label htmlFor="short-descrition">Descripción corta de la publicación</label>
-                <input type="text" placeholder="Ingresa una descripción corta de la publicación" value={legend} id="short-description" onChange={(event) => setLegend(event.target.value)} required/>
-                <label htmlFor="title">Descripción de la publicación</label>
-                <textarea placeholder="Ingresa la descripción de la publicación" value={description} id="description" onChange={(event) => setDescription(event.target.value)} required></textarea>
-                <button type="submit" className='btnForm'>Editar publicación</button>
-            </form>
-            <Alert
-                isOpen={alertOpen}
-                closeAlert={closeAlert}
-                title={alert ? alert.title : ''}
-                message={alert ? alert.message : ''}
-                kind = {alert ? alert.kind : ''}
-                redirectRoute={alert ? alert.redirectRoute : ''}
-            />
+                    <label htmlFor="short-descrition">Descripción corta de la publicación</label>
+                    <input type="text" placeholder="Ingresa una descripción corta de la publicación" value={legend} id="short-description" onChange={(event) => setLegend(event.target.value)} required/>
+                    <label htmlFor="title">Descripción de la publicación</label>
+                    <textarea placeholder="Ingresa la descripción de la publicación" value={description} id="description" onChange={(event) => setDescription(event.target.value)} required></textarea>
+                    <button type="submit" className='btnForm'>Editar publicación</button>
+                </form>
+                <Alert
+                    isOpen={alertOpen}
+                    closeAlert={closeAlert}
+                    title={alert ? alert.title : ''}
+                    message={alert ? alert.message : ''}
+                    kind = {alert ? alert.kind : ''}
+                    redirectRoute={alert ? alert.redirectRoute : ''}
+                />
+            </div>
         </main>
         
     );

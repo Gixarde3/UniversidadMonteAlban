@@ -2,7 +2,17 @@ import FormImage from "./FormImage";
 import FormTestimonial from "./FormTestimonial";
 import SearchTestimonial from "./SearchTestimonial";
 import SearchPublication from "./SearchPublication";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import Cookies from 'js-cookie';
 function HomeAdmin(){
+    const navigate = useNavigate();
+    useEffect(() => {
+        const role = Cookies.get('role');
+        if(role === '1' || role === undefined){
+            navigate('/');
+        }
+    }, [navigate]);
     return(
         <>
             <main>
