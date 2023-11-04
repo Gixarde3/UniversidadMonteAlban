@@ -1,34 +1,41 @@
-#search{
+.search{
     display: flex;
     flex-direction: column; 
+    width: 70%;
 }
-#row-search{
+.row-search{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     width: 100%;
 }
-#title-search{
+.title-search{
     width: 100%;
-    height: 2rem;
+    height: 2rem !important;
     border: 1px solid black;
     border-left: none;
     box-sizing: border-box;
     padding: 0.5rem;
 }
-#icono-buscar{
+.icono-buscar{
     filter: invert(1);
     cursor: pointer;
 }
-#btn-buscar{
+.btn-buscar{
     height: 2rem;
     width: 2rem;
     padding: 0.3rem;
     box-sizing: border-box;
     background-color: var(--principal);
 }
-#btn-buscar:hover{
+.btn-buscar:hover{
     cursor: pointer;
     background-color: var(--principal-hover);
+}
+
+@media(max-width: 1199.98px){
+    .search{
+        width: 100%;
+    }
 }

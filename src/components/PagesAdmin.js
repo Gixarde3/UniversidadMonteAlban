@@ -9,7 +9,7 @@ function PagesAdmin() {
             <Link to="/admin/sugerencias">Sugerencias</Link>
             <Link to="/admin/admisiones">Admisiones</Link>
             <Link to="/admin/calendario">Calendario</Link>
-            <Link to="/admin/administradores">Administardores</Link>
+            <Link to="/admin#manage-users">Administardores</Link>
             <Link to="/admin/testimonios">Testimonios</Link>
             <Link to="/admin/bd">Restauración de la BD</Link>
         </>

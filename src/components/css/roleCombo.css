@@ -1,0 +1,14 @@
+select{
+    border: none;
+    display: flex;
+    align-items: center;
+}
+option{
+    font-weight: bold;
+    color: #000;
+    background-color: #fff;
+    padding: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}

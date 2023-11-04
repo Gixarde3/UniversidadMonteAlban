@@ -70,15 +70,15 @@ function SearchTestimonial(){
     const endpointImage = config.endpointImage;
     return(
         <>
-        <search id="search">
+        <search className="search">
             <h3 style={{width:'100%', color:'black', textAlign:'center'}}>Buscar testimonios</h3>
-            <form id="row-search" onSubmit={handleSubmitSearch}>
-                <input type="text" name="title-search" id="title-search" placeholder={`Ingresa el nombre del testimonio`} onChange = {(event) => {setSearch(event.target.value)}}/>
-                <button type="submit" id="btn-buscar"><img src="img/search.png" alt="icono_buscar" id="icono-buscar"/></button>
+            <form className="row-search" onSubmit={handleSubmitSearch}>
+                <input type="text" name="title-search" className="title-search" placeholder={`Ingresa el nombre del testimonio`} onChange = {(event) => {setSearch(event.target.value)}}/>
+                <button type="submit" className="btn-buscar"><img src="img/search.png" alt="icono_buscar" className="icono-buscar"/></button>
             </form>
         </search>
         <div className="results">
-            {searched && testimonials.length === 0 ? (<h3>No hay resultados para esa búsqueda</h3>):''}
+            {searched && testimonials.length === 0 ? (<h3 style={{color: 'black'}}>No hay resultados para esa búsqueda</h3>):''}
             {testimonials.map((result, index) => (
                 <div className="res" key={index} style={{width: '100%'}}>
                     <form className="buttons" onSubmit={(event) => handleSubmitDelete(event, result.id)}>
