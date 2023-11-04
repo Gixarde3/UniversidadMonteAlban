@@ -23,7 +23,6 @@ function Modal({ isOpen, id_post, closeModal, imageSrc, imageAlt, title, descrip
   useEffect(() => {
     const getAllComents = async () => {
       if(isOpen){
-        console.log(id_post);
         const prefix = config.endpoint;
         const response = await axios.get(`${prefix}/coment/${id_post}`);
         setComents(response.data);
@@ -37,7 +36,6 @@ function Modal({ isOpen, id_post, closeModal, imageSrc, imageAlt, title, descrip
   }, [id_post, isOpen]);
   const getAllComents = async () => {
     if(isOpen){
-      console.log(id_post);
       const prefix = config.endpoint;
       const response = await axios.get(`${prefix}/coment/${id_post}`);
       setComents(response.data);

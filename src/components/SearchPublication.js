@@ -26,7 +26,6 @@ function SearchPublication(){
 
     const deletePost= async(id_post) => {
         const cookie = Cookies.get('session');
-        console.log(id_post);
         try {
             const response = await axios.post(`${endpoint}/post/delete/${id_post}`, {cookie:cookie});
             if(!response || !response.data || response.data.success === false){
@@ -39,7 +38,6 @@ function SearchPublication(){
             }
         } catch (error) {
             openAlert("Error de conexión", `La petición ha fallado por ${error}`, "error", null, false);
-            console.log(error);
         }
     } 
 

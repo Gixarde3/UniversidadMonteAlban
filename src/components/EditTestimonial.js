@@ -47,7 +47,7 @@ function EditTestimonial(){
             setImageFile(e.target.files[0]);
             setImage(URL.createObjectURL(selectedImage));
         }catch(error){
-            console.log(error);
+            openAlert("Error al subir la imagen", "Ocurrió un error inesperado al subir la imagen", "error", null);
         }
     };
 

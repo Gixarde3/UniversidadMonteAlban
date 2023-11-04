@@ -21,7 +21,6 @@ function AddComent({id_post, reloadComents}){
         event.preventDefault();
         const newComent = coment;
         const cookie = Cookies.get('session');
-        console.log(id_post);
         try {
             const response = await axios.post(`${endpoint}/coment`, {
                 id_post, coment: newComent, cookie});

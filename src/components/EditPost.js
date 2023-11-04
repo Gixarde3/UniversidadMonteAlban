@@ -78,7 +78,6 @@ function EditPost(){
             }
         } catch (error) {
             openAlert("Error de conexión", `La petición ha fallado por ${error}`, "error", null);
-            console.log(error);
         }
     };
 

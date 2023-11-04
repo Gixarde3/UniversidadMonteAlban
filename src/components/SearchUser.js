@@ -25,7 +25,6 @@ function SearchUser(){
 
     const deleteUser= async(id_user) => {
         const cookie = Cookies.get('session');
-        console.log(id_user);
         try {
             const response = await axios.post(`${endpoint}/user/delete/${id_user}`, {cookie:cookie});
             if(!response || !response.data || response.data.success === false){
@@ -38,7 +37,6 @@ function SearchUser(){
             }
         } catch (error) {
             openAlert("Error de conexión", `La petición ha fallado por ${error}`, "error", null, false);
-            console.log(error);
         }
     } 
 

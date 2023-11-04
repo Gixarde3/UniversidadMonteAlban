@@ -22,7 +22,6 @@ function ImageSlider(){
     const prefix = config.endpoint;
     const response = await axios.get(`${prefix}/slider`);
     setSlides(response.data);
-    console.log(response.data);
   }
   
   useEffect(() => {

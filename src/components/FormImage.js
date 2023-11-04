@@ -31,14 +31,14 @@ function FormImage(){
             setImageFile(e.target.files[0]);
             setImage(URL.createObjectURL(selectedImage));
         }catch(error){
-            console.log(error);
+            openAlert("Error al subir la imagen", "Ocurrió un error inesperado al subir la imagen", "error", null);
         }
     };
     const handleFileUpload = (e) => {
         try{
             setFile(e.target.files[0]);
         }catch(error){
-            console.log(error);
+            openAlert("Error al subir el archivo", "Ocurrió un error inesperado al subir el archivo", "error", null);
         }
     };
 

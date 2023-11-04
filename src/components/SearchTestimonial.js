@@ -26,8 +26,6 @@ function SearchTestimonial(){
 
     const deletetestimonial = async(id_testimonial) => {
         const cookie = Cookies.get('session');
-        console.log(id_testimonial);
-        console.log(`${endpoint}/testimonial/delete/${id_testimonial}`);
         try {
             const response = await axios.post(`${endpoint}/testimonial/delete/${id_testimonial}`, {cookie:cookie});
             if(!response || !response.data || response.data.success === false){

@@ -37,7 +37,6 @@ function ChangePassword() {
                 cookie: cookie
             });
             const data = response.data;
-            console.log(response);
             if (data.success) {
                 Cookies.set('session', data.cookie, { expires: 1 });
                 openAlert("Cambio de contraseña exitoso", "Tu contraseña se ha cambiado con éxito", "success", null);
