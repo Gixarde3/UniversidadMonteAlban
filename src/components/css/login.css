@@ -42,7 +42,6 @@ form {
     color: white;
     padding: 0.5rem;
     width: auto;
-    max-width: 9rem;
     cursor: pointer;
 }
 .button:hover{

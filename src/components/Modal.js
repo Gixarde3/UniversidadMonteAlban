@@ -77,7 +77,7 @@ function Modal({ isOpen, id_post, closeModal, imageSrc, imageAlt, title, descrip
         <div id="modal-details">
           <h3 className="modal-title">{title}</h3>
           <p className='modal-description'>{description}</p>
-          {file && file !== '' ? <button className="accept" onClick={handleDownload} style={{width:'100%'}}>Descargar archivo</button> : ''}
+          {file && file !== '' ? <button className="button" onClick={handleDownload}>Descargar archivo</button> : ''}
         </div>
         <div id="comments-container">
           <h4 className="modal-title">Comentarios</h4>
