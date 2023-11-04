@@ -8,10 +8,12 @@ import config from './config.json';
 import Cookies from 'js-cookie';
 import {useNavigate} from 'react-router-dom';
 function ChangePassword() {
+    const [lastPassword, setLastPassword] = useState('');
     const [password, setPassword] = useState('');
     const [alert, setAlert] = useState(null);
     const [alertOpen, setAlertOpen] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
+    const [showLastPassword, setShowLastPassword] = useState(false);
     const prefix = config.endpoint;
     const navigate = useNavigate();
     const closeAlert = () => {
@@ -55,25 +57,44 @@ function ChangePassword() {
       setShowPassword(!showPassword);
     };
 
+    const toggleLastPasswordVisibility = () => {
+        setShowLastPassword(!showLastPassword);
+    };
+
     return (
             <main>
                 <section id="login">
                     <form onSubmit={handleSubmit}>
                         <img src="img/logo_azul.png" alt="Imagen del logo de la universidad" id="logo" />
                         <h1>Cambiar contraseña</h1>
-                        <label htmlFor="password">Nueva contraseña</label>
+                        <label htmlFor="password">Contraseña anterior</label>
+                        <div className="input-div">
+                            <img src="img/icon_pass.png" alt="Icono de contraseña para iniciar sesión" />
+                            <input
+                                type={showLastPassword ? 'text' : 'password'}
+                                name="password"
+                                className="password"
+                                placeholder="Contraseña anterior"
+                                value={password}
+                                onChange={(event) => setLastPassword(event.target.value)}
+                                required
+                            />
+                            <button type="button" onClick={toggleLastPasswordVisibility} className="btn-mostrar">
+                                <img src={"img/" + (showLastPassword ? "ver.png" : "no_ver.png")} alt="Icono para ver o esconder contraseña" />
+                            </button>
+                        </div>
                         <div className="input-div">
                             <img src="img/icon_pass.png" alt="Icono de contraseña para iniciar sesión" />
                             <input
                                 type={showPassword ? 'text' : 'password'}
                                 name="password"
-                                id="password"
-                                placeholder="Contraseña"
+                                className="password"
+                                placeholder="Contraseña nueva"
                                 value={password}
                                 onChange={(event) => setPassword(event.target.value)}
                                 required
                             />
-                            <button type="button" onClick={togglePasswordVisibility} id="btn-mostrar">
+                            <button type="button" onClick={togglePasswordVisibility} className="btn-mostrar">
                                 <img src={"img/" + (showPassword ? "ver.png" : "no_ver.png")} alt="Icono para ver o esconder contraseña" />
                             </button>
                         </div>

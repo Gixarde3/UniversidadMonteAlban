@@ -61,19 +61,20 @@ form {
     border: 1px solid black;
     border-right: 0px;
 }
-#btn-mostrar{
+#btn-mostrar, .btn-mostrar{
     width:auto;
     height: 1.7rem;
     border: none;
     border: 1px solid black;
     border-left: 0px;
     padding: 0;
+    cursor: pointer;
     margin: 0;
 }
 #btn-mostrar img{
     border:none;
 }
-#password{
+#password, .password{
     border-right: none;
 }
 
