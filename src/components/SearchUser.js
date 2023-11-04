@@ -27,7 +27,7 @@ function SearchUser(){
         const cookie = Cookies.get('session');
         console.log(id_user);
         try {
-            const response = await axios.user(`${endpoint}/user/delete/${id_user}`, {cookie:cookie});
+            const response = await axios.post(`${endpoint}/user/delete/${id_user}`, {cookie:cookie});
             if(!response || !response.data || response.data.success === false){
                 openAlert("Error inesperado", `El usuario no se ha podido eliminar debido a un error inesperado`, "error", null, false);
             }else{
