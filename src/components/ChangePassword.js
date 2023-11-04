@@ -75,7 +75,7 @@ function ChangePassword() {
                                 name="password"
                                 className="password"
                                 placeholder="Contraseña anterior"
-                                value={password}
+                                value={lastPassword}
                                 onChange={(event) => setLastPassword(event.target.value)}
                                 required
                             />
