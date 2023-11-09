@@ -86,6 +86,9 @@ function SearchUser(){
                     <div className="result" style={{width: '100%'}}>
                         <p className="user-id">Id: {result.id}</p>
                         <p className="user-name">Username: {result.username}</p>
+                        <p className="name">Nombre: {result.name + " " + result.lastName}</p>
+                        <p className="email">Email: {result.email}</p>
+                        <p className="birthday">Fecha de nacimiento: {result.birthDay}</p>
                         <RoleCombo defaultRole={result.role} idUser={result.id}/>
                     </div>
                 </div>

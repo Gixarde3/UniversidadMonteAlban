@@ -19,6 +19,7 @@ function TestimonialSlider(){
         const prefix = config.endpoint;
         const response = await axios.get(`${prefix}/testimonial`);
         setTestimonials(response.data);
+        console.log(response.data);
     }
       
     useEffect(() => {
