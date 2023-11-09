@@ -45,11 +45,11 @@ function Login() {
                     navigate('/')
                 }
             } else {
-                openAlert("Inicio de sesion fallido", "Los datos ingresados no son correctos, prueba con otra contraseña o usuario.", "error", null);
+                openAlert("Inicio de sesión fallido", "Los datos ingresados no son correctos, prueba con otra contraseña o usuario.", "error", null);
             }
         } catch (error) {
             if(error.response !== undefined && error.response.status === 401){
-                openAlert("Inicio de sesion fallido", "Los datos ingresados no son correctos, prueba con otra contraseña o usuario.", "error", null);
+                openAlert("Inicio de sesión fallido", "Los datos ingresados no son correctos, prueba con otra contraseña o usuario.", "error", null);
             }else{
                 openAlert("Error de conexión", `La petición ha fallado por ${error}`, "error", null);
             }

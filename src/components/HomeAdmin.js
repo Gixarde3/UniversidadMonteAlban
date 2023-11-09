@@ -2,6 +2,7 @@ import FormImage from "./FormImage";
 import FormTestimonial from "./FormTestimonial";
 import SearchTestimonial from "./SearchTestimonial";
 import SearchPublication from "./SearchPublication";
+import CalendarSpecial from './CalendarAdmin'
 import SearchUser from "./SearchUser";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -33,13 +34,17 @@ function HomeAdmin(){
                         <FormImage />
                     </section>
                 </section>
-                    <section id="manage-testimonials" className="section-admin"> 
-                        <h2>Gestión de testimonios</h2>
-                        <SearchTestimonial />
-                        <section id="create-publication" className="section-admin">
-                            <FormTestimonial />
-                        </section>
+                <section id="manage-testimonials" className="section-admin"> 
+                    <h2>Gestión de testimonios</h2>
+                    <SearchTestimonial />
+                    <section id="create-publication" className="section-admin">
+                        <FormTestimonial />
                     </section>
+                </section>
+                <section id="manage-calendar" className="section-admin"> 
+                    <h2>Gestión de fechas</h2>
+                    <CalendarSpecial />
+                </section>
             </main>
         </>
     );

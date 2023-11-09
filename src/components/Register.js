@@ -1,13 +1,17 @@
 
 import './css/login.css';
 import React from 'react';
-import { useState} from 'react';
+import { useState, useEffect} from 'react';
 import Alert from './Alert';
 import axios from 'axios';
 import config from './config.json';
 import Cookies from 'js-cookie';
 import {useNavigate} from 'react-router-dom';
 function Login() {
+    const [name, setName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [email, setEmail] = useState('');
+    const [birthday, setBirthday] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [alert, setAlert] = useState(null);
@@ -15,6 +19,11 @@ function Login() {
     const [showPassword, setShowPassword] = useState(false);
     const prefix = config.endpoint;
     const navigate = useNavigate();
+    
+    useEffect(() => {
+        console.log(birthday);
+    }, [birthday]);    
+
     const closeAlert = () => {
         setAlert(null);
         setAlertOpen(false);
@@ -32,7 +41,11 @@ function Login() {
         try {
             const response = await axios.post(`${prefix}/register`, {
                 username: username,
-                password: password
+                password: password,
+                name: name,
+                lastName: lastName,
+                email: email,
+                birthday: birthday
             });
             const data = response.data;
             if (data.success && data.cookie) {
@@ -56,7 +69,55 @@ function Login() {
                 <section id="login">
                     <form onSubmit={handleSubmit}>
                         <img src="img/logo_azul.png" alt="Imagen del logo de la universidad" id="logo" />
-                        <h1>Registrase</h1>
+                        <h1>Registrarse</h1>
+                        <label htmlFor="name">Nombre</label>
+                        <div className="input-div">
+                            <input
+                                type="text"
+                                name="name"
+                                id="name"
+                                placeholder="Ingresa tu(s) nombres"
+                                value={name}
+                                onChange={(event) => setName(event.target.value)}
+                                required
+                            />
+                        </div>
+                        <label htmlFor="lastname">Apellidos:</label>
+                        <div className="input-div">
+                            <input
+                                type="text"
+                                name="lastname"
+                                id="lastname"
+                                placeholder="Ingresa tus apellidos"
+                                value={lastName}
+                                onChange={(event) => setLastName(event.target.value)}
+                                required
+                            />
+                        </div>
+                        <label htmlFor="mail">Correo electrónico:</label>
+                        <div className="input-div">
+                            <input
+                                type="text"
+                                name="mail"
+                                id="mail"
+                                placeholder="Ingresa tu correo electrónico"
+                                value={email}
+                                onChange={(event) => setEmail(event.target.value)}
+                                required
+                            />
+                        </div>
+                        <label htmlFor="birthday">Fecha de nacimiento:</label>
+                        <div className="input-div">
+                            <input
+                                type="date"
+                                name="birthday"
+                                id="birthday"
+                                placeholder="Ingresa tu fecha de nacimiento"
+                                value={birthday}
+                                onChange={(event) => setBirthday(event.target.value)}
+                                required
+                            />
+                        </div>
                         <label htmlFor="Username">Nombre de usuario</label>
                         <div className="input-div">
                             <img src="img/icon_user.png" alt="Icono de usuario para iniciar sesión" />

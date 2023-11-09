@@ -6,6 +6,7 @@ import axios from 'axios';
 import Alert from './Alert';
 import config from './config.json';
 import Modal from './Modal';
+import SelectPublication from './SelectPublication';
 const CalendarSpecial = () => {
   const [specialDates, setSpecialDates] = useState([]);
   const [alert, setAlert] = useState(null);
@@ -13,6 +14,7 @@ const CalendarSpecial = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedDateData, setSelectedDateData] = useState(null);
   const [selectedPost, setSelectedPost] = useState(null);
+  const [idPost, setIdPost] = useState(0);
   const [date, setDate] = useState(new Date());
   const [modalOpen, setModalOpen] = useState(false);
   const endpoint = config.endpoint;
@@ -30,6 +32,15 @@ const CalendarSpecial = () => {
     getSpecialDates();
   }, [endpoint]);
 
+  const tipos = [
+    {value: '1', label: 'Festivo'},
+    {value: '2', label: 'Vacaciones'},
+    {value: '3', label: 'Evento'},
+    {value: '4', label: 'Inicio de cuatrimestre'},
+    {value: '5', label: 'Fin de cuatrimestre'},
+    {value: '6', label: 'Inscripciones abiertas'},
+    {value: '7', label: 'Inscripciones cerradas'},
+  ]
   const closeAlert = () => {
       setAlert(null);
       setAlertOpen(false);
@@ -85,6 +96,7 @@ const CalendarSpecial = () => {
         tileClassName={getTileClassName}
         onClickDay={handleDateClick}
       />
+      
       <div id="colors">
         <h4>Clasificación de fechas especiales</h4>
         <div className="colors-separator">
@@ -94,40 +106,49 @@ const CalendarSpecial = () => {
           </div>
           <div className="separator">
             <span className="color type-1"></span>
-            <p>Evento 1</p>
+            <p>Festivo</p>
           </div>
           <div className="separator">
             <span className="color type-2"></span>
-            <p>Evento 1</p>
+            <p>Vacaciones</p>
           </div>
           <div className="separator">
             <span className="color type-3"></span>
-            <p>Evento 1</p>
+            <p>Evento</p>
           </div>
           <div className="separator">
             <span className="color type-4"></span>
-            <p>Evento 1</p>
+            <p>Inicio de cuatrimestre</p>
           </div>
           <div className="separator">
             <span className="color type-5"></span>
-            <p>Evento 1</p>
+            <p>Fin de cuatrimestre</p>
           </div>
           <div className="separator">
             <span className="color type-6"></span>
-            <p>Evento 1</p>
+            <p>Inicio de inscripciones</p>
           </div>
           <div className="separator">
             <span className="color type-7"></span>
-            <p>Evento 1</p>
+            <p>Fin de inscripciones</p>
           </div>
         </div>
       </div>
       {selectedDateData  ? (<div id="special-date">
         <h2>Fecha seleccionada</h2>
         <p>{selectedDate.toISOString().split('T')[0]}</p>
-        <p className='nameEvent'>{selectedDateData.eventName}</p>
-        <p>{selectedDateData.description}</p>
-        {selectedDateData.idPost ? (<button className='accept' onClick={()=>(openPost(selectedDateData.idPost))}>Abrir publicación relacionada</button>):''}
+        <input className='nameEvent inputCalendar' value={selectedDateData.eventName}/>
+        <input className ='inputCalendar' value={selectedDateData.description}/>
+        <label htmlFor="typeEvent" style={{textAlign: 'center'}}>Selecciona el tipo de evento: </label>
+        <select name="typeEvent" id="typeEvent" value={selectedDateData.type}>
+          {
+            tipos.map((tipo, index) => (<option value={tipo.value}>{tipo.label}</option>))
+          }
+        </select>
+        <p className='nameEvent'>Id post seleccionado: {idPost ? idPost : selectedDateData.idPost}</p>
+        {selectedDateData.idPost ? (<button className='accept' onClick={()=>(openPost(selectedDateData.idPost))}>Abrir publicación seleccionada</button>):''}
+        <SelectPublication selectPublication={setIdPost}/>
+        <button className="accept">Editar publicación</button>
       </div>):''}
       <Alert
         isOpen={alertOpen}

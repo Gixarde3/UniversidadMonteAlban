@@ -15,8 +15,8 @@
     width: 30px;
     height: auto;
     position: absolute;
-    top:5%;
-    right: 5%;
+    top:20px;
+    right: 25px;
     cursor: pointer;
 }
 .modal-img{
@@ -26,7 +26,7 @@
     max-width: 75%;
 }
 .modal aside{
-    max-height: 100vh;
+    max-height: 80vh;
     width: 20%;
     display: flex;
     flex-direction: column;
@@ -45,7 +45,7 @@
     text-align: center;
 }
 #modal-details{
-    max-height: 55vh;
+    /*max-height: 55vh;*/
     overflow-y: scroll;
     overflow-x: hidden;
 }
@@ -56,6 +56,7 @@
     justify-content: flex-start;
     align-items: center;
     overflow: hidden;
+    max-height: 40vh;
 }
 #comments{
     display: flex;
@@ -87,7 +88,8 @@
         max-width: 95vw;
     }
     #modal-details{
-        max-height: 25vh;
+        margin-top: 1rem;
+        max-height: 55vh;
         max-width: 95vw;
     }
     #comments-container{

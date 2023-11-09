@@ -13,6 +13,7 @@ function EditTestimonial(){
     const [name, setName] = useState('');
     const [relation, setRelation] = useState('');
     const [content, setContent] = useState('');
+    const [date, setDate] = useState('');
     const [image, setImage] = useState(null);
     const [imageFile, setImageFile] = useState(null);
     const [alert, setAlert] = useState(null);
@@ -27,6 +28,7 @@ function EditTestimonial(){
             setRelation(testimonial.relation);
             setImage(endpointImage + "testimonial/" +testimonial.img);
             setContent(testimonial.content);
+            setDate(testimonial.date);
         }
     }, [testimonial, endpointImage]);
 
@@ -101,6 +103,8 @@ function EditTestimonial(){
                 <textarea className="testimonial-content" rows="4" value={content}placeholder='Ingresa el testimonio' required onChange={(event) => {setContent(event.target.value)}}></textarea>
                 <input type="text"className="testimonial-name" value={name} placeholder='Ingresa del creador del testimonio' required onChange={(event) => {setName(event.target.value)}}/>
                 <input className="testimonial-relation" value={relation} placeholder='Ingresa la relación con la persona del testimonio' required onChange={(event) => {setRelation(event.target.value)}}/>
+                <label htmlFor="date" style={{marginBottom: '0.3rem', textAlign:'center'}}>Ingresa la fecha de creación del testimonio</label>
+                <input className="testimonial-date" value={date} name="date" type = "date"  placeholder='Ingresa la fecha en la que se hizo este testimonio' required onChange={(event) => {setDate(event.target.value)}} style={{marginBottom: '1rem', border:'1px solid black'}}/>
             </div> 
             <button type="submit" className="accept">Editar testimonio</button>
         </form>

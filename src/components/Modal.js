@@ -77,7 +77,7 @@ function Modal({ isOpen, id_post, closeModal, imageSrc, imageAlt, title, descrip
           <p className='modal-description'>{description}</p>
           {file && file !== '' ? <button className="button" onClick={handleDownload}>Descargar archivo</button> : ''}
         </div>
-        <div id="comments-container">
+        {<div id="comments-container">
           <h4 className="modal-title">Comentarios</h4>
           <div id="comments">
             {isLoading ? (
@@ -88,11 +88,11 @@ function Modal({ isOpen, id_post, closeModal, imageSrc, imageAlt, title, descrip
               coments.map((coment, index) => (
                 <Comment key={index} id_coment = {coment.id} userName={coment.username} coment={coment.content} isCreator={session === coment.cookie} reloadComents={getAllComents}/>
               ))
-            )}
-          </div>
-          {session ? <AddComent id_post={id_post} reloadComents={getAllComents}/> : ''}
+              )}
+              </div>
+              {session ? <AddComent id_post={id_post} reloadComents={getAllComents}/> : ''}
           
-        </div>
+              </div>}
       </aside>
       <Alert
                     isOpen={alertOpen}

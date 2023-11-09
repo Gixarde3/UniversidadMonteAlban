@@ -73,6 +73,12 @@
 .btn-admin.eliminar:hover{
     background-color: var(--red-hover);
 }
+.btn-admin.seleccionar{
+    background-color: var(--green);
+}
+.btn-admin.seleccionar:hover{
+    background-color: var(--green-hover);
+}
 .content{
     margin-top: 30px;
 }
@@ -105,6 +111,7 @@
     width: 100%;
     text-overflow: ellipsis;
     white-space: nowrap;
+    overflow: hidden;
 }
 .post-title, .user-name{
     font-weight: bold;

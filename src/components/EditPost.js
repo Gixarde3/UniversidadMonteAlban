@@ -77,7 +77,12 @@ function EditPost(){
                 openAlert("Publicación creada", "La publicación se ha editado con éxito", "success", "/admin");
             }
         } catch (error) {
-            openAlert("Error de conexión", `La petición ha fallado por ${error}`, "error", null);
+            if(error.response !== undefined && error.response.status === 422){
+                openAlert("Error de archivos", `La publicación no se ha podido editar debido a un error con la subida de archivos`, "error", null);
+            }else{
+                openAlert("Error de conexión", `La petición ha fallado por ${error}`, "error", null);
+            }
+           
         }
     };
 

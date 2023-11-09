@@ -74,6 +74,20 @@ header h3{
 }
 .sticky-header {
     position: fixed;
-    z-index: 6;
+}
+.submenu{
+    position: relative;
+    box-shadow: none;
+}
+ul.menu{
+    display: flex;
+    flex-direction: column;
+    top: auto;
+    left: auto;
+}
+ul.menu li{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 }

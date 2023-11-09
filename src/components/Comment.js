@@ -85,7 +85,7 @@ function Comment({id_coment, userName, coment, isCreator, reloadComents}) {
                     isEditing ? '' : (
                         <form className="interactions-line" style={{padding:0}} onSubmit={handleSubmitDelete}>
                             {isCreator ? <button type="button" onClick = {() => {setEditing(true)}} className='btn-coment'>Editar</button> : ''}
-                            {isCreator ? <button type="submit" onClick = {()=>{}} style={{color:'#FE2A2A', fontWeight:'600'}} className='btn-coment'>Eliminar</button> : ''}
+                            {isCreator || Cookies.get('role') === "2" || Cookies.get('role') === "3"? <button type="submit" onClick = {()=>{}} style={{color:'#FE2A2A', fontWeight:'600'}} className='btn-coment'>Eliminar</button> : ''}
                         </form>
                     )
                 }

@@ -10,6 +10,7 @@ import LayoutAdmin from './components/LayoutAdmin';
 import EditTestimonial from './components/EditTestimonial';
 import EditPost from './components/EditPost';
 import Register from './components/Register';
+import Nosotros from './components/Nosotros';
 import ChangePassword from './components/ChangePassword';
 function App() {
   
@@ -23,6 +24,7 @@ function App() {
           <Route path="buzon" element={<Layout Page={Buzon} Title = "Universidad Monte Albán - Buzón de sugerencias"/>}/>
           <Route path="register" element={<Layout Page={Register} Title = "Universidad Monte Albán - Registrarse"/>}/>
           <Route path="password" element={<Layout Page={ChangePassword} Title = "Universidad Monte Albán - Cambio de contraseña"/>}/>
+          <Route path="nosotros" element={<Layout Page={Nosotros} Title = "Universidad Monte Albán - Nosotros"/>}/>
           <Route path="admin/">
             <Route index element={<LayoutAdmin Page={HomeAdmin} Title="Inicio"/>}/>
             <Route path="editTestimonial/:id" element={<LayoutAdmin Page={EditTestimonial} Title="Editar testimonio"/>}/>

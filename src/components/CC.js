@@ -18,6 +18,8 @@ function CC() {
                         <Link to="https://www.freepik.es/icono/charla_1650215#fromView=search&term=comentar&page=1&position=0&track=ais"><img src="img/coment.webp" alt="Icono de comentar" />Icono de Freepik</Link>
                         <Link to="https://www.freepik.es/icono/pregunta_2476231#fromView=search&term=Question&page=1&position=48&track=ais"><img src="img/question.webp" alt="Icono de preguntar" />Icono de Freepik</Link>
                         <Link to="https://www.freepik.es/icono/editar_1159876"><img src="img/edit.png" alt="Icono editar" />Icono de Kiranshastry</Link>
+                        <Link to="https://www.freepik.es/icono/cheque_1055183#fromView=search&term=checked&page=1&position=18&track=ais"><img src="img/select.png" alt="Icono de checked" />Icono de Maxim Basinski Premium</Link>
+                        <Link to="https://www.freepik.es/icono/cerca_2976286#fromView=search&term=cerrar&page=1&position=12&track=ais"><img src="img/close.png" alt="Icono de cerrar" />Icono de ariefstudio</Link>
                 </main>
         );
 }

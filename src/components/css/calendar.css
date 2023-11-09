@@ -1,0 +1,162 @@
+:root{
+    --type-1:#BCE784;
+    --type-2:#012622;
+    --type-3:#5DD39E;
+    --type-4:#348AA7;
+    --type-5:#A57982;
+    --type-6:#946846;
+    --type-7:#FA8334; 
+    --type-1-hover:rgb(165, 201, 118);
+    --type-2-hover:#023c36;
+    --type-3-hover:#4eae83;
+    --type-4-hover:#2a7189;
+    --type-5-hover:#b1838c;
+    --type-6-hover:#a6754f;
+    --type-7-hover:#cd6d2d;
+}
+
+#calendar{
+    padding:0;
+}
+
+.selected-date, .react-calendar__tile--active.react-calendar__tile--now{
+    background-color: var(--principal) !important; /* Cambia el color de fondo al azul (puedes personalizarlo) */
+    color: white; /* Cambia el color del texto a blanco */
+    border: 2px solid var(--principal) !important; /* Cambia el borde al mismo color de fondo o personalízalo */
+}
+
+.react-calendar {
+    font-family: "Roboto Slab","Times New Roman",Times,serif;
+    width:100%;
+}
+.react-calendar__month-view__weekdays__weekday abbr{
+    text-decoration: none !important;
+}
+
+#special-date{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    margin-top: 1rem;
+    box-shadow: 0px 0px 13px -3px rgba(0,0,0,0.5);
+    background-color: white;
+}
+.nameEvent{
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+}
+#special-date p, input{
+    text-align: center;
+}
+#special-date .inputCalendar{
+    width: 100%;
+    margin-bottom: 0.5rem;
+    border: 1px solid black;
+}
+.special-date{
+    color: white;
+    font-weight: bold;
+}
+.type-0{
+    color:white;
+    background-color: var(--principal);
+}
+.type-0:hover{
+    background-color: var(--principal-hover);
+}
+.type-1{
+    color:black;
+    background-color: var(--type-1);
+}
+.type-2{
+    color:white;
+    background-color: var(--type-2);
+}
+.type-3{
+    color:white;
+    background-color: var(--type-3);
+}
+.type-4{
+    color:black;
+    background-color: var(--type-4);
+}
+.type-5{
+    color:black;
+    background-color: var(--type-5);
+}
+.type-6{
+    color:white;
+    background-color: var(--type-6);
+}
+.type-7{
+    color:black;
+    background-color: var(--type-7);
+}
+.type-1:hover{
+    background-color: var(--type-1-hover) !important;
+}
+.type-2:hover{
+    background-color: var(--type-2-hover) !important;
+}
+.type-3:hover{
+    background-color: var(--type-3-hover) !important;
+}
+.type-4:hover{
+    background-color: var(--type-4-hover) !important;
+}
+.type-5:hover{
+    background-color: var(--type-5-hover) !important;
+}
+.type-6:hover{
+    background-color: var(--type-6-hover) !important;
+}
+.type-7:hover{
+    background-color: var(--type-7-hover) !important;
+}
+.color{
+    width: 30px;
+    height: 20px;
+    border: 1px solid black;
+}
+#colors p{
+    text-align: center;
+}
+#colors{
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+    border: 1px solid #a0a096;
+    margin-bottom: 1rem;
+}
+.colors-separator{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    margin-top: 0.3rem;
+    flex-wrap: wrap;
+}
+.separator{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0.2rem;
+}
+@media(max-width:1199.99px){
+    .colors-separator{
+        width: auto;
+        padding: 0.3rem;
+        
+    }
+}

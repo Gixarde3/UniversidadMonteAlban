@@ -1,5 +1,5 @@
 import './css/testimonial.css';
-function testimonial({name, photoTestimonial, testimonial, relation}){
+function testimonial({name, photoTestimonial, testimonial, relation, date}){
     return(
         <div className="testimonial">
             
@@ -13,6 +13,9 @@ function testimonial({name, photoTestimonial, testimonial, relation}){
                 </p>
                 <p className="testimonial-relation">
                     {relation}
+                </p>
+                <p className="testimonial-date">
+                    {date}
                 </p>
             </div>
         </div>
