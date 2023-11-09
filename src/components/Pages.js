@@ -72,17 +72,17 @@ function Pages() {
             {
                 Cookies.get('session') ? <Link to="/password">Cambiar contraseña</Link> : ''
             }
-            {Cookies.get('session') ? <button type="button" onClick={()=>(logout())} style={{cursor:'pointer'}}><img src="img/login.png" alt="Icono para iniciar sesion" className = "icon_social_header"/></button>: <Link to="/login">Iniciar sesión</Link>}
+            {Cookies.get('session') ? <button type="button" onClick={()=>(logout())} style={{cursor:'pointer'}}><img src="img/login.png" alt="Icono para cerrar sesion" className = "icon_social_header"/></button>: <Link to="/login"><img src="img/loginUser.png" alt="Icono para iniciar sesion" className = "icon_social_header"/></Link>}
             <Alert
-                    isOpen={alertOpen}
-                    closeAlert={closeAlert}
-                    title={alert ? alert.title : ''}
-                    message={alert ? alert.message : ''}
-                    kind = {alert ? alert.kind : ''}
-                    redirectRoute={alert ? alert.redirectRoute : ''}
-                    asking = {alert ? alert.asking : ''}
-                    onAccept={alert ? () => alert.onAccept() : () => console.log('')}
-                />
+                isOpen={alertOpen}
+                closeAlert={closeAlert}
+                title={alert ? alert.title : ''}
+                message={alert ? alert.message : ''}
+                kind = {alert ? alert.kind : ''}
+                redirectRoute={alert ? alert.redirectRoute : ''}
+                asking = {alert ? alert.asking : ''}
+                onAccept={alert ? () => alert.onAccept() : () => console.log('')}
+            />
         </>
     );
 }

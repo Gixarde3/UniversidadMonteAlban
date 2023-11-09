@@ -15,8 +15,7 @@ function Home() {
                         </div>
                         <article id="art_somos">
                             <h1>Somos <span id="nombre_universidad">Monte Albán</span></h1>
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi labore sunt velit temporibus magni? Modi maiores vero assumenda deserunt ipsum quia hic earum quaerat. Fugiat error accusamus dicta! Aliquam, placeat.</p>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, reiciendis in, consectetur sint dolor explicabo veritatis consequatur unde laboriosam quisquam fuga repellendus quis inventore voluptate. Dolor porro officia provident tempora.</p>
+                            <p>Somos un Instituto Educativo con más 25 años de experiencia en el ramo educativo, comprometidos con la formación  de líderes  profesionales que transformen el mundo, desarrollando habilidades y aptitudes que les permita a nuestro egresados integrarse a ambientes de trabajo multidisciplinarios de alto rendimiento, trabajando en sinergia con valores y capacidades acordes a su formación de nivel superior.</p>
                         </article>
                     </section>
                     <section id="testimonials">

@@ -51,7 +51,6 @@ const CalendarSpecial = () => {
 
   const getTileClassName = ({date}) => {
     if (selectedDate && date.getDate() === selectedDate.getDate()) {
-      setSelectedDateData(specialDates.find((dateInfo) => dateInfo.date === date.toISOString().split('T')[0]));
       return 'selected-date';
     }
     const specialDate = specialDates.find((dateInfo) => dateInfo.date === date.toISOString().split('T')[0]);
@@ -66,7 +65,7 @@ const CalendarSpecial = () => {
     const clickedDate = value.toISOString().split('T')[0];
     const specialDate = specialDates.find((date) => date.date === clickedDate);
     if (specialDate) {
-      console.log('Special Date:', specialDate);
+      setSelectedDateData(specialDate);
     }
   };
 
