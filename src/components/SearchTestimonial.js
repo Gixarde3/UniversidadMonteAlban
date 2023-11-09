@@ -99,6 +99,9 @@ function SearchTestimonial(){
                             <p className="testimonial-relation">
                                 {result.relation}
                             </p>
+                            <p className="testimonial-date">
+                                {result.date}
+                            </p>
                         </div>
                     </div>
                 </div>
