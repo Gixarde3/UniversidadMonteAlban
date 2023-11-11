@@ -96,7 +96,7 @@ function EditPost(){
                     <input type="text" placeholder="Ingresa el título de la publicación" value={title} id="title" onChange={(event) => setTitle(event.target.value)} required/>
                     <label htmlFor="filePublication">Imagen:</label>
                     {image ? (
-                        <div>
+                        <div className='image-input'>
                             <img src={image} alt="Preview" style={{ maxWidth: '90%' }} />
                         </div>
                     ) : <div>

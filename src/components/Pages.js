@@ -1,10 +1,25 @@
 import { Link} from "react-router-dom";
 import Cookies from "js-cookie";
-import {useState}  from "react";
+import {useState, useEffect}  from "react";
 import Alert from "./Alert";
+import config from "./config.json";
 function Pages() {
     const [alert, setAlert] = useState(null);
     const [alertOpen, setAlertOpen] = useState(false);
+    const [carreras, setCarreras] = useState([]);
+    const endpoint = config.endpoint;
+    useEffect(() => {
+        const getCareers = async () => {
+            try{
+                const response = await fetch(`${endpoint}/careers`);
+                const data = await response.json();
+                setCarreras(data);
+            }catch(error){
+                console.log(error);
+            }
+        }
+        getCareers();
+    }, [endpoint]);
     const closeAlert = () => {
         setAlert(null);
         setAlertOpen(false);
@@ -14,11 +29,6 @@ function Pages() {
         setAlert({ title: title, message: message, kind: kind, redirectRoute: redirectRoute, asking: asking, onAccept: onAccept});
         setAlertOpen(true);
     };
-    const carreras = [
-        "Licenciatura en psicología",
-        "Licenciatura en idiomas",
-        "Tu preparatoria en línea"
-    ];
     const [open, setOpen] = useState(false);
     const logout = () => {
         openAlert("¿Seguro?", `¿Desea cerrar sesión? Fue un gusto tenerlo en nuestra página`, "question", null, true, deleteSession);
@@ -57,7 +67,7 @@ function Pages() {
                     <ul className="submenu">
                     {
                         carreras.map((carrera) => (
-                            <li><Link to={`oferta/${carrera}`}>{carrera}</Link></li>
+                            <li><Link to={`oferta/${carrera.name}`}>{carrera.name}</Link></li>
                         ))
                     }   
                     </ul>

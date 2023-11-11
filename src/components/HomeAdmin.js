@@ -3,6 +3,7 @@ import FormTestimonial from "./FormTestimonial";
 import SearchTestimonial from "./SearchTestimonial";
 import SearchPublication from "./SearchPublication";
 import CalendarSpecial from './CalendarAdmin'
+import FormCareers from "./FormCareers";
 import SearchUser from "./SearchUser";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -44,6 +45,10 @@ function HomeAdmin(){
                 <section id="manage-calendar" className="section-admin"> 
                     <h2>Gestión de fechas</h2>
                     <CalendarSpecial />
+                </section>
+                <section id="manage-careers" className="section-admin">
+                    <h2>Gestión de oferta educativa</h2>
+                    <FormCareers />
                 </section>
             </main>
         </>

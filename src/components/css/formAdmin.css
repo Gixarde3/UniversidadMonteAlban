@@ -13,6 +13,12 @@
     width: 100%;
 }
 
+.image-input{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
 .section-admin{
     justify-content: center;
 }

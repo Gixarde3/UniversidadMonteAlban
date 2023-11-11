@@ -123,7 +123,7 @@ const CalendarSpecial = () => {
       setSelectedDateData(null);
       setNameEvent('');
       setDescriptionEvent('');
-      setTypeEvent("0");
+      setTypeEvent("1");
       setIdPost(null);
       setSelectedPost(null);
     }
@@ -251,7 +251,7 @@ const CalendarSpecial = () => {
                 <img src="img/close.png" alt="Icono eliminar" />
             </button>
         </div>
-        <h2>Fecha seleccionada</h2>
+        <h2>{selectedDateData ? ("Editar evento") : "Crear evento"}</h2>
         <p>{selectedDate.toISOString().split('T')[0]}</p>
         <input className='nameEvent inputCalendar' value={nameEvent} onChange={(event)=>(setNameEvent(event.target.value))} placeholder='Ingresa el nombre del evento' required/>
         <textarea className ='inputCalendar' value={descriptionEvent} onChange={(event)=>(setDescriptionEvent(event.target.value))} placeholder='Ingresa la descripción de la publicación' required></textarea>
@@ -282,7 +282,7 @@ const CalendarSpecial = () => {
           <button className='accept' onClick={()=>(openPost(idPost))}>Previsualización del post seleccionado</button>
           </>:''}
         <SelectPublication selectPublication={setPost}/>
-        <button className="accept" onClick={selectedDateData ? () => (editPost()) : () => (createEvent())}>{selectedDateData ? ("Editar publicación") : "Crear publicación"}</button>
+        <button className="accept" onClick={selectedDateData ? () => (editPost()) : () => (createEvent())}>{selectedDateData ? ("Editar evento") : "Crear evento"}</button>
       </div> :''}
       <Alert
           isOpen={alertOpen}
