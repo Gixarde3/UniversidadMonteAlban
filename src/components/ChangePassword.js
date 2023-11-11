@@ -31,6 +31,7 @@ function ChangePassword() {
         const cookie = Cookies.get('session');
         const role = Cookies.get('role'); 
         try {
+            openAlert("Cambiando contraseña...", `Cambiando contraseña...`, "loading", null)
             const response = await axios.post(`${prefix}/change-password`, {
                 lastPassword: lastPassword,
                 password: password,

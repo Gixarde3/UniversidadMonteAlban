@@ -39,6 +39,7 @@ function Login() {
         // Ejemplo de uso para verificar si existe la cookie "session"
 
         try {
+            openAlert("Registrando...", `Se está registrando en nuestro sistema`, "loading", null, false, null);
             const response = await axios.post(`${prefix}/register`, {
                 username: username,
                 password: password,

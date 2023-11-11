@@ -19,7 +19,6 @@ function TestimonialSlider(){
         const prefix = config.endpoint;
         const response = await axios.get(`${prefix}/testimonial`);
         setTestimonials(response.data);
-        console.log(response.data);
     }
       
     useEffect(() => {
@@ -31,7 +30,7 @@ function TestimonialSlider(){
         <Swiper
             modules={[Navigation, Pagination, Autoplay]}
             spaceBetween={50}
-            slidesPerView={window.innerWidth > 1199.99 ? 2 : 1}
+            slidesPerView={window.innerWidth > 1199.99 && testimonials.length > 1? 2 : 1}
             navigation={true}
             autoplay={{ delay: 5000 }}
             pagination={{ clickable: true }}

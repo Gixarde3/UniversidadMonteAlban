@@ -14,7 +14,8 @@ function Alert({ isOpen, title, message, kind, closeAlert, redirectRoute, asking
     const images = {
       'success': 'success.png',
       'error': 'error.png',
-      'question': 'question.webp'
+      'question': 'question.webp',
+      'loading': 'loading.svg'
     }
     const accept = () => {
       closeAlert();
@@ -32,9 +33,9 @@ function Alert({ isOpen, title, message, kind, closeAlert, redirectRoute, asking
             <img src={`${endpointLocal}img/` + (images[kind])} alt="Icono de alerta" className="icon"/>
             <p style={{color:'black'}}>{message}</p>
             <div style={{display:'flex', width:'80%', justifyContent:'space-around'}}>
-              <button className="accept" onClick={asking ? accept : redirectTo}>
+              {kind === 'loading' ? '' : <button className="accept" onClick={asking ? accept : redirectTo}>
                 Aceptar
-              </button>
+              </button>}
               {
                 asking ? (
                   <button className="accept" onClick={closeAlert} style={{backgroundColor: '#FE2A2A'}}>

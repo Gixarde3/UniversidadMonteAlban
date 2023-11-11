@@ -39,6 +39,7 @@ function FormTestimonial(){
 
     const handleSubmit = async (event) => {
         try{
+            openAlert("Creando...", `Espere mientras se cargan los datos necesarios para cargar la publicación`, "loading", null, false, null);
             const cookie = Cookies.get('session');
             event.preventDefault();
             const formData = new FormData();

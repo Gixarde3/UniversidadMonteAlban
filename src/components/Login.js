@@ -31,6 +31,7 @@ function Login() {
         // Ejemplo de uso para verificar si existe la cookie "session"
 
         try {
+            openAlert("Iniciando sesión", "Iniciando sesión, por favor espere...", "loading", null);
             const response = await axios.post(`${prefix}/login`, {
                 username: username,
                 password: password

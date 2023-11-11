@@ -27,6 +27,7 @@ function SelectPublication({selectPublication}){
     const deletePost= async(id_post) => {
         const cookie = Cookies.get('session');
         try {
+            openAlert("Eliminando...", `Eliminando publicación...`, "loading", null, false, null);
             const response = await axios.post(`${endpoint}/post/delete/${id_post}`, {cookie:cookie});
             if(!response || !response.data || response.data.success === false){
                 openAlert("Error inesperado", `La publicación no se ha podido eliminar debido a un error inesperado`, "error", null, false);
@@ -43,8 +44,10 @@ function SelectPublication({selectPublication}){
 
     const getResults= async() => {
         try{
+            openAlert("Buscando...", `Se están cargando los resultados, porfavor espere`, "loading", null, false, null);
             const response = await axios.get(`${endpoint}/posts/?search=${search}`);
             setPosts(response.data);
+            closeAlert();
         }catch(error){
             openAlert('Error inesperado con la conexión', `Error de conexión: ${error}`, 'error', null);
         }
@@ -53,9 +56,11 @@ function SelectPublication({selectPublication}){
     const handleSubmitSearch = async (event) => {
         event.preventDefault();
         try{
+            openAlert("Buscando...", `Se están cargando los resultados, porfavor espere`, "loading", null, false, null);
             const response = await axios.get(`${endpoint}/posts/?search=${search}`);
             setPosts(response.data);
             setSearched(true);
+            closeAlert();
         }catch(error){
             openAlert('Error inesperado con la conexión', `Error de conexión: ${error}`, 'error', null);
         }

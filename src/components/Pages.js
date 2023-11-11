@@ -66,8 +66,8 @@ function Pages() {
                 </div>
                     <ul className="submenu">
                     {
-                        carreras.map((carrera) => (
-                            <li><Link to={`oferta/${carrera.id}`}>{carrera.name}</Link></li>
+                        carreras.map((carrera, index) => (
+                            <li key={index}><Link to={`oferta/${carrera.id}`}>{carrera.name}</Link></li>
                         ))
                     }   
                     </ul>

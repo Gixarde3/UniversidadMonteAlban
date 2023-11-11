@@ -41,8 +41,10 @@ const CalendarSpecial = () => {
 
   const getSpecialDates = async () => {
     try {
+      openAlert("Cargando...", `Cargando fechas especiales`, "loading", null, false, null)
       const response = await axios.get(`${endpoint}/events`);
       setSpecialDates(response.data);
+      closeAlert();
     } catch (error) {
       openAlert('Error inesperado con la conexión', `Error de conexión: ${error}`, 'error', null);
     }
@@ -108,9 +110,11 @@ const CalendarSpecial = () => {
 
   const setPost = async (idPost) => {
     setIdPost(idPost);
+    openAlert("Cargando...", `Cargando post`, "loading", null, false, null)
     const response = await axios.get(`${endpoint}/post/?id_post=${idPost}`);
     setSelectedPost(response.data);
     setEliminarPost(false);
+    closeAlert();
   }
 
   const handleDateClick = (value) => {
@@ -146,6 +150,7 @@ const CalendarSpecial = () => {
       if(idPost){formData.append('post', idPost)}
       if(eliminarPost){formData.append('eliminarPost', eliminarPost)}
       formData.append('cookie', Cookies.get('session'));
+      openAlert('Editando...', 'Espere mientras se edita el evento', 'loading', null, false, null);
       const response = await axios.post(`${endpoint}/event/edit/${selectedDateData.id}`, formData);
       if(response.data.success){
         openAlert('Evento editado', 'El evento se ha editado con éxito', 'success', null);
@@ -162,6 +167,7 @@ const CalendarSpecial = () => {
   }
   const deleteEvent = async () => {
     try{
+      openAlert('Eliminando...', 'Espere mientras se elimina el evento', 'loading', null, false, null);
       const response = await axios.post(`${endpoint}/event/delete/${selectedDateData.id}`, {cookie: Cookies.get('session')});
       if(response.data.success){
         openAlert('Evento eliminado', 'El evento se ha eliminado con éxito', 'success', null);
@@ -183,6 +189,7 @@ const CalendarSpecial = () => {
       formData.append('date', selectedDate.toISOString().split('T')[0]);
       if(idPost){formData.append('post', idPost)}
       formData.append('cookie', Cookies.get('session'));
+      openAlert("Creando...", `Espere mientras se crea el evento`, "loading", null, false, null)
       const response = await axios.post(`${endpoint}/event`, formData);
       if(response.data.success){
         openAlert('Evento creado', 'El evento se ha creado con éxito', 'success', null);
@@ -195,6 +202,7 @@ const CalendarSpecial = () => {
     }
   }
   const openPost = async(idPost) => {
+    openAlert("Cargando...", `Cargando post`, "loading", null, false, null)
     const response = await axios.get(`${endpoint}/post/?id_post=${idPost}`);
     setSelectedPost(response.data);
     openModal();

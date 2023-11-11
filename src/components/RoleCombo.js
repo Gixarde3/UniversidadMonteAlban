@@ -32,6 +32,7 @@ function RoleCombo({ defaultRole, idUser }) {
 
     const changeRoleSubmit = async(newRole, idUser) => {
         try {
+            openAlert("Cambiando...", `Se está cambiando el rol del usuario`, "loading", null, false, null);
             const response = await axios.post(`${endpoint}/user/change-role/${idUser}`, {role: newRole, cookie: Cookies.get('session')});
             if(!response || !response.data || response.data.success === false){
                 openAlert("Error inesperado", `El rol no se ha podido cambiar debido a un error inesperado`, "error", null, false);

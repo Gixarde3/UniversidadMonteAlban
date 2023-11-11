@@ -52,6 +52,7 @@ function FormImage(){
         if(adjuntFile) {formData.append('file', adjuntFile)};
         formData.append('cookie', Cookies.get('session'));
         try {
+            openAlert("Creando...", `Espere mientras se cargan las imágenes y archivos para crear la publicación`, "loading", null);
             const response = await axios.post(`${endpoint}/post`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data', // Configura el encabezado para enviar datos multipart/form-data

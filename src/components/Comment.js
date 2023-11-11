@@ -29,6 +29,7 @@ function Comment({id_coment, userName, coment, isCreator, reloadComents}) {
     const editComent = async() => {
         try {
             const cookie = Cookies.get('session');
+            openAlert("Editando...", `Editando comentario`, "loading", null, false, null);
             const response = await axios.post(`${endpoint}/coment/edit/${id_coment}`, {id_coment:id_coment, 
                 coment: newComent, 
                 cookie: cookie});
@@ -48,6 +49,7 @@ function Comment({id_coment, userName, coment, isCreator, reloadComents}) {
     const deleteComent = async() => {
         const cookie = Cookies.get('session');
         try {
+            openAlert("Eliminando...", `Eliminando comentario`, "loading", null, false, null);
             const response = await axios.post(`${endpoint}/coment/delete/${id_coment}`, {cookie:cookie});
             if(!response || !response.data || response.data.success === false){
                 openAlert("Error inesperado", `El comentario no se ha podido eliminar debido a un error inesperado`, "error", null, false);

@@ -26,6 +26,7 @@ function SearchUser(){
     const deleteUser= async(id_user) => {
         const cookie = Cookies.get('session');
         try {
+            openAlert("Eliminando", `Eliminando usuario`, "loading", null, false, null);
             const response = await axios.post(`${endpoint}/user/delete/${id_user}`, {cookie:cookie});
             if(!response || !response.data || response.data.success === false){
                 openAlert("Error inesperado", `El usuario no se ha podido eliminar debido a un error inesperado`, "error", null, false);
@@ -42,10 +43,12 @@ function SearchUser(){
 
     const getResults= async() => {
         try{
+            openAlert("Buscando...", `Buscando usuario`, "loading", null, false, null);
             const response = await axios.post(`${endpoint}/users/`,{
                 search: search,
                 cookie: Cookies.get('session')
             });
+            closeAlert();
             console.log(response);
             if(response.data.success){
                 setUsers(response.data.users);
@@ -63,10 +66,12 @@ function SearchUser(){
     const handleSubmitSearch = async (event) => {
         event.preventDefault();
         try{
+            openAlert("Buscando...", `Buscando usuario`, "loading", null, false, null);
             const response = await axios.post(`${endpoint}/users/`,{
                 search: search,
                 cookie: Cookies.get('session')
             });
+            closeAlert();
             console.log(response);
             if(response.data.success){
                 setUsers(response.data.users);

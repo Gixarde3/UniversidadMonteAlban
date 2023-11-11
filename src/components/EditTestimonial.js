@@ -61,11 +61,13 @@ function EditTestimonial(){
             formData.append('name', name);
             formData.append('relation', relation);
             formData.append('testimonial', content);
+            formData.append('date', date);
             if(imageFile){
                 formData.append('image', imageFile);
             }
             formData.append('cookie', cookie);
             
+            openAlert("Editando...", `Espere mientras se cargan los datos necesarios para editar el testimonio`, "loading", null, false, null)
             const response = await axios.post(`${endpoint}/testimonial/edit/${idTestimonial}`,formData,{
                 headers: {
                     'Content-Type': 'multipart/form-data', // Configura el encabezado para enviar datos multipart/form-data
@@ -74,12 +76,13 @@ function EditTestimonial(){
             
             );
             if(response.data && response.data.success){
-                openAlert("Testimonio creado", "El testimonio se ha editado con éxito", "success", "/admin");
+                openAlert("Testimonio editado", "El testimonio se ha editado con éxito", "success", "/admin");
             }else{
                 openAlert("Testimonio fallido", "El testimonio no se pudo editar por un error con la sesión", "error", null);
             }
         }catch(error){
             openAlert("Error de conexión", `La petición ha fallado por ${error}`, "error", null);
+            console.log(error);
         }
     }
     

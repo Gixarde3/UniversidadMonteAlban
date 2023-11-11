@@ -1,15 +1,14 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, forwardRef } from 'react';
 import HeaderDesk from './HeaderDesk';
 import HeaderMobile from './HeaderMobile';
 import HeaderFixed from './HeaderFixed'
-function Header({isFromAdmin}) {
-        const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth > 768);
+const Header = forwardRef(({ isFromAdmin }, ref) => {
+        const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth > 1199.99);
         const headerRef = useRef(null);
         const newHeaderRef = useRef(null);
         
         useEffect(() => {
             window.addEventListener('resize', handleWindowResize);
-            document.title = 'Universidad Monte Albán';
             
             const currentRef = headerRef.current;
             const newRef = newHeaderRef.current;
@@ -62,5 +61,5 @@ function Header({isFromAdmin}) {
         )}
         </div>
         );
-}
+});
 export default Header;

@@ -22,6 +22,7 @@ function AddComent({id_post, reloadComents}){
         const newComent = coment;
         const cookie = Cookies.get('session');
         try {
+            openAlert("Creando...", `Creando comentario`, "loading", null);
             const response = await axios.post(`${endpoint}/coment`, {
                 id_post, coment: newComent, cookie});
             if(response.data.success === false){

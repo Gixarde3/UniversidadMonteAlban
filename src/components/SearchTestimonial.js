@@ -27,6 +27,7 @@ function SearchTestimonial(){
     const deletetestimonial = async(id_testimonial) => {
         const cookie = Cookies.get('session');
         try {
+            openAlert("Eliminando...", `Eliminando testimonio`, "loading", null, false, null);
             const response = await axios.post(`${endpoint}/testimonial/delete/${id_testimonial}`, {cookie:cookie});
             if(!response || !response.data || response.data.success === false){
                 openAlert("Error inesperado", `El testimonio no se ha podido eliminar debido a un error inesperado`, "error", null, false);
@@ -43,8 +44,10 @@ function SearchTestimonial(){
 
     const getResults= async() => {
         try{
+            openAlert("Buscando...", `Buscando testimonio`, "loading", null, false, null);
             const response = await axios.get(`${endpoint}/testimonials/?search=${search}`);
             setTestimonials(response.data);
+            closeAlert();
         }catch(error){
             openAlert('Error inesperado con la conexión', `Error de conexión: ${error}`, 'error', null);
         }
@@ -53,9 +56,11 @@ function SearchTestimonial(){
     const handleSubmitSearch = async (event) => {
         event.preventDefault();
         try{
+            openAlert("Buscando...", `Buscando testimonio`, "loading", null, false, null);
             const response = await axios.get(`${endpoint}/testimonials/?search=${search}`);
             setTestimonials(response.data);
             setSearched(true);
+            closeAlert();
         }catch(error){
             openAlert('Error inesperado con la conexión', `Error de conexión: ${error}`, 'error', null);
         }

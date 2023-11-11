@@ -7,7 +7,7 @@ import Cookies from 'js-cookie';
 function FormCareers() {
     const [name, setName] = useState('');
     const [admissionProfile, setAdmissionProfile] = useState('');
-    const [gradutionProfile, setGradutionProfile] = useState('');
+    const [graduationProfile, setGraduationProfile] = useState('');
     const [alert, setAlert] = useState(null);
     const [alertOpen, setAlertOpen] = useState(false);
     const endpoint = config.endpoint;
@@ -20,13 +20,14 @@ function FormCareers() {
         setAlertOpen(true);
     };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    const handleSubmit = async (event) => {
+        event.preventDefault();
         try{
+            openAlert("Creando...", `Espere mientras se cargan los datos necesarios para crear la carrera`, "loading", null, false, null);
             const response = await axios.post(`${endpoint}/career`, {
                 name: name,
                 admissionProfile: admissionProfile,
-                gradutionProfile: gradutionProfile,
+                graduationProfile: graduationProfile,
                 cookie: Cookies.get('session')
             });
         if(response.data.success){
@@ -51,7 +52,7 @@ function FormCareers() {
             </div>
             <div className="form-group">
                 <label htmlFor="out-profile">Perfil de egreso:</label>
-                <textarea name="out-profile" id="out-profile" cols="30" rows="10" value = {gradutionProfile} placeholder="Ingresa el perfil de egreso de la carrera" onChange={(event) => (setGradutionProfile(event.target.value))} required></textarea>
+                <textarea name="out-profile" id="out-profile" cols="30" rows="10" value = {graduationProfile} placeholder="Ingresa el perfil de egreso de la carrera" onChange={(event) => (setGraduationProfile(event.target.value))} required></textarea>
             </div>
             <button type="submit" className="accept">Crear carrera</button>
         </form>

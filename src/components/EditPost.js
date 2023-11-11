@@ -66,6 +66,7 @@ function EditPost(){
         if(adjuntFile) {formData.append('file', adjuntFile)};
         formData.append('cookie', Cookies.get('session'));
         try {
+            openAlert("Editando...", `Espere mientras se cargan las imágenes y archivos para editar la publicación`, "loading", null);
             const response = await axios.post(`${endpoint}/post/edit/${post.id}`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data', // Configura el encabezado para enviar datos multipart/form-data
