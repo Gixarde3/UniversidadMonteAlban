@@ -39,6 +39,7 @@ function Login() {
             if (data.cookie) {
                 Cookies.set('session', data.cookie, { expires: 1 });
                 Cookies.set('role', data.role, { expires: 1 });
+                Cookies.set('username', data.username, { expires: 1 });
                 if(data.role === 2 || data.role  === 3){
                     navigate('/admin');
                 }else{

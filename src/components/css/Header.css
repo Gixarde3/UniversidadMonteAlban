@@ -50,7 +50,7 @@ h3{
 }
 #logo{
     filter: invert();
-    width: 100%;
+    width: 90%;
 }
 
 #logo_container{
@@ -107,7 +107,7 @@ h3{
     border-bottom: 1px solid white;
 }
 
-#down a, #down li, #btn_toggle{
+#down a, #down li, #down p, #btn_toggle{
     width: auto;
     color: white;
     margin-left: 0.3rem !important;
@@ -115,6 +115,7 @@ h3{
     font-family: "Roboto Slab","Times New Roman",Times,serif;
     text-align: left;
     margin: 0.2rem;
+    text-align: center;
 }
 
 #up{

@@ -42,21 +42,42 @@ function SearchUser(){
 
     const getResults= async() => {
         try{
-            const response = await axios.get(`${endpoint}/users/?search=${search}`);
-            setUsers(response.data);
+            const response = await axios.post(`${endpoint}/users/`,{
+                search: search,
+                cookie: Cookies.get('session')
+            });
+            console.log(response);
+            if(response.data.success){
+                setUsers(response.data.users);
+                setSearched(true);
+            }else{
+                openAlert('Error inesperado con la petición', `Error con tus permisos, no puedes buscar usuarios ${response.data}`, 'error', null)
+                console.log(response);
+            }
         }catch(error){
             openAlert('Error inesperado con la conexión', `Error de conexión: ${error}`, 'error', null);
+            console.log(error);
         }
     }
 
     const handleSubmitSearch = async (event) => {
         event.preventDefault();
         try{
-            const response = await axios.get(`${endpoint}/users/?search=${search}`);
-            setUsers(response.data);
-            setSearched(true);
+            const response = await axios.post(`${endpoint}/users/`,{
+                search: search,
+                cookie: Cookies.get('session')
+            });
+            console.log(response);
+            if(response.data.success){
+                setUsers(response.data.users);
+                setSearched(true);
+            }else{
+                openAlert('Error inesperado con la petición', `Error con tus permisos, no puedes buscar usuarios ${response.data}`, 'error', null)
+                console.log(response);
+            }
         }catch(error){
             openAlert('Error inesperado con la conexión', `Error de conexión: ${error}`, 'error', null);
+            console.log(error);
         }
     }
 

@@ -22,7 +22,6 @@ const CalendarSpecial = () => {
       try {
         const response = await axios.get(`${endpoint}/events`);
         setSpecialDates(response.data);
-        console.log(response.data);
       } catch (error) {
         openAlert('Error inesperado con la conexión', `Error de conexión: ${error}`, 'error', null);
       }
@@ -71,8 +70,6 @@ const CalendarSpecial = () => {
 
   const openPost = async(idPost) => {
     const response = await axios.get(`${endpoint}/post/?id_post=${idPost}`);
-    console.log(`${endpoint}/post/?id_post=${idPost}`)
-    console.log(response.data);
     setSelectedPost(response.data);
     openModal();
   }

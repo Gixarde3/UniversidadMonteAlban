@@ -1,6 +1,6 @@
 {
-    "endpoint": "http://172.23.50.184:8000/api",
-    "endpointImage": "http://172.23.50.184:8000/images/",
-    "endpointFile": "http://172.23.50.184:8000/documents/",
-    "endpointLocal":"http://172.23.50.184:3000/"
+    "endpoint": "http://localhost:8000/api",
+    "endpointImage": "http://localhost:8000/images/",
+    "endpointFile": "http://localhost:8000/documents/",
+    "endpointLocal":"http://localhost:3000/"
 }

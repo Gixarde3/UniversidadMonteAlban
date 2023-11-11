@@ -31,7 +31,6 @@ const CalendarSpecial = () => {
       try {
         const response = await axios.get(`${endpoint}/events`);
         setSpecialDates(response.data);
-        console.log(response.data);
       } catch (error) {
         openAlert('Error inesperado con la conexión', `Error de conexión: ${error}`, 'error', null);
       }
@@ -44,7 +43,6 @@ const CalendarSpecial = () => {
     try {
       const response = await axios.get(`${endpoint}/events`);
       setSpecialDates(response.data);
-      console.log(response.data);
     } catch (error) {
       openAlert('Error inesperado con la conexión', `Error de conexión: ${error}`, 'error', null);
     }
@@ -148,7 +146,6 @@ const CalendarSpecial = () => {
       if(idPost){formData.append('post', idPost)}
       if(eliminarPost){formData.append('eliminarPost', eliminarPost)}
       formData.append('cookie', Cookies.get('session'));
-      console.log(nameEvent);
       const response = await axios.post(`${endpoint}/event/edit/${selectedDateData.id}`, formData);
       if(response.data.success){
         openAlert('Evento editado', 'El evento se ha editado con éxito', 'success', null);
@@ -186,7 +183,6 @@ const CalendarSpecial = () => {
       formData.append('date', selectedDate.toISOString().split('T')[0]);
       if(idPost){formData.append('post', idPost)}
       formData.append('cookie', Cookies.get('session'));
-      console.log(nameEvent);
       const response = await axios.post(`${endpoint}/event`, formData);
       if(response.data.success){
         openAlert('Evento creado', 'El evento se ha creado con éxito', 'success', null);
@@ -200,8 +196,6 @@ const CalendarSpecial = () => {
   }
   const openPost = async(idPost) => {
     const response = await axios.get(`${endpoint}/post/?id_post=${idPost}`);
-    console.log(`${endpoint}/post/?id_post=${idPost}`)
-    console.log(response.data);
     setSelectedPost(response.data);
     openModal();
   }
@@ -259,8 +253,8 @@ const CalendarSpecial = () => {
         </div>
         <h2>Fecha seleccionada</h2>
         <p>{selectedDate.toISOString().split('T')[0]}</p>
-        <input className='nameEvent inputCalendar' value={nameEvent} onChange={(event)=>(setNameEvent(event.target.value))} required/>
-        <input className ='inputCalendar' value={descriptionEvent} onChange={(event)=>(setDescriptionEvent(event.target.value))} required/>
+        <input className='nameEvent inputCalendar' value={nameEvent} onChange={(event)=>(setNameEvent(event.target.value))} placeholder='Ingresa el nombre del evento' required/>
+        <textarea className ='inputCalendar' value={descriptionEvent} onChange={(event)=>(setDescriptionEvent(event.target.value))} placeholder='Ingresa la descripción de la publicación' required></textarea>
         <label htmlFor="typeEvent" style={{textAlign: 'center'}}>Selecciona el tipo de evento: </label>
         <select name="typeEvent" id="typeEvent" value={typeEvent} style={{border: '1px solid black'}} onChange={(event)=>(setTypeEvent(event.target.value))} required>
           {

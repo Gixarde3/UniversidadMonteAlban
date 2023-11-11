@@ -21,13 +21,12 @@ function Pages() {
     ];
     const [open, setOpen] = useState(false);
     const logout = () => {
-        openAlert("¿Seguro?", `¿Desea cerrar cesión? Fue un gusto tenerlo en nuestra página`, "question", null, true, deleteSession);
+        openAlert("¿Seguro?", `¿Desea cerrar sesión? Fue un gusto tenerlo en nuestra página`, "question", null, true, deleteSession);
     }
     const deleteSession = () => {
-        console.log("Borrando sesión");
         Cookies.remove('session');
         Cookies.remove('role');
-
+        Cookies.remove('username');
         window.location.reload();
     }
     return (
@@ -44,14 +43,14 @@ function Pages() {
                         transform: 'rotate(180deg)',
                         transition: 'transform 0.3s ease',
                         filter: 'invert(1)',
-                        marginLeft: '1rem',
+                        marginLeft: '0.2rem',
                         width: '20px',
                         height: '20px'
                     } : {
                         transition: 'transform 0.3s ease',
                         filter: 'invert(1)',
                         width: '20px',
-                        marginLeft: '1rem',
+                        marginLeft: '0.2rem',
                         height: '20px'
                     }}/>
                 </div>
@@ -70,9 +69,11 @@ function Pages() {
             <Link to="/admisiones">Admisiones</Link>
             {Cookies.get('role') === "2" || Cookies.get('role') === "3" ? <Link to="/admin">Administración</Link> : ''}
             {
-                Cookies.get('session') ? <Link to="/password">Cambiar contraseña</Link> : ''
+                Cookies.get('session') ? <Link to="/password">Perfil</Link> : ''
             }
-            {Cookies.get('session') ? <button type="button" onClick={()=>(logout())} style={{cursor:'pointer'}}><img src="img/login.png" alt="Icono para cerrar sesion" className = "icon_social_header"/></button>: <Link to="/login"><img src="img/loginUser.png" alt="Icono para iniciar sesion" className = "icon_social_header"/></Link>}
+            
+            {Cookies.get('session') ? <button type="button" onClick={()=>(logout())} style={{cursor:'pointer', display: 'flex', alignItems: 'center', flexDirection:'row'}}>{Cookies.get('username') ? <p style={{fontSize: '20px'}}>{Cookies.get('username')}</p> : ''}<img src="img/login.png" alt="Icono para cerrar sesion" className = "icon_social_header"/></button>: <Link to="/login"><img src="img/loginUser.png" alt="Icono para iniciar sesion" className = "icon_social_header"/></Link>}
+
             <Alert
                 isOpen={alertOpen}
                 closeAlert={closeAlert}

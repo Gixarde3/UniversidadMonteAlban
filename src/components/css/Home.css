@@ -1,10 +1,11 @@
 #nombre_universidad{
-    font-size: 45px;
+    font-size: 32px;
     color: var(--principal);
 }
 
 #art_somos{
     width: 48%;
+    align-items: flex-start;
 }
 #img_somos{
     width: 48%;

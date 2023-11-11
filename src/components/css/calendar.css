@@ -43,6 +43,7 @@
     margin-top: 1rem;
     box-shadow: 0px 0px 13px -3px rgba(0,0,0,0.5);
     background-color: white;
+    margin-bottom: 1rem;
 }
 .nameEvent{
     font-weight: bold;
@@ -158,5 +159,8 @@
         width: auto;
         padding: 0.3rem;
         
+    }
+    #special-date{
+        width: 100%;
     }
 }
