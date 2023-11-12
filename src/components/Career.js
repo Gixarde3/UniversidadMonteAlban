@@ -23,10 +23,10 @@ function Career() {
                 setCareer(response.data);
                 console.log(response.data)
                 if(!response || !response.data || response.data.success === false){
-                    //navigate('/404');
+                    navigate('/404');
                 }
             }catch(error){
-                //navigate('/404');
+                navigate('/404');
             }
         }
         getCareer();
@@ -38,12 +38,13 @@ function Career() {
             setGraduationProfile(career.graduationProfile);
             setAdmissionProfile(career.admissionProfile);
             const subByCycles = [];  
-            career.subjects.foreach(
+            career.subjects.map(
                 (subject) => {
                     if(!subByCycles[subject.cycle]){
                         subByCycles[subject.cycle] = [];
                     }
                     subByCycles[subject.cycle].push(subject.name);
+                    return null;
                 }
             );
             console.log(subByCycles);
