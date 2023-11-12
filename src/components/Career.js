@@ -3,62 +3,92 @@ import config from './config.json';
 import {useState, useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-
+import Subject from './Subject';
+import './css/career.css';
 function Career() {
     const {id} = useParams();
     const navigate = useNavigate();
     const [career, setCareer] = useState(null);
     const endpoint = config.endpoint;
     const endpointLocal = config.endpointLocal;
-    const [expandedCycles, setExpandedCycles] = useState({});
+    const [name, setName] = useState('');
+    const [graduationProfile, setGraduationProfile] = useState('');
+    const [admissionProfile, setAdmissionProfile] = useState('');
+    const [subjectsByCycle, setSubjectsByCycle] = useState([]);
+    const [cycles, setCycles] = useState([]);
     useEffect(() => {
         const getCareer = async() => {
             try{
                 const response = await axios.get(`${endpoint}/career/${id}`);
                 setCareer(response.data);
+                console.log(response.data)
+                if(!response || !response.data || response.data.success === false){
+                    //navigate('/404');
+                }
             }catch(error){
-                navigate('/404');
+                //navigate('/404');
             }
         }
         getCareer();
     }, [endpoint, id, navigate]);
-    
 
-    // Agrupar las materias por ciclo
-    const groupedSubjects = career.subjects.reduce((acc, subject) => {
-        if (!acc[subject.cycle]) {
-            acc[subject.cycle] = [];
+    useEffect(() => {
+        if(career){
+            setName(career.name);
+            setGraduationProfile(career.graduationProfile);
+            setAdmissionProfile(career.admissionProfile);
+            const subByCycles = [];  
+            career.subjects.foreach(
+                (subject) => {
+                    if(!subByCycles[subject.cycle]){
+                        subByCycles[subject.cycle] = [];
+                    }
+                    subByCycles[subject.cycle].push(subject.name);
+                }
+            );
+            console.log(subByCycles);
+            setSubjectsByCycle(subByCycles);
         }
-        acc[subject.cycle].push(subject);
-        return acc;
-    }, {});
+    }, [career]);
 
-    // Crear una lista de listas con los ciclos y las materias correspondientes
-    const cycleList = Object.entries(groupedSubjects).map(([cycle, subjects]) => {
-        const isExpanded = expandedCycles[cycle];
-        return (
-            <li key={cycle}>
-                <h2 onClick={() => setExpandedCycles({...expandedCycles, [cycle]: !isExpanded})}>
-                    {`Ciclo ${cycle}`}
-                    {isExpanded ? ' -' : ' +'}
-                </h2>
-                {isExpanded && (
-                    <ul>
-                        {subjects.map((subject) => (
-                            <li key={subject.name}>{subject.name}</li>
-                        ))}
-                    </ul>
-                )}
-            </li>
-        );
-    });
+    useEffect(()=>{
+        // Crear un array de objetos para renderizar en tu interfaz de usuario
+        const cyclesArray = Object.keys(subjectsByCycle).map(cycle => ({
+            cycle,
+            subjects: subjectsByCycle[cycle],
+        }));
+  
+        // cyclesArray es un array que puedes utilizar en tu interfaz de usuario
+        console.log(cyclesArray);
+        setCycles(cyclesArray);
+    }, [subjectsByCycle])
 
     return (<main>
-        <img src={`${endpointLocal}img/logo_azul.png`} alt="Logo universidad Monte Albán" />
-        <h1>{career.name}</h1>
-        <p>{career.graduationProfile}</p>
-        <p>{career.admissionProfile}</p>
-        <ul>{cycleList}</ul>
+        <section style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center'
+        }}>
+            <img src={`${endpointLocal}img/logo_azul.png`} alt="Logo universidad Monte Albán" style={
+                {
+                    maxWidth: '500px',
+                }
+            }/>
+            <h1>{name}</h1>
+            <h2>Perfil de egreso</h2>
+            <p>{graduationProfile}</p>
+            <h2>Perfil de ingreso</h2>
+            <p>{admissionProfile}</p>
+            <h2>Plan cuatrimestral</h2>
+            <div id="cycles">
+                {
+                    cycles.map((cycle, index) => (
+                         <Subject key={index} cycle={cycle.cycle} subjects={cycle.subjects} />
+                    ))
+                }
+            </div>
+        </section>
     </main>);
 }
 

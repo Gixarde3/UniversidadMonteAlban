@@ -28,7 +28,7 @@ function App() {
           <Route path="register" element={<Layout Page={Register} Title = "Universidad Monte Albán - Registrarse"/>}/>
           <Route path="password" element={<Layout Page={ChangePassword} Title = "Universidad Monte Albán - Cambio de contraseña"/>}/>
           <Route path="nosotros" element={<Layout Page={Nosotros} Title = "Universidad Monte Albán - Nosotros"/>}/>
-          <Route path="carrera/:id" element={<Layout Page={Career} Title = "Universidad Monte Albán - Ver carrera"/>}/>
+          <Route path="oferta/:id" element={<Layout Page={Career} Title = "Universidad Monte Albán - Ver carrera"/>}/>
           <Route path="publicaciones" element={<Layout Page={Posts} Title = "Universidad Monte Albán - Ver todas las publicaciones"/>}></Route>
           <Route path="admin/">
             <Route index element={<LayoutAdmin Page={HomeAdmin} Title="Inicio"/>}/>
