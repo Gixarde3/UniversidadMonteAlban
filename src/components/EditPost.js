@@ -103,7 +103,7 @@ function EditPost(){
                     ) : <div>
                             <h3>Selecciona {image ? 'otra':'una'} imagen</h3>
                         </div>}
-                    <div className="btnForm">
+                    <div className="accept">
                         <label htmlFor="filePublication" id="btnArchivo">{image ? 'Cambiar':'Seleccionar'} imagen</label>
                         <input type="file" accept="image/*" onChange={handleImageUpload} className="file" id="filePublication"/>
                     </div>
@@ -115,7 +115,7 @@ function EditPost(){
                     ) : <div>
                             <p>{fileName}</p>
                         </div>}
-                    <div className="btnForm">
+                    <div className="accept">
                         <label htmlFor="fileAdjuntPublication" id="btnArchivo">{adjuntFile || fileName !== '' ? 'Cambiar':'Seleccionar'} archivo</label>
                         <input type="file" accept="*/*" onChange={handleFileUpload} className="file" id="fileAdjuntPublication"/>
                     </div>
@@ -123,7 +123,7 @@ function EditPost(){
                     <input type="text" placeholder="Ingresa una descripción corta de la publicación" value={legend} id="short-description" onChange={(event) => setLegend(event.target.value)} required/>
                     <label htmlFor="title">Descripción de la publicación</label>
                     <textarea placeholder="Ingresa la descripción de la publicación" value={description} id="description" onChange={(event) => setDescription(event.target.value)} required></textarea>
-                    <button type="submit" className='btnForm'>Editar publicación</button>
+                    <button type="submit" className='accept'>Editar publicación</button>
                 </form>
                 <Alert
                     isOpen={alertOpen}

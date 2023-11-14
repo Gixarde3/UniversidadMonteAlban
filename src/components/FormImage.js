@@ -75,8 +75,8 @@ function FormImage(){
     
     return(
         <>
-            <h2 className='titleSection'>Crear publicación nueva: </h2>
             <form onSubmit={handleSubmit} className='form-admin'>
+                <h2 className='titleSection'>Crear publicación nueva: </h2>
                 <label htmlFor="title">Título</label>
                 <input type="text" placeholder="Ingresa el título de la publicación" id="title" onChange={(event) => setTitle(event.target.value)} required/>
                 <label htmlFor="filePublication">Imagen:</label>
@@ -85,9 +85,9 @@ function FormImage(){
                         <img src={image} alt="Preview" style={{ maxWidth: '90%' }} />
                     </div>
                 ) : <div>
-                        <h3>Selecciona {image ? 'otra':'una'} imagen</h3>
+                        <h3 style={{color:'black'}}>Selecciona {image ? 'otra':'una'} imagen</h3>
                     </div>}
-                <div className="btnForm">
+                <div className="accept">
                     <label htmlFor="filePublication" id="btnArchivo">{image ? 'Cambiar':'Seleccionar'} imagen</label>
                     <input type="file" accept="image/*" onChange={handleImageUpload} className="file" id="filePublication" required/>
                 </div>
@@ -97,9 +97,9 @@ function FormImage(){
                         <p>{adjuntFile.name}</p>
                     </div>
                 ) : <div>
-                        <h3>Selecciona {adjuntFile ? 'otro':'un'} archivo adunto</h3>
+                        <h3 style={{color:'black'}}>Selecciona {adjuntFile ? 'otro':'un'} archivo adunto</h3>
                     </div>}
-                <div className="btnForm">
+                <div className="accept">
                     <label htmlFor="fileAdjuntPublication" id="btnArchivo">{adjuntFile ? 'Cambiar':'Seleccionar'} archivo</label>
                     <input type="file" accept="*/*" onChange={handleFileUpload} className="file" id="fileAdjuntPublication"/>
                 </div>
@@ -107,7 +107,7 @@ function FormImage(){
                 <input type="text" placeholder="Ingresa una descripción corta de la publicación" id="short-description" onChange={(event) => setLegend(event.target.value)} required/>
                 <label htmlFor="title">Descripción de la publicación</label>
                 <textarea placeholder="Ingresa la descripción de la publicación" id="description" onChange={(event) => setDescription(event.target.value)} required></textarea>
-                {image && <button type="submit" className='btnForm'>Crear publicación</button>}
+                {image && <button type="submit" className='accept'>Crear publicación</button>}
             </form>
             <Alert
                         isOpen={alertOpen}

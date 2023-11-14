@@ -48,6 +48,7 @@ function ImageSlider(){
       navigation={true}
       autoplay={{ delay: 5000 }}
       pagination={{ clickable: true }}
+      loop={true}
     >
       {slides.slice(-5).reverse().map((slide, index) => (
           <SwiperSlide key={index}>  

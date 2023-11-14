@@ -8,6 +8,7 @@ import SearchUser from "./SearchUser";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from 'js-cookie';
+import SearchCareer from "./SearchCareer";
 function HomeAdmin(){
     const navigate = useNavigate();
     useEffect(() => {
@@ -48,6 +49,7 @@ function HomeAdmin(){
                 </section>
                 <section id="manage-careers" className="section-admin">
                     <h2>Gestión de oferta educativa</h2>
+                    <SearchCareer />
                     <FormCareers />
                 </section>
             </main>

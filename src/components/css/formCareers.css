@@ -12,6 +12,7 @@
 }
 .form-group{
     margin-bottom: 1rem;
+    width: 100%;
 }
 @media(max-width: 1199.98px){
     .form-career{

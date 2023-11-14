@@ -42,7 +42,7 @@ function Pages() {
     }
     return (
         <>
-            <Link to={`${enpointLocal}/`}>Inicio</Link>
+            <Link to={`${enpointLocal}`}>Inicio</Link>
             <ul className="menu">
                 <li className={open ? "open" : ""} onClick={()=>(setOpen(!open))}> 
                 <div className="sep" style={{

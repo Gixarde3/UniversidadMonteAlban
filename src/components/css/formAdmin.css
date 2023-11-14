@@ -4,13 +4,13 @@
 }
 
 .form-admin{
-    background-color: var(--principal);
-    color: white;
+    background-color:white;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
     width: 100%;
+    box-shadow: 0px 0px 13px -3px rgba(0,0,0,0.5);
 }
 
 .image-input{
