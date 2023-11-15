@@ -17,7 +17,6 @@ function EditCareer(){
     const [alertOpen, setAlertOpen] = useState(false);
     const endpointImage = config.endpointImage;
     const endpoint = config.endpoint;
-    const endpointLocal = config.endpointLocal;
     useEffect(() => {
         if(career){
             setIdCareer(career.id);
@@ -58,7 +57,8 @@ function EditCareer(){
     }
     
     return(
-        <main>
+        <>
+        <section className="section-admin">
         <form action="" onSubmit={handleSubmit} className='form-career'>
             <h2 className='titleSection'>Editar carrera</h2>
             <div className="form-group">
@@ -85,7 +85,8 @@ function EditCareer(){
             asking = {alert ? alert.asking : ''}
             onAccept={alert ? () => alert.onAccept() : () => console.log('')}
         />
-        </main>
+        </section>
+        </>
     );
 }
 export default EditCareer;

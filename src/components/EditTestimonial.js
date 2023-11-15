@@ -87,7 +87,7 @@ function EditTestimonial(){
     }
     
     return(
-        <main>
+        <>
         <form className="testimonial" onSubmit={handleSubmit}>
             <h2 className='titleSection'>Editar testimonio: </h2>
             <label htmlFor="profileFoto" style={{textAlign:'center'}}>Ingresa una foto:</label>
@@ -121,7 +121,7 @@ function EditTestimonial(){
             asking = {alert ? alert.asking : ''}
             onAccept={alert ? () => alert.onAccept() : () => console.log('')}
         />
-        </main>
+        </>
     );
 }
 export default EditTestimonial;

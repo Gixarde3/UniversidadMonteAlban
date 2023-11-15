@@ -89,8 +89,8 @@ function EditPost(){
 
     
     return(
-        <main>
-            <div className="section-admin">
+        <>
+            <section className="section-admin">
                 <h2 className='titleSection'>Editar publicación: </h2>
                 <form onSubmit={handleSubmit} className='form-admin'>
                     <label htmlFor="title">Título</label>
@@ -133,8 +133,8 @@ function EditPost(){
                     kind = {alert ? alert.kind : ''}
                     redirectRoute={alert ? alert.redirectRoute : ''}
                 />
-            </div>
-        </main>
+            </section>
+        </>
         
     );
 }

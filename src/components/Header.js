@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useRef, forwardRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import HeaderDesk from './HeaderDesk';
 import HeaderMobile from './HeaderMobile';
 import HeaderFixed from './HeaderFixed'
-const Header = forwardRef(({ isFromAdmin }, ref) => {
+function Header ({isFromAdmin}) {
         const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth > 1199.99);
         const headerRef = useRef(null);
         const newHeaderRef = useRef(null);
@@ -38,28 +38,25 @@ const Header = forwardRef(({ isFromAdmin }, ref) => {
                 }
                 window.removeEventListener('resize', handleWindowResize);
             };
-        }, []);
+        }, [headerRef, newHeaderRef]);
         
         const handleWindowResize = () => {
             setIsLargeScreen(window.innerWidth > 1199.99);
         };
         
-        return (
-        <div>
+    return (
+        <>
         {isLargeScreen ? (
-                <>
-                        <div ref={headerRef}>
-                                <HeaderDesk ref={headerRef} isFromAdmin = {isFromAdmin}/>
-                        </div>
-                        <div ref={newHeaderRef}>
-                                <HeaderFixed isFromAdmin = {isFromAdmin}/>
-                        </div>
-                </>
-                
+            <>
+            <header>
+                <HeaderDesk headerRef={headerRef} isFromAdmin={isFromAdmin}/>
+                <HeaderFixed newHeaderRef={newHeaderRef} isFromAdmin={isFromAdmin}/>
+            </header>
+            </>
         ) : (
                 <HeaderMobile isFromAdmin = {isFromAdmin} /> // Componente para pantallas pequeñas
         )}
-        </div>
-        );
-});
+        </>
+    );
+}
 export default Header;

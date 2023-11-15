@@ -15,7 +15,7 @@ function FormTestimonial(){
     const [alertOpen, setAlertOpen] = useState(false);
 
     const endpoint = config.endpoint;
-
+    const endpointLocal = config.endpointLocal;
     const closeAlert = () => {
         setAlert(null);
         setAlertOpen(false);
@@ -78,7 +78,7 @@ function FormTestimonial(){
                 <label htmlFor="profileFoto" className="label-photo">
                     <img src={image ? image : "img/img_defecto.webp"} alt="Preview Face of testimonial creator" />
                     <div className="hover-testimonial">
-                        <img src="img/change_photo.webp" alt="Change foto icon " />
+                        <img src={`${endpointLocal}img/change_photo.webp`} alt="Change foto icon " />
                     </div>
                 </label>
                 <input type="file" accept="image/*" onChange={handleImageUpload} id="profileFoto" className="file" required/>

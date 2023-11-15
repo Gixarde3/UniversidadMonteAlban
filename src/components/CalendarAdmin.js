@@ -26,6 +26,7 @@ const CalendarSpecial = () => {
 
   const endpoint = config.endpoint;
   const endpointImage = config.endpointImage;
+  const endpointLocal = config.endpointLocal;
   useEffect(() => { 
     const getSpecialDates = async () => {
       try {
@@ -256,7 +257,7 @@ const CalendarSpecial = () => {
       {selectedDate ? <div id="special-date" style={{position:'relative'}}>
         <div className="buttons">
             <button type="submit" className="btn-admin eliminar" onClick={() => (deleteEventAsk())}>
-                <img src="img/close.png" alt="Icono eliminar" />
+                <img src={`${endpointLocal}img/close.png`} alt="Icono eliminar" />
             </button>
         </div>
         <h2>{selectedDateData ? ("Editar evento") : "Crear evento"}</h2>
@@ -275,7 +276,7 @@ const CalendarSpecial = () => {
           <div className="res" style={{width: '100%'}}>
               <div className="buttons">
                   <button type="submit" className="btn-admin eliminar" onClick={() => (quitPost(selectedPost.id))}>
-                      <img src="img/close.png" alt="Icono eliminar" />
+                      <img src={`${endpointLocal}img/close.png`} alt="Icono eliminar" />
                   </button>
               </div>
               <div className="result" style={{width: '100%'}}>

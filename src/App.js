@@ -1,7 +1,6 @@
 import 'normalize.css';
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Home from './components/Home';
-import HomeAdmin from './components/HomeAdmin';
 import CC from './components/CC';
 import Login from './components/Login';
 import Layout from './components/Layout';
@@ -16,6 +15,11 @@ import Career from './components/Career';
 import NotFound from './components/NotFound';
 import Posts from './components/Posts';
 import EditCareer from './components/EditCareer';
+import AdminPublications from './components/AdminPublications';
+import AdminTestimonials from './components/AdminTestimonials';
+import AdminCareers from './components/AdminCareers';
+import AdminUsers from './components/AdminUsers';
+import AdminCalendar from './components/AdminCalendar';
 function App() {
   
   return (
@@ -32,10 +36,21 @@ function App() {
           <Route path="oferta/:id" element={<Layout Page={Career} Title = "Universidad Monte Albán - Ver carrera"/>}/>
           <Route path="publicaciones" element={<Layout Page={Posts} Title = "Universidad Monte Albán - Ver todas las publicaciones"/>}></Route>
           <Route path="admin/">
-            <Route index element={<LayoutAdmin Page={HomeAdmin} Title="Inicio"/>}/>
-            <Route path="editTestimonial/:id" element={<LayoutAdmin Page={EditTestimonial} Title="Editar testimonio"/>}/>
-            <Route path="editpost/:id" element={<LayoutAdmin Page={EditPost} Title="Editar post"/>}/>
-            <Route path="editCareer/:id" element={<LayoutAdmin Page={EditCareer} Title="Editar carrera"/>}/>
+            <Route index element={<Navigate to="/admin/posts" />} />
+            <Route path="posts">
+              <Route index element={<LayoutAdmin Page={AdminPublications} Title="Publicaciones"/>}/>
+              <Route path="editpost/:id" element={<LayoutAdmin Page={EditPost} Title="Editar post"/>}/>
+            </Route>
+            <Route path="testimonials">
+              <Route index element={<LayoutAdmin Page={AdminTestimonials} Title="Testimonios"/>}/>
+              <Route path="editTestimonial/:id" element={<LayoutAdmin Page={EditTestimonial} Title="Editar testimonio"/>}/>
+            </Route>
+            <Route path="careers">
+              <Route index element={<LayoutAdmin Page={AdminCareers} Title="Carreras"/>}/>
+              <Route path="editCareer/:id" element={<LayoutAdmin Page={EditCareer} Title="Editar carrera"/>}/>
+            </Route>
+            <Route path="users" element={<LayoutAdmin Page={AdminUsers} Title="Administradores y usuarios"/>}/>
+            <Route path="calendar" element={<LayoutAdmin Page={AdminCalendar} Title="Editar carrera"/>}/>
           </Route>
           <Route path="404" element={<Layout Page={NotFound} Title="Universidad Monte Albán - Página no encontrada"/>} />
         </Route>

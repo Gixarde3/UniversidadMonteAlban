@@ -12,6 +12,7 @@ function SearchUser(){
     const [alertOpen, setAlertOpen] = useState(false);
     const [searched, setSearched]  = useState(false);
     const endpoint = config.endpoint;
+    const endpointLocal = config.endpointLocal;
     const [users, setUsers] = useState([]);
     const closeAlert = () => {
         setAlert(null);
@@ -96,7 +97,7 @@ function SearchUser(){
             <h3 style={{width:'100%', color:'black', textAlign:'center'}}>Buscar usuario</h3>
             <form className="row-search" onSubmit={handleSubmitSearch}>
                 <input type="text" name="title-search" className="title-search" placeholder={`Ingresa el username a buscar`} onChange = {(event) => {setSearch(event.target.value)}}/>
-                <button type="submit" className="btn-buscar"><img src="img/search.png" alt="icono_buscar" className="icono-buscar"/></button>
+                <button type="submit" className="btn-buscar"><img src={`${endpointLocal}img/search.png`} alt="icono_buscar" className="icono-buscar"/></button>
             </form>
         </search>
         <div className="results">
@@ -106,7 +107,7 @@ function SearchUser(){
                 <div className="res" key={index} style={{width: '100%'}}>
                     <form className="buttons" onSubmit={(event) => handleSubmitDelete(event, result.id)}>
                         <button type="submit" className="btn-admin eliminar">
-                            <img src="img/close.png" alt="Icono eliminar" />
+                            <img src={`${endpointLocal}img/close.png`} alt="Icono eliminar" />
                         </button>
                     </form>
                     <div className="result" style={{width: '100%'}}>

@@ -12,6 +12,7 @@ function SearchCareer(){
     const [alertOpen, setAlertOpen] = useState(false);
     const [searched, setSearched]  = useState(false);
     const endpoint = config.endpoint;
+    const endpointLocal = config.endpointLocal;
     const navigate = useNavigate();
     const [careers, setCareers] = useState([]);
     const closeAlert = () => {
@@ -84,7 +85,7 @@ function SearchCareer(){
             <h3 style={{width:'100%', color:'black', textAlign:'center'}}>Buscar carreras</h3>
             <form className="row-search" onSubmit={handleSubmitSearch}>
                 <input type="text" name="title-search" className="title-search" placeholder={`Ingresa el titulo de la carrera`} onChange = {(event) => {setSearch(event.target.value)}}/>
-                <button type="submit" className="btn-buscar"><img src="img/search.png" alt="icono_buscar" className="icono-buscar"/></button>
+                <button type="submit" className="btn-buscar"><img src={`${endpointLocal}img/search.png`} alt="icono_buscar" className="icono-buscar"/></button>
             </form>
         </search>
         <div className="results">
@@ -93,10 +94,10 @@ function SearchCareer(){
                 <div className="res" key={index} style={{width: '100%'}}>
                     <form className="buttons" onSubmit={(event) => handleSubmitDelete(event, result.id)}>
                         <button type="button" className="btn-admin editar" onClick={()=>{navigate(`editCareer/${result.id}`, {state: {career: result}})}}>
-                            <img src="img/edit.png" alt="Icono editar" />
+                            <img src={`${endpointLocal}img/edit.png`} alt="Icono editar" />
                         </button>
                         <button type="submit" className="btn-admin eliminar">
-                            <img src="img/close.png" alt="Icono eliminar" />
+                            <img src={`${endpointLocal}img/close.png`} alt="Icono eliminar" />
                         </button>
                     </form>
                     <div className="result" style={{width: '100%'}}>
