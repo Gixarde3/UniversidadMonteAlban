@@ -27,7 +27,7 @@ function Admin({ Page, Title }){
         <>
             <Header isFromAdmin={true} />
             <main style={{flexDirection:'row'}}>
-                {isLargeScreen ? <aside>
+                {isLargeScreen ? <aside className='aside'>
                     <PagesAdmin />
                 </aside> : null}
                 <Page />

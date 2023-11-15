@@ -85,7 +85,7 @@ function Career() {
             <div id="cycles">
                 {
                     cycles.map((cycle, index) => (
-                         <Subject key={index} cycle={cycle.cycle} subjects={cycle.subjects} />
+                         <Subject key={index} cycle={cycle.cycle} subjects={cycle.subjects} editar={false}/>
                     ))
                 }
             </div>

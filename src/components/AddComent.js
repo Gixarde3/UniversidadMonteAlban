@@ -8,6 +8,7 @@ function AddComent({id_post, reloadComents}){
     const [coment, setComent] = useState('');
     const [alert, setAlert] = useState(null);
     const [alertOpen, setAlertOpen] = useState(false);
+    const endpointLocal = config.endpointLocal;
     const closeAlert = () => {
         setAlert(null);
         setAlertOpen(false);
@@ -47,7 +48,7 @@ function AddComent({id_post, reloadComents}){
             }
         }>
             <input type="text" id="new-coment" placeholder='Ingresa un comentario' onChange={(event) => (setComent(event.target.value))}/>
-            <button type="submit" id="create-coment"><img src="img/coment.webp" alt="Comentar"/></button>
+            <button type="submit" id="create-coment"><img src={`${endpointLocal}img/coment.webp`} alt="Comentar"/></button>
         <Alert
                 isOpen={alertOpen}
                 closeAlert={closeAlert}

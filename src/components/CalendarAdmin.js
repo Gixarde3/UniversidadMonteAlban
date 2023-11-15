@@ -205,6 +205,7 @@ const CalendarSpecial = () => {
   const openPost = async(idPost) => {
     openAlert("Cargando...", `Cargando post`, "loading", null, false, null)
     const response = await axios.get(`${endpoint}/post/?id_post=${idPost}`);
+    closeAlert();
     setSelectedPost(response.data);
     openModal();
   }

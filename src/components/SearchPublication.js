@@ -75,7 +75,7 @@ function SearchPublication(){
     return(
         <>
         <search className="search">
-            <h3 style={{width:'100%', color:'black', textAlign:'center'}}>Buscar publicaciones</h3>
+            <h2 style={{width:'100%', color:'black', textAlign:'center'}}>Buscar publicaciones</h2>
             <form className="row-search" onSubmit={handleSubmitSearch}>
                 <input type="text" name="title-search" className="title-search" placeholder={`Ingresa el titulo de la publicación`} onChange = {(event) => {setSearch(event.target.value)}}/>
                 <button type="submit" className="btn-buscar"><img src={`${endpointLocal}img/search.png`} alt="icono_buscar" className="icono-buscar"/></button>

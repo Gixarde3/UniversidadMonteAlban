@@ -82,7 +82,7 @@ function SearchCareer(){
     return(
         <>
         <search className="search">
-            <h3 style={{width:'100%', color:'black', textAlign:'center'}}>Buscar carreras</h3>
+            <h2 style={{width:'100%', color:'black', textAlign:'center'}}>Buscar carreras</h2>
             <form className="row-search" onSubmit={handleSubmitSearch}>
                 <input type="text" name="title-search" className="title-search" placeholder={`Ingresa el titulo de la carrera`} onChange = {(event) => {setSearch(event.target.value)}}/>
                 <button type="submit" className="btn-buscar"><img src={`${endpointLocal}img/search.png`} alt="icono_buscar" className="icono-buscar"/></button>
@@ -93,6 +93,9 @@ function SearchCareer(){
             {careers.map((result, index) => (
                 <div className="res" key={index} style={{width: '100%'}}>
                     <form className="buttons" onSubmit={(event) => handleSubmitDelete(event, result.id)}>
+                        <button type="button" className="btn-admin editar" onClick={()=>{navigate(`/oferta/${result.id}`, {state: {career: result}})}} style={{padding:'0'}}>
+                            <img src={`${endpointLocal}img/ver.png`} alt="Icono editar" />
+                        </button>
                         <button type="button" className="btn-admin editar" onClick={()=>{navigate(`editCareer/${result.id}`, {state: {career: result}})}}>
                             <img src={`${endpointLocal}img/edit.png`} alt="Icono editar" />
                         </button>

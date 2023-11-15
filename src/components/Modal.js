@@ -19,7 +19,7 @@ function Modal({ isOpen, id_post, closeModal, imageSrc, imageAlt, title, descrip
     setAlert(null);
     setAlertOpen(false);
   };
-
+  const endpointLocal = config.endpointLocal;
   useEffect(() => {
     const getAllComents = async () => {
       if(isOpen){
@@ -68,7 +68,7 @@ function Modal({ isOpen, id_post, closeModal, imageSrc, imageAlt, title, descrip
     
     <div className="modal" >
       <button className="close-button" onClick={closeModal}>
-          <img src="img/close.png" alt="Icono cerrar modal" />
+          <img src={`${endpointLocal}img/close.png`} alt="Icono cerrar modal" />
       </button>
       <img src={imageSrc} alt={imageAlt} className="modal-img"/>
       <aside>

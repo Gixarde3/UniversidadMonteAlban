@@ -4,14 +4,14 @@ import axios from 'axios';
 import {useState} from 'react';
 import Alert from './Alert';
 import './css/Search.css';
-function SelectPublication({selectPublication}){
+function SearchCareer({selectCareer}){
     const [alert, setAlert] = useState(null);
     const [search, setSearch] = useState('');
     const [alertOpen, setAlertOpen] = useState(false);
     const [searched, setSearched]  = useState(false);
     const endpoint = config.endpoint;
     const endpointLocal = config.endpointLocal;
-    const [posts, setPosts] = useState([]);
+    const [careers, setCareers] = useState([]);
     const closeAlert = () => {
         setAlert(null);
         setAlertOpen(false);
@@ -21,45 +21,43 @@ function SelectPublication({selectPublication}){
         setAlert({ title: title, message: message, kind: kind, redirectRoute: redirectRoute, asking: asking, onAccept: onAccept});
         setAlertOpen(true);
     };
-
-    const handleSubmitSearch = async (event) => {
-        event.preventDefault();
+    const searchCareer = async () => {
         try{
-            openAlert("Buscando...", `Se están cargando los resultados, porfavor espere`, "loading", null, false, null);
-            const response = await axios.get(`${endpoint}/posts/?search=${search}`);
-            setPosts(response.data);
+            openAlert("Cargando...", `Cargando resultados de búsqueda`, "loading", null, false, null);
+            let response = await axios.get(`${endpoint}/career/search/${search}`);
+            if(response.data.success === false){
+                response = await axios.get(`${endpoint}/careers`);
+            }
+            setCareers(response.data);
             setSearched(true);
             closeAlert();
         }catch(error){
             openAlert('Error inesperado con la conexión', `Error de conexión: ${error}`, 'error', null);
         }
     }
-    const endpointImage = config.endpointImage;
     return(
         <>
         <search className="search">
-            <h3 style={{width:'100%', color:'black', textAlign:'center'}}>Busca una publicación a añadir</h3>
-            <form className="row-search" onSubmit={handleSubmitSearch}>
-                <input type="text" name="title-search" className="title-search" placeholder={`Ingresa el titulo de la publicación`} onChange = {(event) => {setSearch(event.target.value)}}/>
-                <button type="submit" className="btn-buscar"><img src={`${endpointLocal}img/search.png`} alt="icono_buscar" className="icono-buscar"/></button>
-            </form>
+            <h3 style={{width:'100%', color:'black', textAlign:'center'}}>Seleccionar carrera para la materia</h3>
+            <div className="row-search">
+                <input type="text" name="title-select-search" className="title-search" placeholder={`Ingresa el titulo de la carrera`} onChange = {(event) => {setSearch(event.target.value)}}/>
+                <button type="button" className="btn-buscar" onClick={() => (searchCareer())}><img src={`${endpointLocal}img/search.png`} alt="icono_buscar" className="icono-buscar"/></button>
+            </div>
         </search>
         <div className="results">
-            {searched && posts.length === 0 ? (<h3 style={{color: 'black'}}>No hay resultados para esa búsqueda</h3>):''}
-            {posts.map((result, index) => (
+            {searched && careers.length === 0 ? (<h3 style={{color: 'black'}}>No hay resultados para esa búsqueda</h3>):''}
+            {careers.map((result, index) => (
                 <div className="res" key={index} style={{width: '100%'}}>
                     <form className="buttons">
-                        <button type="button" className="btn-admin seleccionar" onClick={()=>{selectPublication(result.id)}}>
+                        <button type="button" className="btn-admin seleccionar" onClick={()=>{selectCareer(result.id)}}>
                             <img src={`${endpointLocal}img/select.png`} alt="Icono seleccionar" />
                         </button>
                     </form>
                     <div className="result" style={{width: '100%'}}>
-                        <div className="post-image">
-                            <img src={endpointImage + "post/" +result.img} alt={result.legend}/>
-                        </div>
-                        <p className="post-title">{result.title}</p>
-                        <p className="post-description">{result.description}</p>
-                        <p className="post-file">{result.route}</p>
+                        <p>{result.id}</p>
+                        <p className="post-title">{result.name}</p>
+                        <p className="post-description">{result.graduationProfile}</p>
+                        <p className="post-file">{result.admissionProfile}</p>
                     </div>
                 </div>
             ))}
@@ -77,4 +75,4 @@ function SelectPublication({selectPublication}){
         </>
     )
 }
-export default SelectPublication;
+export default SearchCareer;

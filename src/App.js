@@ -20,6 +20,7 @@ import AdminTestimonials from './components/AdminTestimonials';
 import AdminCareers from './components/AdminCareers';
 import AdminUsers from './components/AdminUsers';
 import AdminCalendar from './components/AdminCalendar';
+import EditSubject from './components/EditSubject';
 function App() {
   
   return (
@@ -48,13 +49,14 @@ function App() {
             <Route path="careers">
               <Route index element={<LayoutAdmin Page={AdminCareers} Title="Carreras"/>}/>
               <Route path="editCareer/:id" element={<LayoutAdmin Page={EditCareer} Title="Editar carrera"/>}/>
+              <Route path="editSubject/:id" element={<LayoutAdmin Page={EditSubject} Title="Editar carrera"/>}/>
             </Route>
             <Route path="users" element={<LayoutAdmin Page={AdminUsers} Title="Administradores y usuarios"/>}/>
             <Route path="calendar" element={<LayoutAdmin Page={AdminCalendar} Title="Editar carrera"/>}/>
           </Route>
           <Route path="404" element={<Layout Page={NotFound} Title="Universidad Monte Albán - Página no encontrada"/>} />
         </Route>
-        <Route path="*" element={<Navigate to="/404" />} />
+        {<Route path="*" element={<Navigate to="/404" />} />}
       </Routes>
     </BrowserRouter>
   );
