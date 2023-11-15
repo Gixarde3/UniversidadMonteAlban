@@ -92,7 +92,7 @@ function SearchCareer(){
             {careers.map((result, index) => (
                 <div className="res" key={index} style={{width: '100%'}}>
                     <form className="buttons" onSubmit={(event) => handleSubmitDelete(event, result.id)}>
-                        <button type="button" className="btn-admin editar" onClick={()=>{navigate(`editCareer/${result.id}`, {state: {post: result}})}}>
+                        <button type="button" className="btn-admin editar" onClick={()=>{navigate(`editCareer/${result.id}`, {state: {career: result}})}}>
                             <img src="img/edit.png" alt="Icono editar" />
                         </button>
                         <button type="submit" className="btn-admin eliminar">

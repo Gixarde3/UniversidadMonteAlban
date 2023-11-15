@@ -15,6 +15,7 @@ import ChangePassword from './components/ChangePassword';
 import Career from './components/Career';
 import NotFound from './components/NotFound';
 import Posts from './components/Posts';
+import EditCareer from './components/EditCareer';
 function App() {
   
   return (
@@ -34,6 +35,7 @@ function App() {
             <Route index element={<LayoutAdmin Page={HomeAdmin} Title="Inicio"/>}/>
             <Route path="editTestimonial/:id" element={<LayoutAdmin Page={EditTestimonial} Title="Editar testimonio"/>}/>
             <Route path="editpost/:id" element={<LayoutAdmin Page={EditPost} Title="Editar post"/>}/>
+            <Route path="editCareer/:id" element={<LayoutAdmin Page={EditCareer} Title="Editar carrera"/>}/>
           </Route>
           <Route path="404" element={<Layout Page={NotFound} Title="Universidad Monte Albán - Página no encontrada"/>} />
         </Route>
