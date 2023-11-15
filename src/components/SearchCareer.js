@@ -45,8 +45,12 @@ function SearchCareer(){
 
     const getResults= async() => {
         try{
+            if(search === ''){setSearch(" ")}
             openAlert("Cargando...", `Cargando resultados de búsqueda`, "loading", null, false, null);
-            const response = await axios.get(`${endpoint}/careers/?search=${search}`);
+            let response = await axios.get(`${endpoint}/career/search/${search}`);
+            if(response.data.success === false){
+                response = await axios.get(`${endpoint}/careers`);
+            }
             setCareers(response.data);
             closeAlert();
         }catch(error){
@@ -58,7 +62,10 @@ function SearchCareer(){
         event.preventDefault();
         try{
             openAlert("Cargando...", `Cargando resultados de búsqueda`, "loading", null, false, null);
-            const response = await axios.get(`${endpoint}/careers/?search=${search}`);
+            let response = await axios.get(`${endpoint}/career/search/${search}`);
+            if(response.data.success === false){
+                response = await axios.get(`${endpoint}/careers`);
+            }
             setCareers(response.data);
             setSearched(true);
             closeAlert();
