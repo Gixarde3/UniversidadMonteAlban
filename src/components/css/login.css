@@ -24,10 +24,9 @@ label{
     margin-top: 0.3rem;
     
 }
-form input[type="text"], input[type="password"]{
+form input[type="text"], input[type="password"], input[type="email"]{
     width:100%;
     border: 1px solid black;
-    border-left: 0px;
     height: 1.7rem;
 }
 form {

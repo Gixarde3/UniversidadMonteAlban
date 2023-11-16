@@ -256,11 +256,11 @@ const CalendarSpecial = () => {
         </div>
       </div>
       {selectedDate ? <div id="special-date" style={{position:'relative'}}>
-        <div className="buttons">
+        {selectedDateData ? <div className="buttons">
             <button type="submit" className="btn-admin eliminar" onClick={() => (deleteEventAsk())}>
                 <img src={`${endpointLocal}img/close.png`} alt="Icono eliminar" />
             </button>
-        </div>
+        </div> : null}
         <h2>{selectedDateData ? ("Editar evento") : "Crear evento"}</h2>
         <p>{selectedDate.toISOString().split('T')[0]}</p>
         <input className='nameEvent inputCalendar' value={nameEvent} onChange={(event)=>(setNameEvent(event.target.value))} placeholder='Ingresa el nombre del evento' required/>

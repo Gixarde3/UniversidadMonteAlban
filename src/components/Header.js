@@ -21,7 +21,7 @@ function Header ({isFromAdmin}) {
                         }
                     } else {
                         if (newRef) {
-                            newRef.style.display = 'block';
+                            newRef.style.display = 'flex';
                         }
                     }
                 },

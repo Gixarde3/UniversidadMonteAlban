@@ -31,7 +31,7 @@ function Alert({ isOpen, title, message, kind, closeAlert, redirectRoute, asking
             </button>
             <h3>{title}</h3>
             <img src={`${endpointLocal}img/` + (images[kind])} alt="Icono de alerta" className="icon"/>
-            <p style={{color:'black'}}>{message}</p>
+            <p style={{color:'black', textAlign:'center'}}>{message}</p>
             <div style={{display:'flex', width:'80%', justifyContent:'space-around'}}>
               {kind === 'loading' ? '' : <button className="accept" onClick={asking ? accept : redirectTo}>
                 Aceptar

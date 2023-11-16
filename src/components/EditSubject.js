@@ -81,7 +81,7 @@ function EditSubject() {
             });
         if(response.data.success){
             console.log(response.data);
-            openAlert("Materia editada", "La materia se ha editado con éxito", "success", "/admin/careers" + idCareer);
+            openAlert("Materia editada", "La materia se ha editado con éxito", "success", "/admin/careers");
         }else{
             openAlert("Error al editar la materia", "La materia no se ha podido editar debido a un error inesperado", "error", null);
         }}catch(error){

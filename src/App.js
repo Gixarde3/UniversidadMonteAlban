@@ -21,6 +21,8 @@ import AdminCareers from './components/AdminCareers';
 import AdminUsers from './components/AdminUsers';
 import AdminCalendar from './components/AdminCalendar';
 import EditSubject from './components/EditSubject';
+import Suggestion from './components/Suggestion';
+import AdminSuggestions from './components/AdminSuggestions';
 function App() {
   
   return (
@@ -36,6 +38,7 @@ function App() {
           <Route path="nosotros" element={<Layout Page={Nosotros} Title = "Universidad Monte Albán - Nosotros"/>}/>
           <Route path="oferta/:id" element={<Layout Page={Career} Title = "Universidad Monte Albán - Ver carrera"/>}/>
           <Route path="publicaciones" element={<Layout Page={Posts} Title = "Universidad Monte Albán - Ver todas las publicaciones"/>}></Route>
+          <Route path="sugerencia/:url" element={<Layout Page={Suggestion} Title = "Universidad Monte Albán - Ver sugerencia"/>}></Route>
           <Route path="admin/">
             <Route index element={<Navigate to="/admin/posts" />} />
             <Route path="posts">
@@ -53,6 +56,7 @@ function App() {
             </Route>
             <Route path="users" element={<LayoutAdmin Page={AdminUsers} Title="Administradores y usuarios"/>}/>
             <Route path="calendar" element={<LayoutAdmin Page={AdminCalendar} Title="Editar carrera"/>}/>
+            <Route path="suggestions" element={<LayoutAdmin Page={AdminSuggestions} Title="Editar carrera"/>}/>
           </Route>
           <Route path="404" element={<Layout Page={NotFound} Title="Universidad Monte Albán - Página no encontrada"/>} />
         </Route>

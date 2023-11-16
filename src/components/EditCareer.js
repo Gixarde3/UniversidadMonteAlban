@@ -83,7 +83,7 @@ function EditCareer(){
     const handleSubmit = async (event) => {
         event.preventDefault();
         try{
-            openAlert("Creando...", `Espere mientras se cargan los datos necesarios para crear la carrera`, "loading", null, false, null);
+            openAlert("Creando...", `Espere mientras se cargan los datos necesarios para editar la carrera`, "loading", null, false, null);
             const response = await axios.post(`${endpoint}/career/edit/${idCareer}`, {
                 name: name,
                 admissionProfile: admissionProfile,
@@ -91,11 +91,11 @@ function EditCareer(){
                 cookie: Cookies.get('session')
             });
         if(response.data.success){
-            openAlert("Carrera creada", "La carrera se ha creado con éxito", "success", "/admin");
+            openAlert("Carrera creada", "La carrera se ha editado con éxito", "success", "/admin/careers/");
         }else{
-            openAlert("Error al crear la carrera", "La carrera no se ha podido crear debido a un error inesperado", "error", null);
+            openAlert("Error al crear la carrera", "La carrera no se ha podido editar debido a un error inesperado", "error", null);
         }}catch(error){
-            openAlert("Error al crear la carrera", `La carrera no se ha podido crear debido a un error inesperado: ${error}`, "error", null);
+            openAlert("Error al crear la carrera", `La carrera no se ha podido editar debido a un error inesperado: ${error}`, "error", null);
         }
     }
     
