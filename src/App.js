@@ -23,6 +23,9 @@ import AdminCalendar from './components/AdminCalendar';
 import EditSubject from './components/EditSubject';
 import Suggestion from './components/Suggestion';
 import AdminSuggestions from './components/AdminSuggestions';
+import Admission from './components/Admission';
+import SeeAdmission from './components/SeeAdmission';
+import AdminAdmissions from './components/AdminAdmissions';
 function App() {
   
   return (
@@ -33,12 +36,14 @@ function App() {
           <Route path="CC" element={<Layout Page={CC} Title = "Universidad Monte Albán - Creative Commons"/>} />
           <Route path="login" element={<Layout Page={Login} Title = "Universidad Monte Albán - Acceso"/>}/>
           <Route path="buzon" element={<Layout Page={Buzon} Title = "Universidad Monte Albán - Buzón de sugerencias"/>}/>
+          <Route path="admisiones" element={<Layout Page={Admission} Title = "Universidad Monte Albán - Solicitud de admisión"/>}/>
           <Route path="register" element={<Layout Page={Register} Title = "Universidad Monte Albán - Registrarse"/>}/>
           <Route path="password" element={<Layout Page={ChangePassword} Title = "Universidad Monte Albán - Cambio de contraseña"/>}/>
           <Route path="nosotros" element={<Layout Page={Nosotros} Title = "Universidad Monte Albán - Nosotros"/>}/>
           <Route path="oferta/:id" element={<Layout Page={Career} Title = "Universidad Monte Albán - Ver carrera"/>}/>
           <Route path="publicaciones" element={<Layout Page={Posts} Title = "Universidad Monte Albán - Ver todas las publicaciones"/>}></Route>
           <Route path="sugerencia/:url" element={<Layout Page={Suggestion} Title = "Universidad Monte Albán - Ver sugerencia"/>}></Route>
+          <Route path="admision/:url" element={<Layout Page={SeeAdmission} Title = "Universidad Monte Albán - Ver mensaje de admisión"/>}></Route>
           <Route path="admin/">
             <Route index element={<Navigate to="/admin/posts" />} />
             <Route path="posts">
@@ -57,6 +62,7 @@ function App() {
             <Route path="users" element={<LayoutAdmin Page={AdminUsers} Title="Administradores y usuarios"/>}/>
             <Route path="calendar" element={<LayoutAdmin Page={AdminCalendar} Title="Editar carrera"/>}/>
             <Route path="suggestions" element={<LayoutAdmin Page={AdminSuggestions} Title="Editar carrera"/>}/>
+            <Route path="admissions" element={<LayoutAdmin Page={AdminAdmissions} Title="Editar carrera"/>}/>
           </Route>
           <Route path="404" element={<Layout Page={NotFound} Title="Universidad Monte Albán - Página no encontrada"/>} />
         </Route>
