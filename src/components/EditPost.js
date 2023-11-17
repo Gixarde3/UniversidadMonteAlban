@@ -107,6 +107,8 @@ function EditPost(){
                         <label htmlFor="filePublication" id="btnArchivo">{image ? 'Cambiar':'Seleccionar'} imagen</label>
                         <input type="file" accept="image/*" onChange={handleImageUpload} className="file" id="filePublication"/>
                     </div>
+
+                    {/*TODO quitar archivo*/}
                     <label htmlFor="fileAdjuntPublication">Archivo adjunto:</label>
                     {adjuntFile ? (
                         <div>

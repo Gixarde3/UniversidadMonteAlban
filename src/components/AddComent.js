@@ -48,7 +48,11 @@ function AddComent({id_post, reloadComents}){
             }
         }>
             <input type="text" id="new-coment" placeholder='Ingresa un comentario' onChange={(event) => (setComent(event.target.value))}/>
-            <button type="submit" id="create-coment"><img src={`${endpointLocal}img/coment.webp`} alt="Comentar"/></button>
+            <button type="submit" id="create-coment"
+                data-tooltip-id='tooltip'
+                data-tooltip-content={'Comentar'}
+                data-tooltip-position="top"  
+            ><img src={`${endpointLocal}img/coment.webp`} alt="Comentar"/></button>
         <Alert
                 isOpen={alertOpen}
                 closeAlert={closeAlert}

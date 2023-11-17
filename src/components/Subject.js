@@ -47,7 +47,11 @@ function Subject({ cycle, subjects, editar, ids }) {
         openAlert("Eliminar materia", "¿Estás seguro de que quieres eliminar esta materia?", "question", null, true, () => deleteSubject(idSubject, index));
     };
     return (<div className="subject">
-        <button className={`subject-interaction accept ${open ? "open-button":""}`} onClick={() => setOpen(!open)}>
+        <button className={`subject-interaction accept ${open ? "open-button":""}`} onClick={() => setOpen(!open)}
+            data-tooltip-id='tooltip'
+            data-tooltip-content='Abrir materia'
+            data-tooltip-place='top'
+        >
             <h3>Cuatrimestre {cycle}</h3>
             <img src={`${endpointLocal}img/close.png`} alt="boton-abrir" />
         </button>
@@ -59,11 +63,19 @@ function Subject({ cycle, subjects, editar, ids }) {
                             <h4>{subject}</h4>
                             {editar ? 
                             <div style={{display:'flex', flexDirection:'row' }}>
-                                <button type="button" className="btn-admin editar" onClick={()=>{navigate(`/admin/careers/editSubject/${ids[index]}`, {state: {subject: ids[index]}})}}>
+                                <button type="button" className="btn-admin editar" onClick={()=>{navigate(`/admin/careers/editSubject/${ids[index]}`, {state: {subject: ids[index]}})}}
+                                    data-tooltip-id='tooltip'
+                                    data-tooltip-content='Editar materia'
+                                    data-tooltip-place='top'
+                                >
                                     <img src={`${endpointLocal}img/edit.png`} alt="Icono editar" />
                                 </button>
-                                <button type="button" className="btn-admin eliminar">
-                                    <img src={`${endpointLocal}img/close.png`} alt="Icono eliminar" onClick={() => (handleDeleteSubject(ids[index], index))} />
+                                <button type="button" className="btn-admin eliminar" onClick={() => (handleDeleteSubject(ids[index], index))}
+                                    data-tooltip-id='tooltip'
+                                    data-tooltip-content='Eliminar materia'
+                                    data-tooltip-place='top'
+                                >
+                                    <img src={`${endpointLocal}img/close.png`} alt="Icono eliminar"/>
                                 </button>
                             </div> : null
                             }

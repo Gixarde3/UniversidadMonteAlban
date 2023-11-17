@@ -83,8 +83,12 @@ function FormSubject() {
                     <h4 style={{marginBottom:'0.5rem'}}>Carrera a la que pertenecerá</h4>
                     <div className="res" style={{width: '100%'}}>
                         <div className="buttons">
-                            <button type="button" className="btn-admin eliminar" onClick={() => {quitCareer()}}>
-                                <img src={`${endpointLocal}img/close.png`} alt="Icono eliminar" />
+                            <button type="button" className="btn-admin eliminar" onClick={() => {quitCareer()}}
+                                data-tooltip-id='tooltip'
+                                data-tooltip-content='Quitar carrera'
+                                data-tooltip-place='top'
+                            >
+                                <img src={`${endpointLocal}img/close.png`} alt="Icono eliminar"/>
                             </button>
                         </div>
                         <div className="selectedCareer result" style={{width: '100%'}}>

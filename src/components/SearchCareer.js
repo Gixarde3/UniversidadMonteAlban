@@ -85,7 +85,11 @@ function SearchCareer(){
             <h2 style={{width:'100%', color:'black', textAlign:'center'}}>Buscar carreras</h2>
             <form className="row-search" onSubmit={handleSubmitSearch}>
                 <input type="text" name="title-search" className="title-search" placeholder={`Ingresa el titulo de la carrera`} onChange = {(event) => {setSearch(event.target.value)}}/>
-                <button type="submit" className="btn-buscar"><img src={`${endpointLocal}img/search.png`} alt="icono_buscar" className="icono-buscar"/></button>
+                <button type="submit" className="btn-buscar"
+                    data-tooltip-id="tooltip"
+                    data-tooltip-content="Buscar carrera"
+                    data-tooltip-place="top"
+                ><img src={`${endpointLocal}img/search.png`} alt="icono_buscar" className="icono-buscar"/></button>
             </form>
         </search>
         <div className="results">
@@ -93,13 +97,25 @@ function SearchCareer(){
             {careers.map((result, index) => (
                 <div className="res" key={index} style={{width: '100%'}}>
                     <form className="buttons" onSubmit={(event) => handleSubmitDelete(event, result.id)}>
-                        <button type="button" className="btn-admin editar" onClick={()=>{navigate(`/oferta/${result.id}`, {state: {career: result}})}} style={{padding:'0'}}>
+                        <button type="button" className="btn-admin editar" onClick={()=>{navigate(`/oferta/${result.id}`, {state: {career: result}})}} style={{padding:'0'}}
+                            data-tooltip-id="tooltip"
+                            data-tooltip-content="Ver carrera"
+                            data-tooltip-place="top"
+                        >
                             <img src={`${endpointLocal}img/ver.png`} alt="Icono editar" />
                         </button>
-                        <button type="button" className="btn-admin editar" onClick={()=>{navigate(`editCareer/${result.id}`, {state: {career: result}})}}>
+                        <button type="button" className="btn-admin editar" onClick={()=>{navigate(`editCareer/${result.id}`, {state: {career: result}})}}
+                            data-tooltip-id="tooltip"
+                            data-tooltip-content="Editar carrera"
+                            data-tooltip-place="top"
+                        >
                             <img src={`${endpointLocal}img/edit.png`} alt="Icono editar" />
                         </button>
-                        <button type="submit" className="btn-admin eliminar">
+                        <button type="submit" className="btn-admin eliminar"
+                            data-tooltip-id="tooltip"
+                            data-tooltip-content="Eliminar carrera"
+                            data-tooltip-place="top"
+                        >
                             <img src={`${endpointLocal}img/close.png`} alt="Icono eliminar" />
                         </button>
                     </form>

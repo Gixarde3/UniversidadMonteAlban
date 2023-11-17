@@ -7,6 +7,7 @@ import {useEffect, useState} from 'react'
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import PagesAdmin from './PagesAdmin';
+import { Tooltip } from 'react-tooltip';
 function Admin({ Page, Title }){
     const navigate = useNavigate();
     const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth > 1199.99);
@@ -31,6 +32,7 @@ function Admin({ Page, Title }){
                     <PagesAdmin />
                 </aside> : null}
                 <Page />
+                <Tooltip id="tooltip"/>
             </main>
         </>
     );

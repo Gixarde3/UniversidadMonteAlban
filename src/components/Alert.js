@@ -26,7 +26,11 @@ function Alert({ isOpen, title, message, kind, closeAlert, redirectRoute, asking
           <div className="content-alert">
             
             
-            <button className="close-alert" onClick={closeAlert}>
+            <button className="close-alert" onClick={closeAlert}
+              data-tooltip-id='tooltip'
+              data-tooltip-content='Cerrar alerta'
+              data-tooltip-place='top'
+            >
               <img src={`${endpointLocal}img/close.png`} alt="Icono cerrar la alerta" />
             </button>
             <h3>{title}</h3>

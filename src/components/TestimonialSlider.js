@@ -42,7 +42,8 @@ function TestimonialSlider(){
                         photoTestimonial = {endpointImage + "testimonial/" +testimonial.img}
                         testimonial = {testimonial.content}
                         relation = {testimonial.relation}
-                        date={testimonial.date}/>
+                        date={testimonial.date}
+                        />
                 </SwiperSlide>
                 ))}
            

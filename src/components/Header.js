@@ -56,6 +56,7 @@ function Header ({isFromAdmin}) {
         ) : (
                 <HeaderMobile isFromAdmin = {isFromAdmin} /> // Componente para pantallas pequeñas
         )}
+        
         </>
     );
 }

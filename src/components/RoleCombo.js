@@ -49,7 +49,11 @@ function RoleCombo({ defaultRole, idUser }) {
     }
     return (
         <>
-        <select value={selectedRole} onChange={(event) => {handleRoleChange(event, idUser)}}>
+        <select value={selectedRole} onChange={(event) => {handleRoleChange(event, idUser)}}
+            data-tooltip-id='tooltip'
+            data-tooltip-content='Cambiar rol'
+            data-tooltip-place='top'
+        >
             <option value="1">Usuario</option>
             <option value="2">Administrador</option>
             <option value="3">Superadministrador</option>

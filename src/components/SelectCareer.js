@@ -3,6 +3,7 @@ import config from './config.json';
 import axios from 'axios';
 import {useState} from 'react';
 import Alert from './Alert';
+import { Tooltip } from 'react-tooltip';
 import './css/Search.css';
 function SearchCareer({selectCareer}){
     const [alert, setAlert] = useState(null);
@@ -41,7 +42,11 @@ function SearchCareer({selectCareer}){
             <h3 style={{width:'100%', color:'black', textAlign:'center'}}>Seleccionar carrera para la materia</h3>
             <div className="row-search">
                 <input type="text" name="title-select-search" className="title-search" placeholder={`Ingresa el titulo de la carrera`} onChange = {(event) => {setSearch(event.target.value)}}/>
-                <button type="button" className="btn-buscar" onClick={() => (searchCareer())}><img src={`${endpointLocal}img/search.png`} alt="icono_buscar" className="icono-buscar"/></button>
+                <button type="button" className="btn-buscar" onClick={() => (searchCareer())}
+                    data-tooltip-id="tooltip"
+                    data-tooltip-content="Buscar carrera"
+                    data-tooltip-place="top"
+                ><img src={`${endpointLocal}img/search.png`} alt="icono_buscar" className="icono-buscar"/></button>
             </div>
         </search>
         <div className="results">
@@ -49,7 +54,11 @@ function SearchCareer({selectCareer}){
             {careers.map((result, index) => (
                 <div className="res" key={index} style={{width: '100%'}}>
                     <form className="buttons">
-                        <button type="button" className="btn-admin seleccionar" onClick={()=>{selectCareer(result.id)}}>
+                        <button type="button" className="btn-admin seleccionar" onClick={()=>{selectCareer(result.id)}}
+                            data-tooltip-id="tooltip"
+                            data-tooltip-content="Seleccionar carrera"
+                            data-tooltip-place="top"
+                        >
                             <img src={`${endpointLocal}img/select.png`} alt="Icono seleccionar" />
                         </button>
                     </form>
@@ -62,6 +71,7 @@ function SearchCareer({selectCareer}){
                 </div>
             ))}
         </div>
+        <Tooltip id="tooltip"/>
         <Alert
             isOpen={alertOpen}
             closeAlert={closeAlert}

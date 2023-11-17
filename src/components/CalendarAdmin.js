@@ -257,7 +257,11 @@ const CalendarSpecial = () => {
       </div>
       {selectedDate ? <div id="special-date" style={{position:'relative'}}>
         {selectedDateData ? <div className="buttons">
-            <button type="submit" className="btn-admin eliminar" onClick={() => (deleteEventAsk())}>
+            <button type="submit" className="btn-admin eliminar" onClick={() => (deleteEventAsk())}
+                data-tooltip-id="tooltip"
+                data-tooltip-content="Eliminar evento"
+                data-tooltip-place="top"
+            >
                 <img src={`${endpointLocal}img/close.png`} alt="Icono eliminar" />
             </button>
         </div> : null}
@@ -276,7 +280,11 @@ const CalendarSpecial = () => {
           <p>Post seleccionado</p>
           <div className="res" style={{width: '100%'}}>
               <div className="buttons">
-                  <button type="submit" className="btn-admin eliminar" onClick={() => (quitPost(selectedPost.id))}>
+                  <button type="submit" className="btn-admin eliminar" onClick={() => (quitPost(selectedPost.id))}
+                      data-tooltip-id="tooltip"
+                      data-tooltip-content="Quitar publicación"
+                      data-tooltip-place="top"
+                  >
                       <img src={`${endpointLocal}img/close.png`} alt="Icono eliminar" />
                   </button>
               </div>

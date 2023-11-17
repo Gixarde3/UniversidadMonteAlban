@@ -45,14 +45,18 @@ function Posts() {
             }
         {posts.reverse().map((img, index) => (  
             <img
-              src={endpointImage+"post/"+img.img}
-              alt={img.legend}
-              className="img_post"
-              id={"img_sld" + img.id} 
-              key={index}
-              onClick={() =>
-                openModal(endpointImage+"post/"+img.img, img.legend, img.id, img.title, img.description, img.route ? img.route : '')
-              }
+                src={endpointImage+"post/"+img.img}
+                alt={img.legend}
+                className="img_post"
+                id={"img_sld" + img.id} 
+                key={index}
+
+                data-tooltip-id='tooltip'
+                data-tooltip-content={img.legend}
+                data-tooltip-place='top'
+                onClick={() =>
+                    openModal(endpointImage+"post/"+img.img, img.legend, img.id, img.title, img.description, img.route ? img.route : '')
+                }
             />
         ))}
         </section>

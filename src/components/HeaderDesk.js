@@ -30,7 +30,11 @@ function HeaderDesk({headerRef, isFromAdmin}) {
         <div ref={headerRef} className='header'>
                 <img src={`${endpointLocal}img/Lineas.webp`} alt="Lineas de adorno en el header" className="img_adorno"/>
                 <Link to="/" id="logo_container">
-                        <img src={`${endpointLocal}img/logo.webp`} alt="Imagen del logo de la universidad" id="logo" />
+                        <img src={`${endpointLocal}img/logo.webp`} alt="Imagen del logo de la universidad" id="logo" 
+                                data-tooltip-id='tooltip'
+                                data-tooltip-content='Universidad Monte Albán'
+                                data-tooltip-place='bottom'
+                        />
                 </Link>
                 <div id="parts">
                         <div id="down" style={isFromAdmin ? {flexWrap: 'wrap', marginTop:'1.2rem', alignItems:'center', justifyContent:'flex-end', padding:'1rem'} : {}}>

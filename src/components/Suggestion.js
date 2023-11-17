@@ -88,7 +88,11 @@ function Suggestion() {
                 <form className="form-admin" style={{position:'relative', padding:'1rem'}}>
                     <h1>Sugerencia</h1>
                     <div className="buttons">
-                        <button type="button" className="btn-admin eliminar" onClick={() => (deleteSuggestionAsk())}>
+                        <button type="button" className="btn-admin eliminar" onClick={() => (deleteSuggestionAsk())}
+                            data-tooltip-id='tooltip'
+                            data-tooltip-content='Eliminar sugerencia'
+                            data-tooltip-place='top'
+                        >
                             <img src={`${endpointLocal}img/close.png`} alt="Icono eliminar" style={{marginBottom:'0'}}/>
                         </button>
                     </div>

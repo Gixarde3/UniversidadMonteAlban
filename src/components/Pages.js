@@ -84,16 +84,23 @@ function Pages() {
             }
             
             {Cookies.get('session') ? 
-                <button type="button" onClick={()=>(logout())} style={{cursor:'pointer', display: 'flex', alignItems: 'center', flexDirection:'row'}}>
+                <button type="button" onClick={()=>(logout())} style={{cursor:'pointer', display: 'flex', alignItems: 'center', flexDirection:'row'}}
+                    data-tooltip-id='tooltip'
+                    data-tooltip-content='Cerrar sesión'
+                    data-tooltip-place='bottom'
+                >
                     {Cookies.get('username') ? <p style={{fontSize: '20px'}}>{Cookies.get('username')}</p> : ''}
                     <img src={`${enpointLocal}/img/login.png`} alt="Icono para cerrar sesion" className = "icon_social_header"/>
                 </button>
                 : 
                 <Link to={`${enpointLocal}login`}>
-                    <img src={`${enpointLocal}/img/loginUser.png`} alt="Icono para iniciar sesion" className = "icon_social_header"/>
+                    <img src={`${enpointLocal}/img/loginUser.png`} alt="Icono para iniciar sesion" className = "icon_social_header"
+                        data-tooltip-id='tooltip'
+                        data-tooltip-content='Iniciar sesión'
+                        data-tooltip-place='bottom'
+                    />
                 </Link>
             }
-
             <Alert
                 isOpen={alertOpen}
                 closeAlert={closeAlert}

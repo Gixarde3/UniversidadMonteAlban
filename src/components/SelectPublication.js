@@ -41,7 +41,11 @@ function SelectPublication({selectPublication}){
             <h3 style={{width:'100%', color:'black', textAlign:'center'}}>Busca una publicación a añadir</h3>
             <form className="row-search" onSubmit={handleSubmitSearch}>
                 <input type="text" name="title-search" className="title-search" placeholder={`Ingresa el titulo de la publicación`} onChange = {(event) => {setSearch(event.target.value)}}/>
-                <button type="submit" className="btn-buscar"><img src={`${endpointLocal}img/search.png`} alt="icono_buscar" className="icono-buscar"/></button>
+                <button type="submit" className="btn-buscar"
+                    data-tooltip-id="tooltip"
+                    data-tooltip-content="Buscar publicación"
+                    data-tooltip-place="top"
+                ><img src={`${endpointLocal}img/search.png`} alt="icono_buscar" className="icono-buscar"/></button>
             </form>
         </search>
         <div className="results">
@@ -49,7 +53,11 @@ function SelectPublication({selectPublication}){
             {posts.map((result, index) => (
                 <div className="res" key={index} style={{width: '100%'}}>
                     <form className="buttons">
-                        <button type="button" className="btn-admin seleccionar" onClick={()=>{selectPublication(result.id)}}>
+                        <button type="button" className="btn-admin seleccionar" onClick={()=>{selectPublication(result.id)}}
+                            data-tooltip-id="tooltip"
+                            data-tooltip-content="Seleccionar publicación"
+                            data-tooltip-place="top"
+                        >
                             <img src={`${endpointLocal}img/select.png`} alt="Icono seleccionar" />
                         </button>
                     </form>

@@ -94,7 +94,11 @@ function Login() {
                                 required
                             />
                             <button type="button" onClick={togglePasswordVisibility} id="btn-mostrar">
-                                <img src={"img/" + (showPassword ? "ver.png" : "no_ver.png")} alt="Icono para ver o esconder contraseña" />
+                                <img src={"img/" + (showPassword ? "ver.png" : "no_ver.png")} alt="Icono para ver o esconder contraseña" 
+                                    data-tooltip-id='tooltip'
+                                    data-tooltip-content={showPassword ? 'Mostrar contraseña' : 'Esconder contraseña'}
+                                    data-tooltip-place='top'
+                                />
                             </button>
                         </div>
                         <button type="submit" id="btn-iniciar" className='button'>Iniciar Sesión</button>

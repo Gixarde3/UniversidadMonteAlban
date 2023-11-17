@@ -63,6 +63,9 @@ function ImageSlider(){
                 width: "auto",
                 height:'auto'
               }}
+              data-tooltip-id='tooltip'
+              data-tooltip-content={slide.legend}
+              data-tooltip-place='bottom'
               onClick={() =>
                 openModal(endpointImage+"post/"+slide.img, slide.legend, slide.id, slide.title, slide.description, slide.route ? slide.route : '')
               }

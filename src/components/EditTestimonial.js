@@ -95,7 +95,11 @@ function EditTestimonial(){
                         border: '2px solid black'
                     } : {}}>
                 <label htmlFor="profileFoto" className="label-photo">
-                    <img src={image ? image : endpointLocal+"img/img_defecto.webp"} alt="Preview Face of testimonial creator" />
+                    <img src={image ? image : endpointLocal+"img/img_defecto.webp"} alt="Preview Face of testimonial creator" 
+                        data-tooltip-id="tooltip"
+                        data-tooltip-content="Cambiar foto"
+                        data-tooltip-place="top"
+                    />
                     <div className="hover-testimonial">
                         <img src={`${endpointLocal}img/change_photo.webp`} alt="Change foto icon " />
                     </div>
