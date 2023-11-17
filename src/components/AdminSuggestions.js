@@ -4,6 +4,7 @@ import Cookies from 'js-cookie';
 import Alert from './Alert';
 import { Tooltip } from 'react-tooltip';
 import config from './config.json';
+import { useNavigate } from 'react-router-dom';
 function AdminSuggestions() {
     const [suggestions, setSuggestions] = useState([]);
     const [showChecked, setShowChecked] = useState(false);
@@ -11,6 +12,7 @@ function AdminSuggestions() {
     const endpointLocal = config.endpointLocal;
     const [alert, setAlert] = useState(null);
     const [alertOpen, setAlertOpen] = useState(false);
+    const navigate = useNavigate();
     const closeAlert = () => {
         setAlert(null);
         setAlertOpen(false);
@@ -38,7 +40,8 @@ function AdminSuggestions() {
                 cookie: Cookies.get('session'),
             });
             if(response.data.success === true){
-                suggestions[index].checked = 1;
+                suggestions.find((suggestion) => suggestion.id === id).checked = 1;
+                filterSuggestions();
                 openAlert("Sugerencia vista", `La sugerencia se ha marcado como vista`, "success", null, false, null);
             }else{
                 openAlert("Error inesperado", `La sugerencia no se ha podido marcar como vista`, "error", null, false, null);
@@ -48,8 +51,26 @@ function AdminSuggestions() {
             console.log(error);
         }
     }
+    
+    var filteredSuggestions = [];
 
-    const filteredSuggestions = showChecked ? suggestions.filter((suggestion) => suggestion.checked === 1) : suggestions.filter((suggestion) => suggestion.checked === 0);
+    try{
+        filteredSuggestions = showChecked ? suggestions.filter((suggestion) => suggestion.checked === 1) : suggestions.filter((suggestion) => suggestion.checked === 0);
+    }catch(error){
+        navigate("/admin");
+    }
+
+    const filterSuggestions = () =>{
+        try{
+            filteredSuggestions = showChecked ? suggestions.filter((suggestion) => suggestion.checked === 1) : suggestions.filter((suggestion) => suggestion.checked === 0);
+        }catch(error){
+            navigate("/admin");
+        }    
+    }
+
+    const askCheckSuggestion = (id, index) => {
+        openAlert("Marcar como vista", `¿Quieres marcar la sugerencia como vista?`, "question", null, true, () => (checkSuggestion(id, index)));
+    }
 
     return ( 
     <section className="section-admin" id="manage-suggestions">
@@ -64,7 +85,7 @@ function AdminSuggestions() {
                                         data-tooltip-content="Marcar como vista"
                                         data-tooltip-place="top" 
                             className="btn-admin editar" style={{padding:'0'}}
-                            onClick={() => (checkSuggestion(result.id, index))}>
+                            onClick={() => (askCheckSuggestion(result.id, index))}>
                         <img src={`${endpointLocal}img/ver.png`} alt="Icono editar" />
                     </button>
                 </form>:null}
