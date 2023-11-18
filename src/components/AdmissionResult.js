@@ -1,12 +1,13 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import axios from 'axios';
 import Alert from './Alert';
 import config from './config.json';
 import Cookies from 'js-cookie';
-function AdmissionResult({result}) {
-    const [response, setResponse] = useState(result.response);
+function AdmissionResult({idAdmission, name, email, content, idCareer, response, url}) {
     const [alert, setAlert] = useState(null);
     const [alertOpen, setAlertOpen] = useState(false);
+    const [careerName, setCareerName] = useState(null);
+    const [newResponse, setNewResponse] = useState(response);
     const endpoint = config.endpoint;
     const openAlert = (title, message, kind, redirectRoute, asking, onAccept) => {
         setAlert({ title: title, message: message, kind: kind, redirectRoute: redirectRoute, asking: asking, onAccept: onAccept});
@@ -16,21 +17,25 @@ function AdmissionResult({result}) {
         setAlert(null);
         setAlertOpen(false);
     }
-    const getCareerName = async(id_career) => {
-        try{
-            const response = await axios.get(`${endpoint}/career/${id_career}`);
-            return response.data.name;
-        }catch(error){
-            openAlert("Error de conexión", `La petición ha fallado por ${error}`, "error", null, false, null);
+
+    useEffect(() => {
+        const getCareerName = async(id_career) => {
+            try{
+                const response = await axios.get(`${endpoint}/career/${id_career}`);
+                setCareerName(response.data.name);
+            }catch(error){
+                openAlert("Error de conexión", `La petición ha fallado por ${error}`, "error", null, false, null);
+            }
         }
-    }
+        getCareerName(idCareer);
+    }, [idCareer, endpoint])
 
     const answer = async() => {
         try{
             openAlert("Cargando...", `Enviando respuesta`, "loading", null, false, null);
-            const responseAxios = await axios.post(`${endpoint}/admission/response/${result.id}`,{
+            const responseAxios = await axios.post(`${endpoint}/admission/response/${idAdmission}`,{
                 cookie: Cookies.get('session'),
-                response: response
+                response: newResponse
             });
             if(responseAxios.data.success === true){
                 openAlert("Respuesta enviada", `La respuesta se ha enviado con éxito`, "success", null, false, null);
@@ -45,14 +50,14 @@ function AdmissionResult({result}) {
     return (
         <div className="res" style={{width: '100%'}}>
             <div className="result" style={{width: '100%'}}>
-                <p>{result.id}</p>
-                <p className="post-title">{result.name}</p>
-                <p className='post-title'>{result.email}</p>
-                <p style={{whiteSpace:'normal'}}>{result.content}</p>
-                <p>Carrera de interés: {getCareerName(result.idCareer)}</p>
+                <p>{idAdmission}</p>
+                <p className="post-title">{name}</p>
+                <p className='post-title'>{email}</p>
+                <p style={{whiteSpace:'normal'}}>{content}</p>
+                <p>Carrera de interés: {careerName}</p>
                 <label htmlFor="response">Ingresa tu respuesta</label>
-                <textarea name="response" id="response" cols="30" rows="4" value={response} onChange={(event) => (setResponse(event.target.value))}></textarea>
-                <button type="button" className="accept" onClick={()=>(answer)}>Enviar respuesta</button>
+                <textarea name="response" id="response" cols="30" rows="4" value={newResponse} onChange={(event) => (setNewResponse(event.target.value))}></textarea>
+                <button type="button" className="accept" onClick={()=>(answer())}>Enviar respuesta</button>
             </div>
             <Alert 
                 isOpen={alertOpen}

@@ -33,7 +33,13 @@ function AdminAdmissions() {
     <section className="section-admin" id="manage-admissions">
         <h2>Gestión de mensajes de admision</h2>
         {admissions.map((result, index) => (
-            <AdmissionResult result={result} key={index}/>
+            <AdmissionResult idAdmission={result.id} 
+            name={result.name} 
+            email={result.email} 
+            idCareer={result.idCareer} 
+            content={result.content} 
+            response={result.response} 
+            key={index}/>
         ))}
         <Tooltip id="tooltip" />
         <Alert 

@@ -29,7 +29,7 @@ function SeeAdmission() {
     useEffect(() => {
         const getAdmission = async () => {
             try{
-                openAlert("Sugerencia", "Cargando mensaje de admisión", "loading", null, false, null);
+                openAlert("Admisión", "Cargando mensaje de admisión", "loading", null, false, null);
                 const response = await axios.get(`${endpoint}/admission/${url}`);
                 setAdmissionObject(response.data);
                 const careersResponse = await axios.get(`${endpoint}/careers`);
@@ -128,7 +128,7 @@ function SeeAdmission() {
                         <div className="res" style={{width: '100%', marginTop:'1rem'}}>
                             <div className="result" style={{width: '100%'}}>
                                 <p className='post-title'>Respuesta de uno de nuestros reclutadores</p>
-                                <p>{response}</p>
+                                <p style={{whiteSpace:'normal'}}>{response}</p>
                             </div>
                         </div> 
                     : 
