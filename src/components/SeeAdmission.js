@@ -94,7 +94,7 @@ function SeeAdmission() {
         <main>
             <section className='section-admin'>
                 <form className="form-admin" style={{position:'relative', padding:'1rem'}}>
-                    <h1>Sugerencia</h1>
+                    <h1>Admisión</h1>
                     <div className="buttons">
                         <button type="button" className="btn-admin eliminar" onClick={() => (deleteAdmissionAsk())}
                             data-tooltip-id='tooltip'
