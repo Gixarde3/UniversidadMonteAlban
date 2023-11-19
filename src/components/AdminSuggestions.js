@@ -12,7 +12,8 @@ import {
     View,
     StyleSheet,
     PDFDownloadLink,
-    Image
+    Image,
+    Font
 } from '@react-pdf/renderer';
 
 function AdminSuggestions() {
@@ -24,7 +25,7 @@ function AdminSuggestions() {
   const [alertOpen, setAlertOpen] = useState(false);
   const [pdfGenerated, setPdfGenerated] = useState(null);
   const navigate = useNavigate();
-
+  Font.register({ family: 'Roboto Slab', src: `${endpointLocal}fonts/RobotoSlab.ttf` });
   const closeAlert = () => {
     setAlert(null);
     setAlertOpen(false);
@@ -62,6 +63,7 @@ function AdminSuggestions() {
   }, [endpoint]);
 
   useEffect(() => {
+    
     const styles = StyleSheet.create({
         page: {
             flexDirection: 'column',
@@ -73,7 +75,26 @@ function AdminSuggestions() {
             flexGrow: 1,
             display: 'flex',
             flexDirection: 'column',
+            backgroundColor:'#fff',
+            boxShadow: '0px 0px 13px -3px rgba(0,0,0,0.5)',
+            height: 'auto'
         },
+        text:{
+            fontSize: 12,
+            fontFamily:'Roboto Slab',
+        },
+        title:{
+            fontSize: 20,
+            fontFamily:'Roboto Slab',
+            textAlign:'center',
+            width:'100%',
+            marginTop: '20px',
+            color: '#2E3092',
+            fontWeight: '600'
+        },
+        image: {
+            width: '40%'
+        }
     });
     const generatePDF = () => {
         const groupedSuggestions = [];
@@ -82,21 +103,47 @@ function AdminSuggestions() {
         }
 
         const pdf = (
-        <Document>
-            {groupedSuggestions.map((group, index) => (
-            <Page key={index} style={styles.page}>
-                {index === 0 ? <Image src={`${endpointLocal}img/logo_azul.png`}/> : null}
-                {group.map((result, index) => (
-                    <View key={index} style={styles.section}>
-                        <Text>{`ID: ${result.id}`}</Text>
-                        <Text>{`Nombre: ${result.name}`}</Text>
-                        <Text>{`Email: ${result.email}`}</Text>
-                        <Text>{`Contenido: ${result.content}`}</Text>
+            <Document>
+            <Page style={styles.page}>
+                <View style={{display:'flex', flexDirection:'column',alignItems:'center'}}>
+                    <Image style={styles.image} src={`${endpointLocal}img/logo_azul.png`} />
+                </View>
+              <Text style={styles.title}> Sugerencias sin ver: </Text>
+              {groupedSuggestions.map((group, index) => (
+                group.map((result, innerIndex) => (
+                  result.checked === 0 ? (
+                    <View key={innerIndex} style={styles.section}>
+                        <Text style={styles.text}>{`Id: ${result.id}`}</Text>
+                        <Text style={styles.text}>Nombre: </Text>
+                        <Text style={styles.text}>{`${result.name}`}</Text>
+                        <Text style={styles.text}>Email: </Text>
+                        <Text style={styles.text}>{`${result.email}`}</Text>
+                        <Text style={styles.text}>Sugerencia: </Text>
+                        <Text style={styles.text}>{`${result.content}`}</Text>
                     </View>
-                ))}
+                  ) : null
+                ))
+              ))}
             </Page>
-            ))}
-        </Document>
+            <Page style={styles.page}>
+              <Text style={styles.title}> Sugerencias vistas: </Text>
+              {groupedSuggestions.map((group, index) => (
+                group.map((result, innerIndex) => (
+                  result.checked === 1 ? (
+                    <View key={innerIndex} style={styles.section}>
+                        <Text style={styles.text}>{`Id: ${result.id}`}</Text>
+                        <Text style={styles.text}>Nombre: </Text>
+                        <Text style={styles.text}>{`${result.name}`}</Text>
+                        <Text style={styles.text}>Email: </Text>
+                        <Text style={styles.text}>{`${result.email}`}</Text>
+                        <Text style={styles.text}>Sugerencia: </Text>
+                        <Text style={styles.text}>{`${result.content}`}</Text>
+                    </View>
+                  ) : null
+                ))
+              ))}
+            </Page>
+          </Document>
         );
         setPdfGenerated(pdf); // Set the generated PDF to the state
     };
@@ -104,6 +151,90 @@ function AdminSuggestions() {
         generatePDF()
     }
   }, [suggestions, endpointLocal])
+
+  const styles = StyleSheet.create({
+    page: {
+        flexDirection: 'column',
+        backgroundColor: '#E4E4E4',
+    },
+    section: {
+        margin: 10,
+        padding: 10,
+        flexGrow: 1,
+        display: 'flex',
+        flexDirection: 'column',
+        backgroundColor:'#fff',
+        boxShadow: '0px 0px 13px -3px rgba(0,0,0,0.5)',
+        height: 'auto'
+    },
+    text:{
+        fontSize: 12,
+        fontFamily:'Roboto Slab',
+    },
+    title:{
+        fontSize: 20,
+        fontFamily:'Roboto Slab',
+        textAlign:'center',
+        width:'100%',
+        marginBottom: '20px',
+        color: '#2E3092',
+        fontWeight: '600'
+    },
+    image: {
+        width: '40%'
+    }
+});
+const generatePDF = () => {
+    const groupedSuggestions = [];
+    for (let i = 0; i < suggestions.length; i += 3) {
+        groupedSuggestions.push(suggestions.slice(i, i + 3));
+    }
+
+    const pdf = (
+        <Document>
+        <Page style={styles.page}>
+            <View style={{display:'flex', flexDirection:'column',alignItems:'center'}}>
+                <Image style={styles.image} src={`${endpointLocal}img/logo_azul.png`} />
+            </View>
+            <Text style={styles.title}> Sugerencias sin ver: </Text>
+            {groupedSuggestions.map((group, index) => (
+                group.map((result, innerIndex) => (
+                result.checked === 0 ? (
+                    <View key={innerIndex} style={styles.section}>
+                        <Text style={styles.text}>{`Id: ${result.id}`}</Text>
+                        <Text style={styles.text}>Nombre: </Text>
+                        <Text style={styles.text}>{`${result.name}`}</Text>
+                        <Text style={styles.text}>Email: </Text>
+                        <Text style={styles.text}>{`${result.email}`}</Text>
+                        <Text style={styles.text}>Sugerencia: </Text>
+                        <Text style={styles.text}>{`${result.content}`}</Text>
+                    </View>
+                ) : null
+                ))
+            ))}
+        </Page>
+        <Page style={styles.page}>
+            <Text style={styles.title}> Sugerencias vistas: </Text>
+            {groupedSuggestions.map((group, index) => (
+                group.map((result, innerIndex) => (
+                result.checked === 1 ? (
+                    <View key={innerIndex} style={styles.section}>
+                        <Text style={styles.text}>{`Id: ${result.id}`}</Text>
+                        <Text style={styles.text}>Nombre: </Text>
+                        <Text style={styles.text}>{`${result.name}`}</Text>
+                        <Text style={styles.text}>Email: </Text>
+                        <Text style={styles.text}>{`${result.email}`}</Text>
+                        <Text style={styles.text}>Sugerencia: </Text>
+                        <Text style={styles.text}>{`${result.content}`}</Text>
+                    </View>
+                ) : null
+                ))
+            ))}
+        </Page>
+      </Document>
+    );
+    setPdfGenerated(pdf); // Set the generated PDF to the state
+};
 
   const checkSuggestion = async (id, index) => {
     try {
@@ -131,6 +262,7 @@ function AdminSuggestions() {
           false,
           null
         );
+        generatePDF();
       } else {
         openAlert(
           'Error inesperado',

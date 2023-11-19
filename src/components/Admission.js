@@ -10,7 +10,7 @@ function Admission() {
     const [alert, setAlert] = useState(null);
     const [alertOpen, setAlertOpen] = useState(false);
     const [carreras, setCarreras] = useState([]);
-    const [idCarrera, setIdCarrera] = useState(0);
+    const [idCarrera, setIdCarrera] = useState(1);
     const endpoint = config.endpoint;
     const openAlert = (title, message, kind, redirectRoute, asking, onAccept) => {
         setAlert({ title: title, message: message, kind: kind, redirectRoute: redirectRoute, asking: asking, onAccept: onAccept});
@@ -32,7 +32,8 @@ function Admission() {
         }
         getCareers();
     }, [endpoint]);
-    const createMessage = async () => {
+    const createMessage = async (event) => {
+        event.preventDefault();
         try{
             openAlert("Creando...", `Espere mientras se crea la solicitud de admisión`, "loading", null, false, null);
             const response = await axios.post(`${endpoint}/admission`, {
@@ -48,12 +49,13 @@ function Admission() {
             }
         }catch(error){
             openAlert("Error al crear la solicitud de admisión", `La solicitud de admisión no se ha podido crear debido a un error inesperado: ${error}`, "error", null);
+            console.log(error);
         }
     }
     return (
         <main>
             <section id="admision">
-                <form className='form-admin'>
+                <form className='form-admin' onSubmit={(event) => (createMessage(event))}>
                     <img src="img/logo_azul.png" alt="Imagen del logo de la universidad" id="logo" />
                     <h1>Solicitud de admisión</h1>
                     <label htmlFor="name">Nombre completo:</label>
@@ -68,7 +70,7 @@ function Admission() {
                     </select>
                     <label htmlFor="solicitud de admisión">Mensaje al reclutador:</label>
                     <textarea name="solicitud de admisión" id="solicitud de admisión" cols="30" rows="10" value={message} onChange={(event) => (setMessage(event.target.value))} required></textarea>
-                    <button type="button" id="btn-enviar" className='button' onClick={() => (createMessage())}>Enviar solicitud de admisión</button>
+                    <button type="submit" id="btn-enviar" className='accept'>Enviar solicitud de admisión</button>
                 </form>
             </section>
             <Alert 

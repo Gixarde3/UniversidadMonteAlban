@@ -219,6 +219,9 @@ ul.menu{
 
   }
 
+  .header-fixed{
+    z-index: 7 !important;
+  }
 /*Responsive*/
 @media (min-width:2500px) {
     *{

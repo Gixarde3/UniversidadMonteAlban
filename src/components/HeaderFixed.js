@@ -34,12 +34,11 @@ function HeaderFixed({newHeaderRef, isFromAdmin}) {
                 alignContent:'center',
                 position: 'fixed',
                 width: '100vw',
-                zIndex: 9,
                 top: 0,
                 left: 0
             }}
             ref={newHeaderRef}
-            className='header'
+            className='header header-fixed'
             >
                 <div id="down" style={isFromAdmin ? {flexWrap: 'wrap', justifyContent:'space-between', paddingRight:'1rem'} : {}}>
                     <Link to="/" id="logo_container_fixed">
