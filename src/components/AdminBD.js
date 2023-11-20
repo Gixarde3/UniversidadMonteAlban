@@ -55,37 +55,29 @@ function AdminBD() {
             openAlert('Error inesperado con la conexión', `Error de conexión: ${error}`, 'error', null);
         }
     }
-    const backup = async () => {
-        try{
-            openAlert("Respaldando...", `Espere mientras se respalda la base de datos`, "loading", null, false, null);
-            const response = await axios.post(`${endpoint}/database/backup`,{cookie: Cookies.get('session')});
-            if(response && response.data && response.data.success){
-                openAlert("Base de datos respaldada", "La base de datos se ha respaldado con éxito", "success", null, false);
-                handleDownload();
-            }else{
-                openAlert("Error al respaldar la base de datos", "Ocurrió un error inesperado al respaldar la base de datos", "error", null);
-            }
-        }catch(error){
-            openAlert('Error inesperado con la conexión', `Error de conexión: ${error}`, 'error', null);
-        }
-    }
     const handleDownload = () => {
         try{
             // Crea un enlace temporal para descargar el archivo
+            openAlert("Respaldando...", `Espere mientras se respalda la base de datos`, "loading", null, false, null);
             const enlace = document.createElement('a');
-            enlace.href = `${endpoint}/database/download`;
+            enlace.href = `${endpoint}/database/download/${Cookies.get('session')}`;
             enlace.download = "respaldo.sql"; // Cambia el nombre de descarga si es necesario
         
             // Simula un clic en el enlace para iniciar la descarga
             enlace.style.display = 'none';
             document.body.appendChild(enlace);
+            openAlert("Base de datos respaldada", "La base de datos se ha respaldado con éxito", "success", null, false);
             enlace.click();
         
             // Elimina el enlace después de la descarga
             document.body.removeChild(enlace);
     
         }catch(error){
-            openAlert('Error inesperado con la descarga', `Error de descarga: ${error}`, 'error', null);
+            if(error.response !== undefined && error.response.status === 429){
+                openAlert("Error al respaldar la base de datos", "Ocurrió un error inesperado al respaldar la base de datos", "error", null);
+            }else{
+                openAlert('Error inesperado con la descarga', `Error de descarga: ${error}`, 'error', null);
+            }
         }
       };
     return (
@@ -102,7 +94,7 @@ function AdminBD() {
                 {sql ? (<h4 style={{color:'black', textAlign:'center'}}>Archivo cargado: {sql.name}</h4>) : ''}
                 {sql ? <button className='accept'>Cargar archivo</button> : null}
             </form>
-            <button type="button" className="accept" style={{fontWeight:'bold'}} onClick={() => (backup())}>Realizar respaldo de la base de datos</button>
+            <button type="button" className="accept" style={{fontWeight:'bold'}} onClick={() => (handleDownload())}>Realizar respaldo de la base de datos</button>
             <SearchBD />
             <Alert 
                 isOpen={alertOpen}
