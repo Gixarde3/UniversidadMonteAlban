@@ -14,11 +14,12 @@ function EditPost(){
     const [alert, setAlert] = useState(null);
     const [alertOpen, setAlertOpen] = useState(false);
     const [fileName, setFileName] = useState('');  
+    const [quitFile, setQuitFile] = useState(false);
     const location = useLocation();
     const post = location.state.post;
     const endpoint = config.endpoint;
     const endpointImage = config.endpointImage;
-
+    const endpointLocal = config.endpointLocal;
     useEffect(() => {
         if(post){
             setLegend(post.legend);
@@ -26,6 +27,7 @@ function EditPost(){
             setTitle(post.title);
             setImage(endpointImage + "post/" +post.img);
             setFileName(post.route);
+            setQuitFile(false);
         }
     },[post, endpointImage]);
 
@@ -34,8 +36,8 @@ function EditPost(){
         setAlertOpen(false);
     };
 
-    const openAlert = (title, message, kind, redirectRoute) => {
-        setAlert({ title: title, message: message, kind: kind, redirectRoute: redirectRoute});
+    const openAlert = (title, message, kind, redirectRoute, asking, onAccept) => {
+        setAlert({ title: title, message: message, kind: kind, redirectRoute: redirectRoute, asking: asking, onAccept: onAccept});
         setAlertOpen(true);
     };
 
@@ -51,6 +53,7 @@ function EditPost(){
     const handleFileUpload = (e) => {
         try{
             setFile(e.target.files[0]);
+            setQuitFile(false);
         }catch(error){
             openAlert("Error inesperado", `El archivo no se ha podido cargar debido a un error inesperado: ${error}`, "error", null);
         }
@@ -64,6 +67,7 @@ function EditPost(){
         formData.append('description', description);
         if(imageFile) {formData.append('image', imageFile)};
         if(adjuntFile) {formData.append('file', adjuntFile)};
+        if(quitFile) {formData.append('eliminarArchivo', quitFile)};
         formData.append('cookie', Cookies.get('session'));
         try {
             openAlert("Editando...", `Espere mientras se cargan las imágenes y archivos para editar la publicación`, "loading", null);
@@ -87,7 +91,19 @@ function EditPost(){
         }
     };
 
-    
+    const askQuitFile = () => {
+        openAlert("Quitar archivo adjunto", "¿Estás seguro de que deseas quitar el archivo adjunto?", "question", null, true, handleQuitFile);
+    }
+    const handleQuitRecentFile = () => {
+        setFile(null);
+        setFileName(null);
+    }
+
+    const handleQuitFile = () => {
+        setQuitFile(true);
+        setFile(null);
+        setFileName(null);
+    }
     return(
         <>
             <section className="section-admin">
@@ -111,11 +127,34 @@ function EditPost(){
                     {/*TODO quitar archivo*/}
                     <label htmlFor="fileAdjuntPublication">Archivo adjunto:</label>
                     {adjuntFile ? (
-                        <div>
-                            <p>{adjuntFile.name}</p>
+                        <div className="res" style={{width: '100%', position:'relative'}}>
+                            <div className="result" style={{width: '100%', display: 'flex', flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
+                                <p className="post-title">{adjuntFile.name}</p>
+                                <button type="button" className="btn-admin eliminar"
+                                    style={{alignItems:'flex-start',marginRight:'0'}}
+                                    data-tooltip-id="tooltip"
+                                    data-tooltip-content="Quitar archivo adjunto"
+                                    data-tooltip-place="top"
+                                    onClick={() => handleQuitRecentFile()}
+                                >
+                                    <img src={`${endpointLocal}img/close.png`} alt="Icono eliminar" />
+                                </button>
+                            </div>
                         </div>
-                    ) : <div>
-                            <p>{fileName}</p>
+                    ) : <div className="res" style={{width: '100%', position:'relative'}}>
+                            <div className="result" style={{width: '100%', display: 'flex', flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
+                                <p className="post-title">{fileName}</p>
+                                <button type="button" className="btn-admin eliminar"
+                                    style={{alignItems:'flex-start',marginRight:'0'}}
+                                    data-tooltip-id="tooltip"
+                                    data-tooltip-content="Quitar archivo adjunto"
+                                    data-tooltip-place="top"
+                                    onClick={() => askQuitFile()}
+                                >
+                                    <img src={`${endpointLocal}img/close.png`} alt="Icono eliminar" />
+                                </button>
+                                
+                            </div>
                         </div>}
                     <div className="accept">
                         <label htmlFor="fileAdjuntPublication" id="btnArchivo">{adjuntFile || fileName !== '' ? 'Cambiar':'Seleccionar'} archivo</label>
@@ -127,13 +166,15 @@ function EditPost(){
                     <textarea placeholder="Ingresa la descripción de la publicación" value={description} id="description" onChange={(event) => setDescription(event.target.value)} required></textarea>
                     <button type="submit" className='accept'>Editar publicación</button>
                 </form>
-                <Alert
+                <Alert 
                     isOpen={alertOpen}
                     closeAlert={closeAlert}
                     title={alert ? alert.title : ''}
                     message={alert ? alert.message : ''}
                     kind = {alert ? alert.kind : ''}
                     redirectRoute={alert ? alert.redirectRoute : ''}
+                    asking = {alert ? alert.asking : ''}
+                    onAccept={alert ? () => alert.onAccept() : () => console.log('')}
                 />
             </section>
         </>
