@@ -26,6 +26,7 @@ import AdminSuggestions from './components/AdminSuggestions';
 import Admission from './components/Admission';
 import SeeAdmission from './components/SeeAdmission';
 import AdminAdmissions from './components/AdminAdmissions';
+import AdminBD from './components/AdminBD';
 function App() {
   
   return (
@@ -57,12 +58,13 @@ function App() {
             <Route path="careers">
               <Route index element={<LayoutAdmin Page={AdminCareers} Title="Carreras"/>}/>
               <Route path="editCareer/:id" element={<LayoutAdmin Page={EditCareer} Title="Editar carrera"/>}/>
-              <Route path="editSubject/:id" element={<LayoutAdmin Page={EditSubject} Title="Editar carrera"/>}/>
+              <Route path="editSubject/:id" element={<LayoutAdmin Page={EditSubject} Title="Editar materia"/>}/>
             </Route>
             <Route path="users" element={<LayoutAdmin Page={AdminUsers} Title="Administradores y usuarios"/>}/>
-            <Route path="calendar" element={<LayoutAdmin Page={AdminCalendar} Title="Editar carrera"/>}/>
-            <Route path="suggestions" element={<LayoutAdmin Page={AdminSuggestions} Title="Editar carrera"/>}/>
-            <Route path="admissions" element={<LayoutAdmin Page={AdminAdmissions} Title="Editar carrera"/>}/>
+            <Route path="calendar" element={<LayoutAdmin Page={AdminCalendar} Title="Administrar calendario"/>}/>
+            <Route path="suggestions" element={<LayoutAdmin Page={AdminSuggestions} Title="Administrar sugerencias"/>}/>
+            <Route path="admissions" element={<LayoutAdmin Page={AdminAdmissions} Title="Administrar admisiones"/>}/>
+            <Route path="bd" element={<LayoutAdmin Page={AdminBD} Title="Administrar bases de datos"/>}/>
           </Route>
           <Route path="404" element={<Layout Page={NotFound} Title="Universidad Monte Albán - Página no encontrada"/>} />
         </Route>

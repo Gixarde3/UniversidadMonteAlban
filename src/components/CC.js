@@ -20,6 +20,9 @@ function CC() {
                         <Link to="https://www.freepik.es/icono/editar_1159876"><img src="img/edit.png" alt="Icono editar" />Icono de Kiranshastry</Link>
                         <Link to="https://www.freepik.es/icono/cheque_1055183#fromView=search&term=checked&page=1&position=18&track=ais"><img src="img/select.png" alt="Icono de checked" />Icono de Maxim Basinski Premium</Link>
                         <Link to="https://www.freepik.es/icono/cerca_2976286#fromView=search&term=cerrar&page=1&position=12&track=ais"><img src="img/close.png" alt="Icono de cerrar" />Icono de ariefstudio</Link>
+                        <Link to="https://www.freepik.es/icono/filtrar_1159884#fromView=search&term=filtro&page=1&position=3&track=ais"><img src="img/filter.png" alt="Icono de filtro" />Icono de Kiranshastry</Link>
+                        <Link to="https://www.freepik.es/icono/usuario_1077114#fromView=search&term=user&page=1&position=2&track=ais&uuid=09f6b89a-485e-4c0e-bb73-f9154f5eaa44"><img src="img/user.png" alt="Icono de usuario" />Icono de Freepik</Link>
+                        <Link to="https://www.freepik.es/icono/calendario_2886665#fromView=search&term=Calendar&page=1&position=6&track=ais"><img src="img/date.png" alt="Icono de calendario" />Icono de Prosymbols Premium</Link>
                 </main>
         );
 }
