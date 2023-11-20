@@ -13,7 +13,7 @@ function PagesAdmin() {
             <Link to={`${endpointLocal}admin/calendar`}>Calendario</Link>
             {Cookies.get('role') === '3' ? <Link to={`${endpointLocal}admin/users`}>Administardores</Link> : null}
             <Link to={`${endpointLocal}admin/testimonials`}>Testimonios</Link>
-            <Link to={`${endpointLocal}admin/bd`}>Restauración de la BD</Link>
+            {Cookies.get('role') === '3' ? <Link to={`${endpointLocal}admin/bd`}>Restauración de la BD</Link> : null}
         </>
     );
 }
