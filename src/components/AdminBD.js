@@ -73,7 +73,7 @@ function AdminBD() {
             document.body.removeChild(enlace);
     
         }catch(error){
-            if(error.response !== undefined && error.response.status === 429){
+            if(error.response !== undefined && error.response.status === 403){
                 openAlert("Error al respaldar la base de datos", "Ocurrió un error inesperado al respaldar la base de datos", "error", null);
             }else{
                 openAlert('Error inesperado con la descarga', `Error de descarga: ${error}`, 'error', null);
