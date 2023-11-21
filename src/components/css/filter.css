@@ -45,6 +45,8 @@
     display: flex;
 }
 .filter-option{
+    z-index: 9;
+    background-color: white;
     text-align: left;
     padding: 0.3rem;
     border: 1px solid black;
@@ -55,6 +57,7 @@
     cursor: pointer;
 }
 .icon-option{
+    
     flex-wrap: nowrap;
     width: 18px;
     height: auto;

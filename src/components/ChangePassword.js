@@ -31,20 +31,23 @@ function ChangePassword() {
     useEffect(() => {
         const getUser = async () => {
             try{
+                openAlert("Cargando...", `Cargando información`, "loading", null, false, null);
                 const cookie = Cookies.get('session');
                 const response = await axios.get(`${prefix}/user/${cookie}`);
                 const data = response.data;
-                if(data.success){
+                if(!data.success===false){
+                    openAlert("Error al cargar la información", `La información no se ha podido cargar`, "error", "/");
+                }else{
                     setName(data.name);
                     setEmail(data.email);
-                    setLastnames(data.lastnames);
-                    setBirthday(data.birthday);
+                    setLastnames(data.lastName);
+                    setBirthday(data.birthdate);
                     setUsername(data.username);
-                }else{
-                    openAlert("Error al cargar la información", `La información no se ha podido cargar`, "error", "/");
+                    closeAlert();
                 }
             }catch(error){
                 openAlert("Error al cargar la información", `La información no se ha podido cargar`, "error", "/");
+                console.log(error);
             }
         }
         getUser();
@@ -115,6 +118,7 @@ function ChangePassword() {
             }
         }catch(error){
             openAlert("Error al editar la información", `La información no se ha podido editar`, "error", "/");
+            
         }
     };
 

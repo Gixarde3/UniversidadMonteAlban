@@ -70,14 +70,19 @@ const CalendarSpecial = () => {
   }, [selectedDateData, endpoint])
 
   const tipos = [
-    {value: '0', label: 'Selecciona un evento'},
-    {value: '1', label: 'Festivo'},
-    {value: '2', label: 'Vacaciones'},
-    {value: '3', label: 'Evento'},
-    {value: '4', label: 'Inicio de cuatrimestre'},
+    {value: '0', label: 'Seleccionada'},
+    {value: '1', label: 'Inicio de cuatrimestre'},
+    {value: '2', label: 'Semana de curso de inducción'},
+    {value: '3', label: 'Evaluaciones parciales'},
+    {value: '4', label: 'Periodo vacacional'},
     {value: '5', label: 'Fin de cuatrimestre'},
-    {value: '6', label: 'Inscripciones abiertas'},
-    {value: '7', label: 'Inscripciones cerradas'},
+    {value: '6', label: 'Suspención de labores'},
+    {value: '7', label: 'Entrega de actas de calificación'},
+    {value: '8', label: 'Entrega de examenes a revisión'},
+    {value: '9', label: 'Reinscripciones'},
+    {value: '10', label: 'Consulta de actas finales'},
+    {value: '11', label: 'Examenes de regularización'},
+    {value: '12', label: 'Entrega de planeaciones'},
   ]
   const closeAlert = () => {
       setAlert(null);
@@ -221,38 +226,12 @@ const CalendarSpecial = () => {
       <div id="colors">
         <h4>Clasificación de fechas especiales</h4>
         <div className="colors-separator">
-        <div className="separator">
-            <span className="color type-0"></span>
-            <p>Seleccionada</p>
-          </div>
-          <div className="separator">
-            <span className="color type-1"></span>
-            <p>Festivo</p>
-          </div>
-          <div className="separator">
-            <span className="color type-2"></span>
-            <p>Vacaciones</p>
-          </div>
-          <div className="separator">
-            <span className="color type-3"></span>
-            <p>Evento</p>
-          </div>
-          <div className="separator">
-            <span className="color type-4"></span>
-            <p>Inicio de cuatrimestre</p>
-          </div>
-          <div className="separator">
-            <span className="color type-5"></span>
-            <p>Fin de cuatrimestre</p>
-          </div>
-          <div className="separator">
-            <span className="color type-6"></span>
-            <p>Inicio de inscripciones</p>
-          </div>
-          <div className="separator">
-            <span className="color type-7"></span>
-            <p>Fin de inscripciones</p>
-          </div>
+          {
+            tipos.map((tipo, index) => (<div className="separator">
+              <span className={`color type-${tipo.value}`}></span>
+              <p>{tipo.label}</p>
+            </div>))
+          }
         </div>
       </div>
       {selectedDate ? <div id="special-date" style={{position:'relative'}}>

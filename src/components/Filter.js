@@ -19,7 +19,12 @@ function Filter({setValue}) {
         setIsOpen(false);
     }
     return (
-        <div className="filter">
+        <div className="filter"
+        
+            data-tooltip-id="tooltip"
+            data-tooltip-content="Cambiar el filtro de búsqueda"
+            data-tooltip-place="top"
+        >
             <button type="button" className="icon-filter" onClick = {() => {openClose()}}>
                 <img className='icon' src={`${endpointLocal}img/${icons[filter]}`} alt="Icono de filtro" />
                 <img className={`select ${isOpen ? "open" : ""}`} src={`${endpointLocal}img/flecha_abajo.png`} alt="Icono para seleccionar" />

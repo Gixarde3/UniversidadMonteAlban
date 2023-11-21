@@ -49,6 +49,7 @@ function AdminBD() {
                 openAlert("Base de datos restaurada", "La base de datos se ha restaurado con éxito", "success", null, false);
                 deleteSession();
             }else{
+                console.log(response);
                 openAlert("Error al restaurar la base de datos", "Ocurrió un error inesperado al restaurar la base de datos", "error", null);
             }
         }catch(error){

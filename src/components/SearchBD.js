@@ -2,9 +2,19 @@ import './css/testimonial.css';
 import config from './config.json';
 import axios from 'axios';
 import Cookies from 'js-cookie';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import Alert from './Alert';
 import Filter from './Filter';
+import {
+    Document,
+    Page,
+    Text,
+    View,
+    StyleSheet,
+    PDFDownloadLink,
+    Image,
+    Font
+} from '@react-pdf/renderer';
 import './css/Search.css';
 function SearchBD(){
     const [alert, setAlert] = useState(null);
@@ -15,6 +25,8 @@ function SearchBD(){
     const endpoint = config.endpoint;
     const endpointLocal = config.endpointLocal;
     const [databases, setDatabases] = useState([]);
+    const [pdfGenerated, setPdfGenerated] = useState(null);
+    Font.register({ family: 'Roboto Slab', src: `${endpointLocal}fonts/RobotoSlab.ttf` });
     const closeAlert = () => {
         setAlert(null);
         setAlertOpen(false);
@@ -25,6 +37,63 @@ function SearchBD(){
         setAlertOpen(true);
     };
 
+    useEffect(() => {
+        const styles = StyleSheet.create({
+            page: {
+                flexDirection: 'column',
+                backgroundColor: '#E4E4E4',
+            },
+            section: {
+                margin: 10,
+                padding: 10,
+                flexGrow: 1,
+                display: 'flex',
+                flexDirection: 'column',
+                backgroundColor:'#fff',
+                boxShadow: '0px 0px 13px -3px rgba(0,0,0,0.5)',
+                height: 'auto'
+            },
+            text:{
+                fontSize: 12,
+                fontFamily:'Roboto Slab',
+            },
+            title:{
+                fontSize: 20,
+                fontFamily:'Roboto Slab',
+                textAlign:'center',
+                width:'100%',
+                marginTop: '20px',
+                color: '#2E3092',
+                fontWeight: '600'
+            },
+            image: {
+                width: '40%'
+            }
+        });
+        const generatePDF = () => {    
+            const pdf = (
+                <Document>
+                <Page style={styles.page}>
+                    <View style={{display:'flex', flexDirection:'column',alignItems:'center'}}>
+                        <Image style={styles.image} src={`${endpointLocal}img/logo_azul.png`} />
+                    </View>
+                <Text style={styles.title}> Modificaciones realizadas {filter === 'username' ? (search !== '' ? `por el usuario ${search}` : "por todos los usuarios") 
+                                                                                            : (search !== '' ?  `el día ${search}` : "en cualquier fecha")} </Text>
+                {databases.map((result, index) => (
+                    <View key={index} style={styles.section}>
+                        <Text style={styles.text}>Nombre de usuario:  {`${result.username}`}</Text>
+                        <Text style={styles.text}>Fecha de modificación: {`${result.date}`}</Text>
+                        <Text style={styles.text}>Modificación realizada: {`${result.modification}`}</Text>
+                    </View>
+                ))}
+                </Page>
+            </Document>
+            )
+            setPdfGenerated(pdf);
+        };
+        generatePDF();
+    }, [databases, endpointLocal, filter, search]);
+
     const handleSubmitSearch = async (event) => {
         event.preventDefault();
         try{
@@ -33,14 +102,24 @@ function SearchBD(){
                 return;
             }
             openAlert("Cargando...", `Cargando resultados de búsqueda`, "loading", null, false, null);
-            let response = await axios.post(`${endpoint}/database/search/${filter}/${search}`, {
-                cookie: Cookies.get('session')
-            });
+            let response = null;
+            console.log(search);
+            console.log("wtf");
+            if(search === ''){
+                response = await axios.post(`${endpoint}/database/search`, {
+                    cookie: Cookies.get('session')
+                });
+            }else{
+                response = await axios.post(`${endpoint}/database/search/${filter}/${search}`, {
+                    cookie: Cookies.get('session')
+                });
+            }
             setDatabases(response.data);
             setSearched(true);
             closeAlert();
         }catch(error){
             openAlert('Error inesperado con la conexión', `Error de conexión: ${error}`, 'error', null);
+            console.log(error);
         }
     }
 
@@ -73,6 +152,9 @@ function SearchBD(){
         </search>
         <div className="results">
             {searched && databases.length === 0 ? (<h3 style={{color: 'black'}}>No hay resultados para esa búsqueda</h3>):''}
+            {searched && databases.length > 0 ? <PDFDownloadLink document={pdfGenerated} fileName='Modifcaciones.pdf'>
+                <button className="accept" style={{marginBottom:'1rem'}}>Descargar PDF con los resultados</button>
+            </PDFDownloadLink> : null}
             {databases.map((result, index) => (
                 <div className="res" key={index} style={{width: '100%'}}>
                     <div className="result" style={{width: '100%'}}>
