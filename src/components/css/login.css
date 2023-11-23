@@ -79,7 +79,16 @@ form {
 #password, .password{
     border-right: none;
 }
-
+.error{
+    color: red;
+    font-size: 0.8rem;
+    margin-top: 0.2rem;
+    background-color: #fcc8cc;
+    border: 1px solid red;
+    padding: 0.3rem;
+    width: 100%;
+    margin-bottom: 0.7rem;
+}
 @media (max-width: 1199.98px) {
     #login {
         max-width: 90vw;

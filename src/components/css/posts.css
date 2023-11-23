@@ -1,9 +1,21 @@
 .img_post{
     width: 100%;
-    max-width: 50%;
+    max-width: 48%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    justify-content: space-between;
+    cursor:pointer;
+}
+.posts-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+.posts-container img{
+    max-height: min-content;
 }
 @media(max-width: 1199.98px){
     .img_post{

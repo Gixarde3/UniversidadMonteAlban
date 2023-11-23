@@ -23,6 +23,7 @@ function AdmissionResult({idAdmission, name, email, content, career, response, u
 
     const answer = async() => {
         try{
+            openAlert("Enviando respuesta", `Enviando respuesta a ${name}`, "loading", null, false, null);
             const responseAxios = await axios.post(`${endpoint}/admission/response/${idAdmission}`,{
                 cookie: Cookies.get('session'),
                 response: newResponse

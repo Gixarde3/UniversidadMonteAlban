@@ -33,12 +33,8 @@ function Posts() {
     return (<main>
         <h1>Posts</h1>
         <p>Para ver alguna publicación más en detalle, hazle clic a la imagen</p>
-        <section id="publications" style={{
-            display: 'flex',
-            flexDirection: 'row',
-            flexWrap: 'wrap',
-            justifyContent: 'center',
-            alignItems: 'center'
+        <section id="publications" className='posts-container' style={{
+            
         }}>
             {
                 loading ? <h2>Cargando todas las publicaciones...</h2>  :''

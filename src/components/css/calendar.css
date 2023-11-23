@@ -12,6 +12,8 @@
     --type-10:linear-gradient(to right bottom, #ffffff, #ffff20);
     --type-11:#F8CBAD;
     --type-12:#5B9BD5;
+    --type-13:#3B6149;
+    --type-14:#6A4808;
 }
 
 #calendar{
@@ -116,6 +118,14 @@
     color:black;
     background: var(--type-12);
 }
+.type-13{
+    color:white;
+    background: var(--type-13);
+}
+.type-14{
+    color:white;
+    background: var(--type-14);
+}
 .type-1:hover{
     background: var(--type-1) !important;
 }
@@ -151,6 +161,12 @@
 }
 .type-12:hover{
     background: var(--type-12) !important;
+}
+.type-13:hover{
+    background: var(--type-13) !important;
+}
+.type-14:hover{
+    background: var(--type-14) !important;
 }
 .color{
     width: 30px;

@@ -43,6 +43,8 @@ const CalendarSpecial = () => {
     {value: '10', label: 'Consulta de actas finales'},
     {value: '11', label: 'Examenes de regularización'},
     {value: '12', label: 'Entrega de planeaciones'},
+    {value: '13', label: 'Conmemoración de fecha importante'},
+    {value: '14', label: 'Comunicado'},
   ]
   const closeAlert = () => {
       setAlert(null);

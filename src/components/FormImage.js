@@ -68,6 +68,7 @@ function FormImage(){
                 openAlert("Error de archivos", `La publicación no se ha podido editar debido a un error con la subida de archivos`, "error", null);
             }else{
                 openAlert("Error de conexión", `La petición ha fallado por ${error}`, "error", null);
+                console.log(error);
             }
         }
     };
@@ -106,7 +107,7 @@ function FormImage(){
                 <label htmlFor="short-descrition">Descripción corta de la publicación</label>
                 <input type="text" placeholder="Ingresa una descripción corta de la publicación" id="short-description" onChange={(event) => setLegend(event.target.value)} required/>
                 <label htmlFor="title">Descripción de la publicación</label>
-                <textarea placeholder="Ingresa la descripción de la publicación" id="description" onChange={(event) => setDescription(event.target.value)} required></textarea>
+                <textarea placeholder="Ingresa la descripción de la publicación" id="description" onChange={(event) => setDescription(event.target.value)} rows={20} required></textarea>
                 {image && <button type="submit" className='accept'>Crear publicación</button>}
             </form>
             <Alert

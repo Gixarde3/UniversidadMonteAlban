@@ -49,7 +49,7 @@ function Subject({ cycle, subjects, editar, ids }) {
     return (<div className="subject">
         <button className={`subject-interaction accept ${open ? "open-button":""}`} onClick={() => setOpen(!open)}
             data-tooltip-id='tooltip'
-            data-tooltip-content='Abrir materia'
+            data-tooltip-content='Ver oferta de este cuatrimestre'
             data-tooltip-place='top'
         >
             <h3>Cuatrimestre {cycle}</h3>

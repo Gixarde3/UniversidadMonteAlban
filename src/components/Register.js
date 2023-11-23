@@ -17,6 +17,7 @@ function Login() {
     const [alert, setAlert] = useState(null);
     const [alertOpen, setAlertOpen] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
+    const [validEmail, setValidEmail] = useState(false);
     const prefix = config.endpoint;
     const navigate = useNavigate();
     
@@ -34,10 +35,28 @@ function Login() {
         setAlertOpen(true);
     };
 
+    const checkEmail = (email) => {
+        const regexMail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+        if(regexMail.test(email)){
+            setValidEmail(true);
+        }else{
+            setValidEmail(false);
+        }
+    }
+
+    const setValidEmailValue = (email) => {
+        checkEmail(email);
+        setEmail(email);
+    }
+    
     const handleSubmit = async (event) => {
         event.preventDefault();
         // Ejemplo de uso para verificar si existe la cookie "session"
 
+        if(validEmail === false){
+            openAlert("Correo electrónico inválido", "El correo electrónico ingresado no es válido", "error", null);
+            return;
+        }
         try {
             openAlert("Registrando...", `Se está registrando en nuestro sistema`, "loading", null, false, null);
             const response = await axios.post(`${prefix}/register`, {
@@ -55,6 +74,7 @@ function Login() {
                 navigate('/')
             } else {
                 openAlert("Registro fallido", "El usuario ya se encuentra registrado", "error", null);
+                console.log(data);
             }
         } catch (error) {
             openAlert("Error de conexión", `La petición ha fallado por ${error}`, "error", null);
@@ -103,10 +123,13 @@ function Login() {
                                 id="mail"
                                 placeholder="Ingresa tu correo electrónico"
                                 value={email}
-                                onChange={(event) => setEmail(event.target.value)}
+                                onChange={(event) => setValidEmailValue(event.target.value)}
                                 required
                             />
                         </div>
+                        {validEmail === false ? <div className="error">
+                            <p>El correo electrónico es inválido.</p>
+                        </div> : null}
                         <label htmlFor="birthday">Fecha de nacimiento:</label>
                         <div className="input-div">
                             <input

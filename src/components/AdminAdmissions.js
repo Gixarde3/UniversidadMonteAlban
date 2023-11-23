@@ -154,7 +154,6 @@ function AdminAdmissions() {
     
     const getAdmissions = async() => {
         try{
-            openAlert("Cargando...", `Cargando mensajes de admision`, "loading", null, false, null);
             const response = await axios.post(`${endpoint}/admissions`,{
                 cookie: Cookies.get('session')
             });
