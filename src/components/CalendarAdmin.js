@@ -229,7 +229,7 @@ const CalendarSpecial = () => {
         <h4>Clasificación de fechas especiales</h4>
         <div className="colors-separator">
           {
-            tipos.map((tipo, index) => (<div className="separator">
+            tipos.map((tipo, index) => (<div key={index} className="separator">
               <span className={`color type-${tipo.value}`}></span>
               <p>{tipo.label}</p>
             </div>))

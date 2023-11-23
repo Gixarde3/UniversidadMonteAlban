@@ -103,7 +103,7 @@ const CalendarSpecial = () => {
         <div className="colors-separator">
           <div className="colors-separator">
             {
-              tipos.map((tipo, index) => (<div className="separator">
+              tipos.map((tipo, index) => (<div key={index} className="separator">
                 <span className={`color type-${tipo.value}`}></span>
                 <p>{tipo.label}</p>
               </div>))
