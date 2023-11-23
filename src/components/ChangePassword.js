@@ -107,12 +107,7 @@ function ChangePassword() {
             });
             const data = response.data;
             if (data.success) {
-                openAlert("Actualización de información exitosa", "Tu información se ha actualizado con éxito", "success", null);
-                if(Cookies.get('role') === 2 || Cookies.get('role') === 3){
-                    navigate('/admin');
-                }else{
-                    navigate('/')
-                }
+                openAlert("Actualización de información exitosa", "Tu información se ha actualizado con éxito", "success", Cookies.get('role') === 2 ? "/" : "/admin");
             } else {
                 openAlert("Actualización de información fallida", "Hubo un error inesperado con tu información, intenta de nuevo o reinicia sesión", "error", null);
             }
