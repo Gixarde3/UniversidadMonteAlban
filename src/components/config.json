@@ -2,5 +2,5 @@
     "endpoint": "http://172.23.50.157:8000/api",
     "endpointImage": "http://172.23.50.157:8000/images/",
     "endpointFile": "http://172.23.50.157:8000/documents/",
-    "endpointLocal":"http://172.23.50.157:3000/"
+    "endpointLocal":"thriving-dragon-bc1992.netlify.app/"
 }
