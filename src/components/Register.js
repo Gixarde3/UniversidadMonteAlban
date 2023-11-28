@@ -71,6 +71,7 @@ function Login() {
             if (data.success && data.cookie) {
                 Cookies.set('session', data.cookie, { expires: 1 });
                 Cookies.set('role', 1, { expires: 1 });
+                Cookies.set('username', username, { expires: 1 });
                 navigate('/')
             } else {
                 openAlert("Registro fallido", "El usuario ya se encuentra registrado", "error", null);
