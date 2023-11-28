@@ -70,7 +70,9 @@ function Pages() {
                         carreras.map((carrera, index) => (
                             <li key={index}><Link to={`${enpointLocal}oferta/${carrera.id}`}>{carrera.name}</Link></li>
                         ))
+                        
                     }   
+                    <li><Link to={`${enpointLocal}highschool`}>Preparatoria abierta</Link></li>
                     </ul>
                 </li>
             </ul>
