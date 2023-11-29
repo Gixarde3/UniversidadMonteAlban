@@ -1,6 +1,6 @@
 {
-    "endpoint": "https://3.142.173.134/api",
-    "endpointImage": "https://3.142.173.134/images/",
-    "endpointFile": "https://3.142.173.134/documents/",
+    "endpoint": "https://octopus-app-z9gb7.ondigitalocean.app/api",
+    "endpointImage": "https://octopus-app-z9gb7.ondigitalocean.app/images/",
+    "endpointFile": "https://octopus-app-z9gb7.ondigitalocean.app/documents/",
     "endpointLocal":"https://thriving-dragon-bc1992.netlify.app/"
 }
