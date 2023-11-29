@@ -16,9 +16,13 @@ import Testimonial from "./Testimonial";
 function TestimonialSlider(){
     const [testimonials, setTestimonials] = useState([]);
     const getAllTestimonials = async () => {
-        const prefix = config.endpoint;
-        const response = await axios.get(`${prefix}/testimonial`);
-        setTestimonials(response.data);
+        try{
+            const prefix = config.endpoint;
+            const response = await axios.get(`${prefix}/testimonial`);
+            setTestimonials(response.data);
+        }catch(error){
+            console.log(error);
+        }
     }
       
     useEffect(() => {
