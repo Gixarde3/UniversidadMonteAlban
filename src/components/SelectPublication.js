@@ -26,7 +26,7 @@ function SelectPublication({selectPublication}){
         event.preventDefault();
         try{
             openAlert("Buscando...", `Se están cargando los resultados, porfavor espere`, "loading", null, false, null);
-            const response = await axios.get(`${endpoint}/posts/?search=${search}`);
+            const response = await axios.get(`${endpoint}/posts/${search}`);
             setPosts(response.data);
             setSearched(true);
             closeAlert();

@@ -46,7 +46,7 @@ function SearchPublication(){
     const getResults= async() => {
         try{
             openAlert("Cargando...", `Cargando resultados de búsqueda`, "loading", null, false, null);
-            const response = await axios.get(`${endpoint}/posts/?search=${search}`);
+            const response = await axios.get(`${endpoint}/posts/${search}`);
             setPosts(response.data);
             closeAlert();
         }catch(error){
@@ -58,7 +58,7 @@ function SearchPublication(){
         event.preventDefault();
         try{
             openAlert("Cargando...", `Cargando resultados de búsqueda`, "loading", null, false, null);
-            const response = await axios.get(`${endpoint}/posts/?search=${search}`);
+            const response = await axios.get(`${endpoint}/posts/${search}`);
             setPosts(response.data);
             setSearched(true);
             closeAlert();
