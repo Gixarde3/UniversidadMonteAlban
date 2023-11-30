@@ -1,6 +1,6 @@
 {
-    "endpoint": "https://octopus-app-z9gb7.ondigitalocean.app/api",
-    "endpointImage": "https://octopus-app-z9gb7.ondigitalocean.app/images/",
-    "endpointFile": "https://octopus-app-z9gb7.ondigitalocean.app/documents/",
+    "endpoint": "https://umontealban.site/api",
+    "endpointImage": "https://umontealban.site/images/",
+    "endpointFile": "https://umontealban.site/documents/",
     "endpointLocal":"https://umontealban.netlify.app/"
 }
