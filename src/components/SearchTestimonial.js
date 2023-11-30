@@ -46,7 +46,7 @@ function SearchTestimonial(){
     const getResults= async() => {
         try{
             openAlert("Buscando...", `Buscando testimonio`, "loading", null, false, null);
-            const response = await axios.get(`${endpoint}/testimonials/?search=${search}`);
+            const response = await axios.get(`${endpoint}/testimonials/${search}`);
             setTestimonials(response.data);
             closeAlert();
         }catch(error){
@@ -58,7 +58,7 @@ function SearchTestimonial(){
         event.preventDefault();
         try{
             openAlert("Buscando...", `Buscando testimonio`, "loading", null, false, null);
-            const response = await axios.get(`${endpoint}/testimonials/?search=${search}`);
+            const response = await axios.get(`${endpoint}/testimonials/${search}`);
             setTestimonials(response.data);
             setSearched(true);
             closeAlert();

@@ -46,10 +46,9 @@ function SearchCareer(){
 
     const getResults= async() => {
         try{
-            if(search === ''){setSearch(" ")}
             openAlert("Cargando...", `Cargando resultados de búsqueda`, "loading", null, false, null);
             let response = await axios.get(`${endpoint}/career/search/${search}`);
-            if(response.data.success === false){
+            if(search === ''){
                 response = await axios.get(`${endpoint}/careers`);
             }
             setCareers(response.data);
@@ -64,7 +63,7 @@ function SearchCareer(){
         try{
             openAlert("Cargando...", `Cargando resultados de búsqueda`, "loading", null, false, null);
             let response = await axios.get(`${endpoint}/career/search/${search}`);
-            if(response.data.success === false){
+            if(search === ''){
                 response = await axios.get(`${endpoint}/careers`);
             }
             setCareers(response.data);
