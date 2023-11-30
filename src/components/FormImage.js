@@ -110,13 +110,13 @@ function FormImage(){
                 {image && <button type="submit" className='accept'>Crear publicación</button>}
             </form>
             <Alert
-                        isOpen={alertOpen}
-                        closeAlert={closeAlert}
-                        title={alert ? alert.title : ''}
-                        message={alert ? alert.message : ''}
-                        kind = {alert ? alert.kind : ''}
-                        redirectRoute={alert ? alert.redirectRoute : ''}
-                    />
+                isOpen={alertOpen}
+                closeAlert={closeAlert}
+                title={alert ? alert.title : ''}
+                message={alert ? alert.message : ''}
+                kind = {alert ? alert.kind : ''}
+                redirectRoute={alert ? alert.redirectRoute : ''}
+            />
         </>
         
     );
