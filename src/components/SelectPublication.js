@@ -25,8 +25,13 @@ function SelectPublication({selectPublication}){
     const handleSubmitSearch = async (event) => {
         event.preventDefault();
         try{
-            openAlert("Buscando...", `Se están cargando los resultados, porfavor espere`, "loading", null, false, null);
-            const response = await axios.get(`${endpoint}/posts/${search}`);
+            let response = null;
+            openAlert("Cargando...", `Cargando resultados de búsqueda`, "loading", null, false, null);
+            if(!search || search === ''){
+                response = await axios.get(`${endpoint}/posts`);
+            }else{
+                response = await axios.get(`${endpoint}/posts/${search}`);
+            }
             setPosts(response.data);
             setSearched(true);
             closeAlert();

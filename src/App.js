@@ -26,7 +26,6 @@ import AdminSuggestions from './components/AdminSuggestions';
 import Admission from './components/Admission';
 import SeeAdmission from './components/SeeAdmission';
 import AdminAdmissions from './components/AdminAdmissions';
-import AdminBD from './components/AdminBD';
 import Highschool from './components/Highschool';
 function App() {
   
@@ -66,7 +65,6 @@ function App() {
             <Route path="calendar" element={<LayoutAdmin Page={AdminCalendar} Title="Administrar calendario"/>}/>
             <Route path="suggestions" element={<LayoutAdmin Page={AdminSuggestions} Title="Administrar sugerencias"/>}/>
             <Route path="admissions" element={<LayoutAdmin Page={AdminAdmissions} Title="Administrar admisiones"/>}/>
-            <Route path="bd" element={<LayoutAdmin Page={AdminBD} Title="Administrar bases de datos"/>}/>
           </Route>
           <Route path="404" element={<Layout Page={NotFound} Title="Universidad Monte Albán - Página no encontrada"/>} />
         </Route>

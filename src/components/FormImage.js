@@ -68,7 +68,6 @@ function FormImage(){
                 openAlert("Error de archivos", `La publicación no se ha podido editar debido a un error con la subida de archivos`, "error", null);
             }else{
                 openAlert("Error de conexión", `La petición ha fallado por ${error}`, "error", null);
-                console.log(error);
             }
         }
     };

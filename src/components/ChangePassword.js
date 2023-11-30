@@ -47,7 +47,6 @@ function ChangePassword() {
                 }
             }catch(error){
                 openAlert("Error al cargar la información", `La información no se ha podido cargar`, "error", "/");
-                console.log(error);
             }
         }
         getUser();

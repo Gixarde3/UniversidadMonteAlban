@@ -45,8 +45,13 @@ function SearchPublication(){
 
     const getResults= async() => {
         try{
+            let response = null;
             openAlert("Cargando...", `Cargando resultados de búsqueda`, "loading", null, false, null);
-            const response = await axios.get(`${endpoint}/posts/${search}`);
+            if(!search || search === ''){
+                response = await axios.get(`${endpoint}/posts`);
+            }else{
+                response = await axios.get(`${endpoint}/posts/${search}`);
+            }
             setPosts(response.data);
             closeAlert();
         }catch(error){
@@ -57,8 +62,14 @@ function SearchPublication(){
     const handleSubmitSearch = async (event) => {
         event.preventDefault();
         try{
+            let response = null;
             openAlert("Cargando...", `Cargando resultados de búsqueda`, "loading", null, false, null);
-            const response = await axios.get(`${endpoint}/posts/${search}`);
+            if(!search || search === ''){
+                response = await axios.get(`${endpoint}/posts`);
+            }else{
+                response = await axios.get(`${endpoint}/posts/${search}`);
+            }
+            
             setPosts(response.data);
             setSearched(true);
             closeAlert();

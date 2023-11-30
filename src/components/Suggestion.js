@@ -62,7 +62,6 @@ function Suggestion() {
             }
         }catch(error){
             openAlert("Error al editar la sugerencia", `La sugerencia no se ha podido editar debido a un error inesperado: ${error}`, "error", null);
-            console.log(error);
         }
     };
     const deleteSuggestion = async () => {
@@ -76,7 +75,6 @@ function Suggestion() {
             }
         }catch(error){
             openAlert("Error al eliminar la sugerencia", `La sugerencia no se ha podido eliminar debido a un error inesperado: ${error}`, "error", null);
-            console.log(error);
         }
     };
     const deleteSuggestionAsk = () => {

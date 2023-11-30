@@ -24,10 +24,12 @@ function SearchCareer({selectCareer}){
     };
     const searchCareer = async () => {
         try{
+            let response = null;
             openAlert("Cargando...", `Cargando resultados de búsqueda`, "loading", null, false, null);
-            let response = await axios.get(`${endpoint}/career/search/${search}`);
-            if(response.data.success === false){
+            if(!search || search === ''){
                 response = await axios.get(`${endpoint}/careers`);
+            }else{
+                response = await axios.get(`${endpoint}/career/search/${search}`);
             }
             setCareers(response.data);
             setSearched(true);

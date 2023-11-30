@@ -26,7 +26,6 @@ function EditCareer(){
         const setCareerSubjectsF = async() => {
             const response = await axios.get(`${endpoint}/career/${career.id}}`);
             setCareerSubjects(response.data);
-            console.log(response.data);
         }
         if(career){
             setCareerSubjectsF();
@@ -67,7 +66,6 @@ function EditCareer(){
   
         // cyclesArray es un array que puedes utilizar en tu interfaz de usuario
         setCycles(cyclesArray);
-        console.log(cyclesArray);
     }, [subjectsByCycle, idSubjects])
 
     const closeAlert = () => {

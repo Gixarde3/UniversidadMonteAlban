@@ -46,11 +46,14 @@ function SearchCareer(){
 
     const getResults= async() => {
         try{
+            let response = null;
             openAlert("Cargando...", `Cargando resultados de búsqueda`, "loading", null, false, null);
-            let response = await axios.get(`${endpoint}/career/search/${search}`);
-            if(search === ''){
+            if(!search || search === ''){
                 response = await axios.get(`${endpoint}/careers`);
+            }else{
+                response = await axios.get(`${endpoint}/career/search/${search}`);
             }
+            console.log(response);
             setCareers(response.data);
             closeAlert();
         }catch(error){
@@ -61,11 +64,14 @@ function SearchCareer(){
     const handleSubmitSearch = async (event) => {
         event.preventDefault();
         try{
+            let response = null;
             openAlert("Cargando...", `Cargando resultados de búsqueda`, "loading", null, false, null);
-            let response = await axios.get(`${endpoint}/career/search/${search}`);
-            if(search === ''){
+            if(!search || search === ''){
                 response = await axios.get(`${endpoint}/careers`);
+            }else{
+                response = await axios.get(`${endpoint}/career/search/${search}`);
             }
+            console.log(response);
             setCareers(response.data);
             setSearched(true);
             closeAlert();

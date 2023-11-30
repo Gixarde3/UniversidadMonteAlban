@@ -36,7 +36,6 @@ function FormCareers() {
             openAlert("Error al crear la carrera", "La carrera no se ha podido crear debido a un error inesperado", "error", null);
         }}catch(error){
             openAlert("Error al crear la carrera", `La carrera no se ha podido crear debido a un error inesperado: ${error}`, "error", null);
-            console.log(error);
         }
     }
     return (<>

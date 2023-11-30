@@ -45,8 +45,13 @@ function SearchTestimonial(){
 
     const getResults= async() => {
         try{
+            let response = '';
             openAlert("Buscando...", `Buscando testimonio`, "loading", null, false, null);
-            const response = await axios.get(`${endpoint}/testimonials/${search}`);
+            if(!search || search === ''){
+                response = await axios.get(`${endpoint}/testimonials`);
+            }else{
+                response = await axios.get(`${endpoint}/testimonials/${search}`);
+            }
             setTestimonials(response.data);
             closeAlert();
         }catch(error){
@@ -57,8 +62,13 @@ function SearchTestimonial(){
     const handleSubmitSearch = async (event) => {
         event.preventDefault();
         try{
+            let response = '';
             openAlert("Buscando...", `Buscando testimonio`, "loading", null, false, null);
-            const response = await axios.get(`${endpoint}/testimonials/${search}`);
+            if(!search || search === ''){
+                response = await axios.get(`${endpoint}/testimonials`);
+            }else{
+                response = await axios.get(`${endpoint}/testimonials/${search}`);
+            }
             setTestimonials(response.data);
             setSearched(true);
             closeAlert();

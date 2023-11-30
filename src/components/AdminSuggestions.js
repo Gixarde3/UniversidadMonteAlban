@@ -279,7 +279,6 @@ function AdminSuggestions() {
             false,
             null
         );
-        console.log(error);
         }
     };
 

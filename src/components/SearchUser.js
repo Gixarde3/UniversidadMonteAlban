@@ -69,7 +69,7 @@ function SearchUser(){
         event.preventDefault();
         try{
             openAlert("Buscando...", `Buscando usuario`, "loading", null, false, null);
-            const response = await axios.post(`${endpoint}/users/${search}`,{
+            const response = await axios.post(`${endpoint}/users`,{
                 username: search,
                 cookie: Cookies.get('session')
             });

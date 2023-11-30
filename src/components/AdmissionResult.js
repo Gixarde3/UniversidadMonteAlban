@@ -36,7 +36,6 @@ function AdmissionResult({idAdmission, name, email, content, career, response, u
             }
         }catch(error){
             openAlert("Error de conexión", `La petición ha fallado por ${error}`, "error", null, false, null);
-            console.log(error);
         }
     }
     return (

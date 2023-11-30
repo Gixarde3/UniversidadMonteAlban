@@ -103,8 +103,6 @@ function SearchBD(){
             }
             openAlert("Cargando...", `Cargando resultados de búsqueda`, "loading", null, false, null);
             let response = null;
-            console.log(search);
-            console.log("wtf");
             if(search === ''){
                 response = await axios.post(`${endpoint}/database/search`, {
                     cookie: Cookies.get('session')
@@ -119,7 +117,6 @@ function SearchBD(){
             closeAlert();
         }catch(error){
             openAlert('Error inesperado con la conexión', `Error de conexión: ${error}`, 'error', null);
-            console.log(error);
         }
     }
 

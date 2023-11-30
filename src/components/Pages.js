@@ -16,7 +16,7 @@ function Pages() {
                 const data = await response.json();
                 setCarreras(data);
             }catch(error){
-                console.log(error);
+                openAlert("Error al cargar las carreras", `Las carreras no se han podido cargar debido a un error inesperado`, "error", null, false);
             }
         }
         getCareers();

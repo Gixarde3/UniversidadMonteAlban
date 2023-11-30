@@ -1,7 +1,7 @@
 
 import './css/login.css';
 import React from 'react';
-import { useState, useEffect} from 'react';
+import { useState} from 'react';
 import Alert from './Alert';
 import axios from 'axios';
 import config from './config.json';
@@ -19,11 +19,7 @@ function Login() {
     const [showPassword, setShowPassword] = useState(false);
     const [validEmail, setValidEmail] = useState(false);
     const prefix = config.endpoint;
-    const navigate = useNavigate();
-    
-    useEffect(() => {
-        console.log(birthday);
-    }, [birthday]);    
+    const navigate = useNavigate();  
 
     const closeAlert = () => {
         setAlert(null);

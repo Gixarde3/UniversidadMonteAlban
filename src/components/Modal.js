@@ -1,14 +1,8 @@
-import Comment from './Comment';
-import {useEffect, useState} from 'react';
-import axios from 'axios';
+import {useState} from 'react';
 import config from './config.json';
-import Cookie from 'js-cookie';
-import AddComent from './AddComent';
 import Alert from './Alert';
 import './css/Modal.css';
 function Modal({ isOpen, id_post, closeModal, imageSrc, imageAlt, title, description, file }) {
-  const [coments, setComents] = useState([]);
-  const [isLoading, setLoading] = useState(true);
   const [alert, setAlert] = useState(null);
   const [alertOpen, setAlertOpen] = useState(false);
   const openAlert = (title, message, kind, redirectRoute, asking, onAccept) => {
@@ -20,31 +14,6 @@ function Modal({ isOpen, id_post, closeModal, imageSrc, imageAlt, title, descrip
     setAlertOpen(false);
   };
   const endpointLocal = config.endpointLocal;
-  useEffect(() => {
-    const getAllComents = async () => {
-      if(isOpen){
-        const prefix = config.endpoint;
-        const response = await axios.get(`${prefix}/coment/${id_post}`);
-        setComents(response.data);
-        setLoading(false);
-      }else{
-        setLoading(true);
-      }
-    }
-  
-    getAllComents();
-  }, [id_post, isOpen]);
-  const getAllComents = async () => {
-    if(isOpen){
-      const prefix = config.endpoint;
-      const response = await axios.get(`${prefix}/coment/${id_post}`);
-      setComents(response.data);
-      setLoading(false);
-    }else{
-      setLoading(true);
-    }
-  }
-  const session = Cookie.get('session');
   const handleDownload = () => {
     try{
     // Crea un enlace temporal para descargar el archivo
@@ -77,22 +46,6 @@ function Modal({ isOpen, id_post, closeModal, imageSrc, imageAlt, title, descrip
           <p className='modal-description'>{description}</p>
           {file && file !== '' ? <button className="button" onClick={handleDownload}>Descargar archivo</button> : ''}
         </div>
-        {<div id="comments-container">
-          <h4 className="modal-title">Comentarios</h4>
-          <div id="comments">
-            {isLoading ? (
-              <h4 className='modal-title'>Cargando comentarios...</h4>
-            ) : ( coments.length === 0) ? (
-              <h4 className='modal-title'>No hay comentarios</h4>
-            ) : (
-              coments.map((coment, index) => (
-                <Comment key={index} id_coment = {coment.id} userName={coment.username} coment={coment.content} isCreator={session === coment.cookie} reloadComents={getAllComents}/>
-              ))
-              )}
-              </div>
-              {session ? <AddComent id_post={id_post} reloadComents={getAllComents}/> : ''}
-          
-              </div>}
       </aside>
       <Alert
                     isOpen={alertOpen}

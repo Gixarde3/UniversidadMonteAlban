@@ -43,13 +43,11 @@ function FormSubject() {
                 cookie: Cookies.get('session')
             });
         if(response.data.success){
-            console.log(response.data);
             openAlert("Materia creada", "La materia se ha creado con éxito", "success", null);
         }else{
             openAlert("Error al crear la materia", "La materia no se ha podido crear debido a un error inesperado", "error", null);
         }}catch(error){
             openAlert("Error al crear la materia", `La materia no se ha podido crear debido a un error inesperado: ${error}`, "error", null);
-            console.log(error);
         }
     }
     const quitCareer = () => {

@@ -27,7 +27,7 @@ function Admission() {
                 const data = await response.json();
                 setCarreras(data);
             }catch(error){
-                console.log(error);
+                openAlert("Error al cargar las carreras", `Las carreras no se han podido cargar debido a un error inesperado: ${error}`, "error", null);
             }
         }
         getCareers();
@@ -49,7 +49,6 @@ function Admission() {
             }
         }catch(error){
             openAlert("Error al crear la solicitud de admisión", `La solicitud de admisión no se ha podido crear debido a un error inesperado: ${error}`, "error", null);
-            console.log(error);
         }
     }
     return (

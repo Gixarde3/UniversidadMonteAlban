@@ -33,7 +33,6 @@ function Buzon() {
             }
         }catch(error){
             openAlert("Error al crear la sugerencia", `La sugerencia no se ha podido crear debido a un error inesperado: ${error}`, "error", null);
-            console.log(error);
         }
     }
     return (

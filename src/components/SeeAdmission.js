@@ -70,7 +70,6 @@ function SeeAdmission() {
             }
         }catch(error){
             openAlert("Error al editar el mensaje de admisión", `El mensaje de admisión no se ha podido editar debido a un error inesperado: ${error}`, "error", null);
-            console.log(error);
         }
     };
     const deleteAdmission = async () => {
@@ -84,7 +83,6 @@ function SeeAdmission() {
             }
         }catch(error){
             openAlert("Error al eliminar el mensaje de admisión", `El mensaje de admisión no se ha podido eliminar debido a un error inesperado: ${error}`, "error", null);
-            console.log(error);
         }
     };
     const deleteAdmissionAsk = () => {

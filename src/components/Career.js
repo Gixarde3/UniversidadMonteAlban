@@ -21,7 +21,6 @@ function Career() {
             try{
                 const response = await axios.get(`${endpoint}/career/${id}`);
                 setCareer(response.data);
-                console.log(response.data)
                 if(!response || !response.data || response.data.success === false){
                     navigate('/404');
                 }
@@ -47,7 +46,6 @@ function Career() {
                     return null;
                 }
             );
-            console.log(subByCycles);
             setSubjectsByCycle(subByCycles);
         }
     }, [career]);

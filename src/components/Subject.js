@@ -1,5 +1,5 @@
 import './css/subject.css'
-import React, { useEffect } from 'react';
+import React from 'react';
 import config from './config.json';
 import {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -14,9 +14,6 @@ function Subject({ cycle, subjects, editar, ids }) {
     const [alert, setAlert] = useState(null);
     const [alertOpen, setAlertOpen] = useState(false);
     const [subjectsState, setSubjectState] = useState(subjects);
-    useEffect(()=>{
-        console.log(subjectsState);
-    }, [subjectsState])
     const closeAlert = () => {
         setAlert(null);
         setAlertOpen(false);
@@ -33,9 +30,7 @@ function Subject({ cycle, subjects, editar, ids }) {
             if(!response || !response.data || response.data.success === false){
                 openAlert("Error inesperado", `La materia no se ha podido eliminar debido a un error inesperado`, "error", null, false);
             }else{
-                console.log(subjectsState[index]);
                 const updatedSubjects = subjectsState.filter((subject) => subject !== subjectsState[index]);
-                console.log(updatedSubjects);
                 setSubjectState(updatedSubjects); // Elimina el testimonio de la lista
                 openAlert("Materia eliminada", "La materia se ha eliminado con éxito", "success", null, false);
             }
