@@ -15,7 +15,6 @@ const CalendarSpecial = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedDateData, setSelectedDateData] = useState(null);
   const [selectedPost, setSelectedPost] = useState(null);
-  const [idPost, setIdPost] = useState(null);
   const [date, setDate] = useState(new Date());
   const [nameEvent, setNameEvent] = useState('');
   const [descriptionEvent, setDescriptionEvent] = useState('');
@@ -56,7 +55,6 @@ const CalendarSpecial = () => {
         setNameEvent(selectedDateData.eventName);
         setDescriptionEvent(selectedDateData.description);
         setTypeEvent(selectedDateData.type);
-        selectedDateData.idPost ? setIdPost(selectedDateData.idPost) : setIdPost(null);
         setEliminarPost(false);
         if(selectedDateData.idPost){
           const response = await axios.get(`${endpoint}/post/?id_post=${selectedDateData.idPost}`);
@@ -116,11 +114,8 @@ const CalendarSpecial = () => {
     return null;
   };
 
-  const setPost = async (idPost) => {
-    setIdPost(idPost);
-    openAlert("Cargando...", `Cargando post`, "loading", null, false, null)
-    const response = await axios.get(`${endpoint}/post/?id_post=${idPost}`);
-    setSelectedPost(response.data);
+  const setPost = async (post) => {
+    setSelectedPost(post);
     setEliminarPost(false);
     closeAlert();
   }
@@ -136,13 +131,11 @@ const CalendarSpecial = () => {
       setNameEvent('');
       setDescriptionEvent('');
       setTypeEvent("1");
-      setIdPost(null);
       setSelectedPost(null);
     }
   };
   const quitPost = () => {
     setSelectedPost(null);
-    setIdPost(null);
     setEliminarPost(true);
   }
 
@@ -155,7 +148,7 @@ const CalendarSpecial = () => {
       formData.append('description', descriptionEvent);
       formData.append('type', typeEvent);
       formData.append('date', selectedDate.toISOString().split('T')[0]);
-      if(idPost){formData.append('post', idPost)}
+      if(selectedPost){formData.append('post', selectedPost.id)}
       if(eliminarPost){formData.append('eliminarPost', eliminarPost)}
       formData.append('cookie', Cookies.get('session'));
       openAlert('Editando...', 'Espere mientras se edita el evento', 'loading', null, false, null);
@@ -195,25 +188,30 @@ const CalendarSpecial = () => {
       formData.append('description', descriptionEvent);
       formData.append('type', typeEvent);
       formData.append('date', selectedDate.toISOString().split('T')[0]);
-      if(idPost){formData.append('post', idPost)}
+      if(selectedPost){formData.append('post', selectedPost.id)}
       formData.append('cookie', Cookies.get('session'));
       openAlert("Creando...", `Espere mientras se crea el evento`, "loading", null, false, null)
-      const response = await axios.post(`${endpoint}/event`, formData);
+      const response = await axios.post(`${endpoint}/event`, 
+      {
+        event: nameEvent,
+        description: descriptionEvent,
+        type: typeEvent,
+        date: selectedDate.toISOString().split('T')[0],
+        cookie: Cookies.get('session'),
+      }
+      );
+      console.log(`${endpoint}/event`, formData);
       if(response.data.success){
         openAlert('Evento creado', 'El evento se ha creado con éxito', 'success', null);
         getSpecialDates();
       }else{
-        openAlert('Error inesperado', 'El evento no se ha podido crear debido a un error inesperado', 'error', null);
+        openAlert('Error inesperado', `El evento no se ha podido crear debido a un error inesperado porque ${response.data.message}`, 'error', null);
       }
     }catch(error){
       openAlert('Error inesperado', `El evento no se ha podido crear debido a un error inesperado: ${error}`, 'error', null)
     }
   }
-  const openPost = async(idPost) => {
-    openAlert("Cargando...", `Cargando post`, "loading", null, false, null)
-    const response = await axios.get(`${endpoint}/post/?id_post=${idPost}`);
-    closeAlert();
-    setSelectedPost(response.data);
+  const openPost = async() => {
     openModal();
   }
   return (
@@ -278,7 +276,7 @@ const CalendarSpecial = () => {
                   <p className="post-file">{selectedPost.route}</p>
               </div>
           </div>
-          <button className='accept' onClick={()=>(openPost(idPost))}>Previsualización del post seleccionado</button>
+          <button className='accept' onClick={()=>(openPost())}>Previsualización del post seleccionado</button>
           </>:''}
         <SelectPublication selectPublication={setPost}/>
         <button className="accept" onClick={selectedDateData ? () => (editPost()) : () => (createEvent())}>{selectedDateData ? ("Editar evento") : "Crear evento"}</button>

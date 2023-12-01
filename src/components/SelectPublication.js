@@ -58,7 +58,7 @@ function SelectPublication({selectPublication}){
             {posts.map((result, index) => (
                 <div className="res" key={index} style={{width: '100%'}}>
                     <form className="buttons">
-                        <button type="button" className="btn-admin seleccionar" onClick={()=>{selectPublication(result.id)}}
+                        <button type="button" className="btn-admin seleccionar" onClick={()=>{selectPublication(result, result.id)}}
                             data-tooltip-id="tooltip"
                             data-tooltip-content="Seleccionar publicación"
                             data-tooltip-place="top"
