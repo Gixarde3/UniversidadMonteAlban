@@ -16,7 +16,7 @@ function ChangePassword() {
     const [showLastPassword, setShowLastPassword] = useState(false);
     const prefix = config.endpoint;
     const navigate = useNavigate();
-    
+    const endpointLocal = config.endpointLocal;
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [lastnames, setLastnames] = useState('');
@@ -117,10 +117,9 @@ function ChangePassword() {
     };
 
     return (
-            <main>
+            <>
                 <section id="login">
-                    <img src="img/logo_azul.png" alt="Imagen del logo de la universidad" id="logo" style={{filter:'none'}}/>
-                    <h1>Administrar perfil</h1>
+                    <h2>Administrar perfil</h2>
                     <form onSubmit={handleUpdate} style={{width: '100%'}}>
                         <div className="form-group">
                             <label htmlFor="email">Correo electrónico</label>
@@ -149,7 +148,7 @@ function ChangePassword() {
                         <div className="form-group">
                         <label htmlFor="password">Contraseña anterior</label>
                             <div className="input-div" style={{width:'100%'}}>
-                                <img src="img/icon_pass.png" alt="Icono de contraseña para iniciar sesión" />
+                                <img src={`${endpointLocal}img/icon_pass.png`} alt="Icono de contraseña para iniciar sesión" />
                                 <input
                                     type={showLastPassword ? 'text' : 'password'}
                                     name="password"
@@ -160,13 +159,13 @@ function ChangePassword() {
                                     required
                                 />
                                 <button type="button" onClick={toggleLastPasswordVisibility} className="btn-mostrar">
-                                    <img src={"img/" + (showLastPassword ? "ver.png" : "no_ver.png")} alt="Icono para ver o esconder contraseña" />
+                                <img src={`${endpointLocal}img/` + (showLastPassword ? "ver.png" : "no_ver.png")} alt="Icono para ver o esconder contraseña" />
                                 </button>
                             </div>
                         </div>
                         <div className="form-group">
                             <div className="input-div" style={{width:'100%'}}>
-                                <img src="img/icon_pass.png" alt="Icono de contraseña para iniciar sesión" />
+                                <img src={`${endpointLocal}img/icon_pass.png`} alt="Icono de contraseña para iniciar sesión" />
                                 <input
                                     type={showPassword ? 'text' : 'password'}
                                     name="password"
@@ -177,7 +176,7 @@ function ChangePassword() {
                                     required
                                 />
                                 <button type="button" onClick={togglePasswordVisibility} className="btn-mostrar">
-                                    <img src={"img/" + (showPassword ? "ver.png" : "no_ver.png")} alt="Icono para ver o esconder contraseña" />
+                                    <img src={`${endpointLocal}img/` + (showPassword ? "ver.png" : "no_ver.png")} alt="Icono para ver o esconder contraseña" />
                                 </button>
                             </div>
                         </div>
@@ -192,7 +191,7 @@ function ChangePassword() {
                 kind = {alert ? alert.kind : ''}
                 redirectRoute={alert ? alert.redirectRoute : ''}
             />
-        </main>
+        </>
     );
 }
 

@@ -81,10 +81,6 @@ function Pages() {
             <Link to={`${enpointLocal}buzon`}>Sugerencias</Link>
             <Link to={`${enpointLocal}admisiones`}>Admisiones</Link>
             {Cookies.get('role') === "2" || Cookies.get('role') === "3" ? <Link to="/admin">Administración</Link> : ''}
-            {
-                Cookies.get('session') ? <Link to="/password">Perfil</Link> : ''
-            }
-            
             {Cookies.get('session') ? 
                 <button type="button" onClick={()=>(logout())} style={{cursor:'pointer', display: 'flex', alignItems: 'center', flexDirection:'row'}}
                     data-tooltip-id='tooltip'

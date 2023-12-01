@@ -11,6 +11,7 @@ function PagesAdmin() {
             <Link to={`${endpointLocal}admin/suggestions`}>Sugerencias</Link>
             <Link to={`${endpointLocal}admin/admissions`}>Admisiones</Link>
             <Link to={`${endpointLocal}admin/calendar`}>Calendario</Link>
+            <Link to={`${endpointLocal}admin/profile`}>Perfil</Link>
             {Cookies.get('role') === '3' ? <Link to={`${endpointLocal}admin/users`}>Administardores</Link> : null}
             <Link to={`${endpointLocal}admin/testimonials`}>Testimonios</Link>
         </>

@@ -37,7 +37,6 @@ function App() {
           <Route path="login" element={<Layout Page={Login} Title = "Universidad Monte Albán - Acceso"/>}/>
           <Route path="buzon" element={<Layout Page={Buzon} Title = "Universidad Monte Albán - Buzón de sugerencias"/>}/>
           <Route path="admisiones" element={<Layout Page={Admission} Title = "Universidad Monte Albán - Solicitud de admisión"/>}/>
-          <Route path="password" element={<Layout Page={ChangePassword} Title = "Universidad Monte Albán - Cambio de contraseña"/>}/>
           <Route path="nosotros" element={<Layout Page={Nosotros} Title = "Universidad Monte Albán - Nosotros"/>}/>
           <Route path="oferta/:id" element={<Layout Page={Career} Title = "Universidad Monte Albán - Ver carrera"/>}/>
           <Route path="publicaciones" element={<Layout Page={Posts} Title = "Universidad Monte Albán - Ver todas las publicaciones"/>}></Route>
@@ -63,6 +62,7 @@ function App() {
             <Route path="calendar" element={<LayoutAdmin Page={AdminCalendar} Title="Administrar calendario"/>}/>
             <Route path="suggestions" element={<LayoutAdmin Page={AdminSuggestions} Title="Administrar sugerencias"/>}/>
             <Route path="admissions" element={<LayoutAdmin Page={AdminAdmissions} Title="Administrar admisiones"/>}/>
+            <Route path="profile" element={<LayoutAdmin Page={ChangePassword} Title = "Universidad Monte Albán - Edición de perfil"/>}/>
           </Route>
           <Route path="404" element={<Layout Page={NotFound} Title="Universidad Monte Albán - Página no encontrada"/>} />
         </Route>
