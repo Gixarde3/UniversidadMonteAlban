@@ -7,7 +7,6 @@ import axios from 'axios';
 import config from './config.json';
 import Cookies from 'js-cookie';
 import {useNavigate} from 'react-router-dom';
-import {Link} from 'react-router-dom';
 function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -102,7 +101,6 @@ function Login() {
                             </button>
                         </div>
                         <button type="submit" id="btn-iniciar" className='button'>Iniciar Sesión</button>
-                        <Link to="/register">¿No tienes cuenta? Regístrate</Link>
                     </form>
                 </section>
                 <Alert

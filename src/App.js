@@ -8,7 +8,6 @@ import Buzon from './components/Buzon';
 import LayoutAdmin from './components/LayoutAdmin';
 import EditTestimonial from './components/EditTestimonial';
 import EditPost from './components/EditPost';
-import Register from './components/Register';
 import Nosotros from './components/Nosotros';
 import ChangePassword from './components/ChangePassword';
 import Career from './components/Career';
@@ -38,7 +37,6 @@ function App() {
           <Route path="login" element={<Layout Page={Login} Title = "Universidad Monte Albán - Acceso"/>}/>
           <Route path="buzon" element={<Layout Page={Buzon} Title = "Universidad Monte Albán - Buzón de sugerencias"/>}/>
           <Route path="admisiones" element={<Layout Page={Admission} Title = "Universidad Monte Albán - Solicitud de admisión"/>}/>
-          <Route path="register" element={<Layout Page={Register} Title = "Universidad Monte Albán - Registrarse"/>}/>
           <Route path="password" element={<Layout Page={ChangePassword} Title = "Universidad Monte Albán - Cambio de contraseña"/>}/>
           <Route path="nosotros" element={<Layout Page={Nosotros} Title = "Universidad Monte Albán - Nosotros"/>}/>
           <Route path="oferta/:id" element={<Layout Page={Career} Title = "Universidad Monte Albán - Ver carrera"/>}/>

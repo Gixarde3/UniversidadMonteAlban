@@ -6,8 +6,7 @@ import Alert from './Alert';
 import axios from 'axios';
 import config from './config.json';
 import Cookies from 'js-cookie';
-import {useNavigate} from 'react-router-dom';
-function Login() {
+function Register() {
     const [name, setName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -18,9 +17,8 @@ function Login() {
     const [alertOpen, setAlertOpen] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
     const [validEmail, setValidEmail] = useState(false);
-    const prefix = config.endpoint;
-    const navigate = useNavigate();  
-
+    const prefix = config.endpoint;  
+    const endpointLocal = config.endpointLocal;
     const closeAlert = () => {
         setAlert(null);
         setAlertOpen(false);
@@ -61,18 +59,14 @@ function Login() {
                 name: name,
                 lastName: lastName,
                 email: email,
-                birthday: birthday
+                birthday: birthday,
+                cookie: Cookies.get('session')
             });
-            const data = response.data;
-            if (data.success && data.cookie) {
-                Cookies.set('session', data.cookie, { expires: 1 });
-                Cookies.set('role', 1, { expires: 1 });
-                Cookies.set('username', username, { expires: 1 });
-                navigate('/')
-            } else {
-                openAlert("Registro fallido", "El usuario ya se encuentra registrado", "error", null);
-                console.log(data);
+            if(response.data.success === false){
+                openAlert("Registro fallido", `El usuario ya existe en el sistema`, "error", null, false, null);
+                return;
             }
+            openAlert("Registro exitoso", `Se ha registrado exitosamente en nuestro sistema`, "success", null, false, null);
         } catch (error) {
             openAlert("Error de conexión", `La petición ha fallado por ${error}`, "error", null);
         }
@@ -83,104 +77,102 @@ function Login() {
     };
 
     return (
-            <main>
-                <section id="login">
-                    <form onSubmit={handleSubmit}>
-                        <img src="img/logo_azul.png" alt="Imagen del logo de la universidad" id="logo" />
-                        <h1>Registrarse</h1>
-                        <label htmlFor="name">Nombre</label>
-                        <div className="input-div">
-                            <input
-                                type="text"
-                                name="name"
-                                id="name"
-                                placeholder="Ingresa tu(s) nombres"
-                                value={name}
-                                onChange={(event) => setName(event.target.value)}
-                                required
-                            />
-                        </div>
-                        <label htmlFor="lastname">Apellidos:</label>
-                        <div className="input-div">
-                            <input
-                                type="text"
-                                name="lastname"
-                                id="lastname"
-                                placeholder="Ingresa tus apellidos"
-                                value={lastName}
-                                onChange={(event) => setLastName(event.target.value)}
-                                required
-                            />
-                        </div>
-                        <label htmlFor="mail">Correo electrónico:</label>
-                        <div className="input-div">
-                            <input
-                                type="text"
-                                name="mail"
-                                id="mail"
-                                placeholder="Ingresa tu correo electrónico"
-                                value={email}
-                                onChange={(event) => setValidEmailValue(event.target.value)}
-                                required
-                            />
-                        </div>
-                        {validEmail === false ? <div className="error">
-                            <p>El correo electrónico es inválido.</p>
-                        </div> : null}
-                        <label htmlFor="birthday">Fecha de nacimiento:</label>
-                        <div className="input-div">
-                            <input
-                                type="date"
-                                name="birthday"
-                                id="birthday"
-                                placeholder="Ingresa tu fecha de nacimiento"
-                                value={birthday}
-                                onChange={(event) => setBirthday(event.target.value)}
-                                required
-                            />
-                        </div>
-                        <label htmlFor="Username">Nombre de usuario</label>
-                        <div className="input-div">
-                            <img src="img/icon_user.png" alt="Icono de usuario para iniciar sesión" />
-                            <input
-                                type="text"
-                                name="username"
-                                id="username"
-                                placeholder="Nombre de usuario"
-                                value={username}
-                                onChange={(event) => setUsername(event.target.value)}
-                                required
-                            />
-                        </div>
-                        <label htmlFor="password">Contraseña</label>
-                        <div className="input-div">
-                            <img src="img/icon_pass.png" alt="Icono de contraseña para iniciar sesión" />
-                            <input
-                                type={showPassword ? 'text' : 'password'}
-                                name="password"
-                                id="password"
-                                placeholder="Contraseña"
-                                value={password}
-                                onChange={(event) => setPassword(event.target.value)}
-                                required
-                            />
-                            <button type="button" onClick={togglePasswordVisibility} id="btn-mostrar">
-                                <img src={"img/" + (showPassword ? "ver.png" : "no_ver.png")} alt="Icono para ver o esconder contraseña" />
-                            </button>
-                        </div>
-                        <button type="submit" id="btn-iniciar" className='button'>Registrarse</button>
-                    </form>
-                </section>
-                <Alert
-                    isOpen={alertOpen}
-                    closeAlert={closeAlert}
-                    title={alert ? alert.title : ''}
-                    message={alert ? alert.message : ''}
-                    kind = {alert ? alert.kind : ''}
-                    redirectRoute={alert ? alert.redirectRoute : ''}
-                />
-            </main>
+        <>
+            <section id="login">
+                <form onSubmit={handleSubmit} style={{width:'100%'}}>
+                    <label htmlFor="name">Nombre</label>
+                    <div className="input-div">
+                        <input
+                            type="text"
+                            name="name"
+                            id="name"
+                            placeholder="Ingresa su(s) nombres"
+                            value={name}
+                            onChange={(event) => setName(event.target.value)}
+                            required
+                        />
+                    </div>
+                    <label htmlFor="lastname">Apellidos:</label>
+                    <div className="input-div">
+                        <input
+                            type="text"
+                            name="lastname"
+                            id="lastname"
+                            placeholder="Ingresa sus apellidos"
+                            value={lastName}
+                            onChange={(event) => setLastName(event.target.value)}
+                            required
+                        />
+                    </div>
+                    <label htmlFor="mail">Correo electrónico:</label>
+                    <div className="input-div">
+                        <input
+                            type="text"
+                            name="mail"
+                            id="mail"
+                            placeholder="Ingresa su correo electrónico"
+                            value={email}
+                            onChange={(event) => setValidEmailValue(event.target.value)}
+                            required
+                        />
+                    </div>
+                    {validEmail === false ? <div className="error">
+                        <p>El correo electrónico es inválido.</p>
+                    </div> : null}
+                    <label htmlFor="birthday">Fecha de nacimiento:</label>
+                    <div className="input-div">
+                        <input
+                            type="date"
+                            name="birthday"
+                            id="birthday"
+                            placeholder="Ingresa su fecha de nacimiento"
+                            value={birthday}
+                            onChange={(event) => setBirthday(event.target.value)}
+                            required
+                        />
+                    </div>
+                    <label htmlFor="Username">Nombre de usuario</label>
+                    <div className="input-div">
+                        <img src={`${endpointLocal}img/icon_user.png`} alt="Icono de usuario para iniciar sesión" />
+                        <input
+                            type="text"
+                            name="username"
+                            id="username"
+                            placeholder="Nombre de usuario"
+                            value={username}
+                            onChange={(event) => setUsername(event.target.value)}
+                            required
+                        />
+                    </div>
+                    <label htmlFor="password">Contraseña</label>
+                    <div className="input-div">
+                        <img src={`${endpointLocal}img/icon_pass.png`} alt="Icono de contraseña para iniciar sesión" />
+                        <input
+                            type={showPassword ? 'text' : 'password'}
+                            name="password"
+                            id="password"
+                            placeholder="Contraseña"
+                            value={password}
+                            onChange={(event) => setPassword(event.target.value)}
+                            required
+                        />
+                        <button type="button" onClick={togglePasswordVisibility} id="btn-mostrar">
+                            <img src={`${endpointLocal}img/` + (showPassword ? "ver.png" : "no_ver.png")} alt="Icono para ver o esconder contraseña" />
+                        </button>
+                    </div>
+                    <button type="submit" id="btn-iniciar" className='button'>Registrar administrador</button>
+                </form>
+            </section>
+            <Alert
+                isOpen={alertOpen}
+                closeAlert={closeAlert}
+                title={alert ? alert.title : ''}
+                message={alert ? alert.message : ''}
+                kind = {alert ? alert.kind : ''}
+                redirectRoute={alert ? alert.redirectRoute : ''}
+            />
+        </>
     );
 }
 
-export default Login;
+export default Register;
