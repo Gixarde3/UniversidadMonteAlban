@@ -189,6 +189,7 @@ const CalendarSpecial = () => {
       formData.append('type', typeEvent);
       formData.append('date', selectedDate.toISOString().split('T')[0]);
       if(selectedPost){formData.append('post', selectedPost.id);}
+      console.log(selectedPost);
       formData.append('cookie', Cookies.get('session'));
       openAlert("Creando...", `Espere mientras se crea el evento`, "loading", null, false, null)
       const response = await axios.post(`${endpoint}/event`, 
