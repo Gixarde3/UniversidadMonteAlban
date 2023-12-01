@@ -192,15 +192,7 @@ const CalendarSpecial = () => {
       console.log(selectedPost);
       formData.append('cookie', Cookies.get('session'));
       openAlert("Creando...", `Espere mientras se crea el evento`, "loading", null, false, null)
-      const response = await axios.post(`${endpoint}/event`, 
-      {
-        event: nameEvent,
-        description: descriptionEvent,
-        type: typeEvent,
-        date: selectedDate.toISOString().split('T')[0],
-        cookie: Cookies.get('session'),
-      }
-      );
+      const response = await axios.post(`${endpoint}/event`, formData);
       console.log(`${endpoint}/event`, formData);
       if(response.data.success){
         openAlert('Evento creado', 'El evento se ha creado con éxito', 'success', null);
