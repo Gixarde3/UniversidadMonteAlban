@@ -57,7 +57,7 @@ const CalendarSpecial = () => {
         setTypeEvent(selectedDateData.type);
         setEliminarPost(false);
         if(selectedDateData.idPost){
-          const response = await axios.get(`${endpoint}/post/?id_post=${selectedDateData.idPost}`);
+          const response = await axios.get(`${endpoint}/post/${selectedDateData.idPost}`);
           setSelectedPost(response.data);
         }else{
           setSelectedPost(null);
