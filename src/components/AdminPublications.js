@@ -17,7 +17,6 @@ function AdminPublications() {
                 Cookies.remove('role');
                 Cookies.remove('username');
                 window.location.reload();
-                navigate('/');
             }
         }
         isAdmin();
