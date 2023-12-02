@@ -55,8 +55,12 @@ function AdminSuggestions() {
         const response = await axios.post(`${endpoint}/complaints`, {
             cookie: Cookies.get('session'),
         });
-        setSuggestions(response.data);
-        closeAlert();
+        if(response.data.success === false){
+            openAlert('Error inesperado con la conexión', `Error de conexión`, 'error', "/");
+        }else{
+            setSuggestions(response.data);
+            closeAlert();
+        }
         };
         getSuggestions();
     }, [endpoint]);

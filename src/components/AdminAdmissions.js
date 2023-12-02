@@ -42,8 +42,12 @@ function AdminAdmissions() {
             const response = await axios.post(`${endpoint}/admissions`,{
                 cookie: Cookies.get('session')
             });
-            setAdmissions(response.data);
-            closeAlert();
+            if(response.data.success === false){
+                openAlert('Error inesperado con la conexión', `Error de conexión`, 'error', "/");
+            }else{
+                setAdmissions(response.data);
+                closeAlert();
+            }
         }
         getAdmissions();
     },[endpoint]);
