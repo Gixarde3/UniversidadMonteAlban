@@ -21,7 +21,7 @@ function AdminPublications() {
             }
         }
         isAdmin();
-    }, [config.endpoint, navigate]);
+    }, [navigate]);
     return ( 
         <section id="manage-publications" className="section-admin">
             <h2>Gestión de publicaciones</h2>
