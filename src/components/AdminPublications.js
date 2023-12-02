@@ -20,6 +20,7 @@ function AdminPublications() {
                 navigate('/');
             }
         }
+        isAdmin();
     }, [config.endpoint, navigate]);
     return ( 
         <section id="manage-publications" className="section-admin">
