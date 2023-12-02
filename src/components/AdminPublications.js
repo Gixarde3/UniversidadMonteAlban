@@ -9,7 +9,7 @@ function AdminPublications() {
     const navigate = useNavigate();
     useEffect(() => {
         const isAdmin = async () => {
-            const response = await axios.post(`${config.endpoint}/admin`,{
+            const response = await axios.post(`${config.endpoint}/user/isAdmin`,{
                 cookie: Cookies.get('session')
             });
             if(response.data.success === false){
