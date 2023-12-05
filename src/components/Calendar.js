@@ -15,7 +15,9 @@ const CalendarSpecial = () => {
   const [selectedPost, setSelectedPost] = useState(null);
   const [date, setDate] = useState(new Date());
   const [modalOpen, setModalOpen] = useState(false);
+  const [open, setOpen] = useState(false);
   const endpoint = config.endpoint;
+  const endpointLocal = config.endpointLocal;
   const endpointImage = config.endpointImage;
   useEffect(() => { 
     const getSpecialDates = async () => {
@@ -99,8 +101,15 @@ const CalendarSpecial = () => {
         onClickDay={handleDateClick}
       />
       <div id="colors">
-        <h4>Clasificación de fechas especiales</h4>
-        <div className="colors-separator">
+      <button className={`subject-interaction accept ${open ? "open-button":""}`} onClick={() => setOpen(!open)}
+            data-tooltip-id='tooltip'
+            data-tooltip-content='Ver las clasificaciones de fechas en detalle'
+            data-tooltip-place='top'
+        >
+            <h3 style={{textAlign:'center', width:'100%'}}>Clasificaciones de fechas</h3>
+            <img src={`${endpointLocal}img/close.png`} alt="boton-abrir" />
+        </button>
+        <div className={`colors-separator subject-list ${open ? "open":""}`} style={{padding:0}}>
           <div className="colors-separator">
             {
               tipos.map((tipo, index) => (<div key={index} className="separator">
