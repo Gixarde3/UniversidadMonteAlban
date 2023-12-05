@@ -86,7 +86,7 @@ const CalendarSpecial = () => {
   };
 
   const openPost = async(idPost) => {
-    const response = await axios.get(`${endpoint}/post/?id_post=${idPost}`);
+    const response = await axios.get(`${endpoint}/post/${idPost}`);
     setSelectedPost(response.data);
     openModal();
   }
