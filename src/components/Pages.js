@@ -88,7 +88,7 @@ function Pages() {
                     data-tooltip-place='bottom'
                 >
                     {Cookies.get('username') ? <p style={{fontSize: '20px'}}>{Cookies.get('username')}</p> : ''}
-                    <img src={`${enpointLocal}/img/login.png`} alt="Icono para cerrar sesion" className = "icon_social_header"/>
+                    <img src={`${enpointLocal}/img/Login.png`} alt="Icono para cerrar sesion" className = "icon_social_header"/>
                 </button>
                 : 
                 <Link to={`${enpointLocal}login`}>
