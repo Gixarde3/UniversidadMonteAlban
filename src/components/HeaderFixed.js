@@ -42,7 +42,7 @@ function HeaderFixed({newHeaderRef, isFromAdmin}) {
             >
                 <div id="down" style={isFromAdmin ? {flexWrap: 'wrap', justifyContent:'space-between', paddingRight:'1rem'} : {}}>
                     <Link to="/" id="logo_container_fixed">
-                            <img src={`${endpoitnLocal}img/logo.webp`} alt="Imagen del logo de la universidad" id="logo"
+                            <img src={`${endpoitnLocal}img/Logo.webp`} alt="Imagen del logo de la universidad" id="logo"
                                 data-tooltip-id='tooltip'
                                 data-tooltip-content='Universidad Monte Albán'
                                 data-tooltip-place='bottom'
