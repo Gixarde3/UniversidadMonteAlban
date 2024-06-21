@@ -35,7 +35,7 @@ function HeaderMobile({isFromAdmin}) {
             <header className='header'>
                 <div id="up">
                     <Link to="/" id="logo_container">
-                            <img src={`${endpoitnLocal}img/logo.webp`}alt="Imagen del logo de la universidad" id="logo" />
+                            <img src={`${endpoitnLocal}img/Logo.webp`}alt="Imagen del logo de la universidad" id="logo" />
                     </Link>
                     <h3>Menú</h3>
                     <div id="parts">
@@ -51,7 +51,7 @@ function HeaderMobile({isFromAdmin}) {
             <header className={isSticky ? "sticky-header header" : "header"} style = {isSticky ? {top:0, left:0} : {display:'none'}}>
                 <div id="up">
                     <Link to="/" id="logo_container">
-                        <img src={`${endpoitnLocal}img/logo.webp`}alt="Imagen del logo de la universidad" id="logo" />
+                        <img src={`${endpoitnLocal}img/Logo.webp`}alt="Imagen del logo de la universidad" id="logo" />
                     </Link>
                     <h3>Menú</h3>
                     <div id="parts">
