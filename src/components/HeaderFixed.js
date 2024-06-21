@@ -54,7 +54,7 @@ function HeaderFixed({newHeaderRef, isFromAdmin}) {
                                             <button type="button" onClick={()=>(logout())} style={{cursor:'pointer', display: 'flex', alignItems: 'center', flexDirection:'row'}}>
                                                     <p style={{fontSize: '20px'}}>{Cookies.get('username')}</p>
                                                     <p style={{fontSize: '20px'}}>({Cookies.get('role') === '3' ? "Superadministrador" : "Administrador" })</p>
-                                                    <img src={`${endpointLocal}/img/login.png`} alt="Icono para cerrar sesion" className = "icon_social_header"/>
+                                                    <img src={`${endpointLocal}/img/Login.png`} alt="Icono para cerrar sesion" className = "icon_social_header"/>
                                             </button>
                                     ):(
                                             <p>No deberías estar aquí</p>
