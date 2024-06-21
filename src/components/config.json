@@ -1,6 +1,6 @@
 {
-    "endpoint": "https://umontealban.site/api",
-    "endpointImage": "https://umontealban.site/images/",
-    "endpointFile": "https://umontealban.site/documents/",
+    "endpoint": "https://universidadmontealbanbackend.fly.dev/api",
+    "endpointImage": "https://universidadmontealbanbackend.fly.dev/images/",
+    "endpointFile": "https://universidadmontealbanbackend.fly.dev/documents/",
     "endpointLocal":"https://umontealban.netlify.app/"
 }
