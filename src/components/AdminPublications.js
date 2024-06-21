@@ -12,6 +12,7 @@ function AdminPublications() {
             const response = await axios.post(`${config.endpoint}/user/isAdmin`,{
                 cookie: Cookies.get('session')
             });
+            console.log(response);
             if(response.data.success === false){
                 Cookies.remove('session');
                 Cookies.remove('role');
