@@ -2,5 +2,5 @@
     "endpoint": "https://universidadmontealbanbackend.fly.dev/api",
     "endpointImage": "https://universidadmontealbanbackend.fly.dev/images/",
     "endpointFile": "https://universidadmontealbanbackend.fly.dev/documents/",
-    "endpointLocal":"https://umontealban.netlify.app/"
+    "endpointLocal":"https://umontealban.vercel.app"
 }
