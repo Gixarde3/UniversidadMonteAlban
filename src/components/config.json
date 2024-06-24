@@ -1,6 +1,6 @@
 {
-    "endpoint": "https://universidadmontealbanbackend.fly.dev/api",
-    "endpointImage": "https://universidadmontealbanbackend.fly.dev/images/",
-    "endpointFile": "https://universidadmontealbanbackend.fly.dev/documents/",
+    "endpoint": "https://umontealbanbackend.000webhostapp.com/api/",
+    "endpointImage": "https://umontealbanbackend.000webhostapp.com/images/",
+    "endpointFile": "https://umontealbanbackend.000webhostapp.com/documents/",
     "endpointLocal":"https://www.umontealban.edu.mx/"
 }
