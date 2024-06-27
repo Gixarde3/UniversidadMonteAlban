@@ -1,17 +1,17 @@
-section{
+#aviso-privacidad{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-p{
+#aviso-privacidad p{
     width: 100%;
     margin-bottom: 1rem;
 }
-.centered{
+#aviso-privacidad .centered{
     text-align: center;
     font-weight: bold;
 }
-.blue{
+#aviso-privacidad .blue{
     color: var(--principal);
     font-size: 20px;
 }

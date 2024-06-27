@@ -14,7 +14,7 @@ function Privacidad(){
                     color: 'black'
                 }}
             >AVISO DE PRIVACIDAD</h3>
-            <section>
+            <section id="aviso-privacidad">
                 <p>
                 Universidad Monte Alban, con domicilio en calle Ambar #1 esquina paseo Cuauhnáhuac
     Col. La Joya, Yautepec Morelos. Es responsable de recabar sus datos personales, del uso 
