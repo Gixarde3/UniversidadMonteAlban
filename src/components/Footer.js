@@ -15,7 +15,8 @@ function Footer() {
                         <Link to="mailto:universidadmontealban@gmail.com?Subject=Informes%20de%20la%20universidad" className="social"><img src={`${endointLocal}img/gmail.png`} alt="Gmail de Universidad Monte Albán" className = "icon_social_header"/>Mail</Link>
                 </div>
                 <section id="f_creative_commons">
-                <Link to="/CC" className="social">Creative Commons</Link>
+                    <Link to="/CC" className="social">Creative Commons</Link>
+                    <Link to="/privacidad" className='social'>Aviso de privacidad</Link>
                 </section>
             </footer>
         );

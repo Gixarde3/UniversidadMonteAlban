@@ -15,7 +15,7 @@ function Home() {
                     </div>
                     <article id="art_somos">
                         <h1>Somos <span id="nombre_universidad">Monte Albán</span></h1>
-                        <p>Somos un Instituto Educativo con más 25 años de experiencia en el ramo educativo, comprometidos con la formación  de líderes  profesionales que transformen el mundo, desarrollando habilidades y aptitudes que les permita a nuestro egresados integrarse a ambientes de trabajo multidisciplinarios de alto rendimiento, trabajando en sinergia con valores y capacidades acordes a su formación de nivel superior.</p>
+                        <p>Somos un instituto universitario con más de 25 años de experiencia, comprometidos con la formación de líderes profesionales con responsabilidad social, calidad humana y visión global, preparados para integrarse a ambientes de trabajo multidisciplinarios.</p>
                     </article>
                 </section>
                 <section id="testimonials">

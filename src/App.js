@@ -26,6 +26,7 @@ import Admission from './components/Admission';
 import SeeAdmission from './components/SeeAdmission';
 import AdminAdmissions from './components/AdminAdmissions';
 import Highschool from './components/Highschool';
+import Privacidad from './components/Privacidad';
 function App() {
   
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route path="/">
           <Route index element={<Layout Page={Home} Title = "Universidad Monte Albán"/>} />
           <Route path="CC" element={<Layout Page={CC} Title = "Universidad Monte Albán - Creative Commons"/>} />
+          <Route path="privacidad" element={<Layout Page={Privacidad} Title="Universidad Monte Albán - Aviso de privacidad"/>}/>
           <Route path="login" element={<Layout Page={Login} Title = "Universidad Monte Albán - Acceso"/>}/>
           <Route path="buzon" element={<Layout Page={Buzon} Title = "Universidad Monte Albán - Buzón de sugerencias"/>}/>
           <Route path="admisiones" element={<Layout Page={Admission} Title = "Universidad Monte Albán - Solicitud de admisión"/>}/>
