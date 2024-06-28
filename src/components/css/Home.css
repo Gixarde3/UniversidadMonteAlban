@@ -45,6 +45,9 @@ iframe{
     width: 100%;
     text-align: center;
 }
+#somos {
+    align-items: center;
+}
 @media (max-width: 1199.98px) {
     #art_somos{
         width: 100%;

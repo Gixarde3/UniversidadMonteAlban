@@ -11,7 +11,7 @@ function Home() {
                 </section>
                 <section id="somos">
                     <div className="image_container" id="img_somos">
-                        <img src="img/imagen_somos.webp" alt="Universidad Monte Albán: Estudiantes de licenciatura escribiendo" />
+                        <img src="img/imagen_somos.jpg" alt="Universidad Monte Albán: Estudiantes de licenciatura escribiendo" />
                     </div>
                     <article id="art_somos">
                         <h1>Somos <span id="nombre_universidad">Monte Albán</span></h1>

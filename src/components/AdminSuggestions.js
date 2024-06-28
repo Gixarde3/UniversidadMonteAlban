@@ -59,7 +59,6 @@ function AdminSuggestions() {
             console.log(response.data);
             openAlert('Error inesperado con la conexión', `Error de conexión`, 'error', "/");
         }else{
-            console.log(response);
             setSuggestions(response.data);
             closeAlert();
         }
@@ -290,9 +289,9 @@ function AdminSuggestions() {
 
     useEffect(() => {
         if(showChecked){
-            setSuggestionsToSee(suggestions.filter((suggestion) => suggestion.checked === 1));
+            setSuggestionsToSee(suggestions.filter((suggestion) => suggestion.checked === "1"));
         }else{
-            setSuggestionsToSee(suggestions.filter((suggestion) => suggestion.checked === 0));
+            setSuggestionsToSee(suggestions.filter((suggestion) => suggestion.checked === "0"));
         }
     }, [showChecked, suggestions]);
     const askCheckSuggestion = (id, index) => {
