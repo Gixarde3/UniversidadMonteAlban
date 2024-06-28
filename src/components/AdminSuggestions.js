@@ -56,8 +56,10 @@ function AdminSuggestions() {
             cookie: Cookies.get('session'),
         });
         if(response.data.success === false){
+            console.log(response.data);
             openAlert('Error inesperado con la conexión', `Error de conexión`, 'error', "/");
         }else{
+            console.log(response);
             setSuggestions(response.data);
             closeAlert();
         }
