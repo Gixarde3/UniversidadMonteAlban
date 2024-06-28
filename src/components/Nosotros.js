@@ -22,7 +22,7 @@ function Nosotros(){
                 </div>
                 <div id="vision">
                 <div className="img-container">
-                        <img src="img/vision.png" alt="Imagen para el apartado de visión de la Universidad Monte Albán" />
+                        <img src="img/vision.jpg" alt="Imagen para el apartado de visión de la Universidad Monte Albán" />
                     </div>
 
                     <h2>Visión</h2>
