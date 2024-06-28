@@ -57,6 +57,7 @@ p{
     font-family: "Open Sans";
     font-size: 16px;
     line-height: 1.57143;
+    text-align: justify;
 }
 section{
     padding: 0.5rem;
