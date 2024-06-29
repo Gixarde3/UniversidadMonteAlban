@@ -47,7 +47,7 @@ function Subject({ cycle, subjects, editar, ids }) {
             data-tooltip-content='Ver oferta de este cuatrimestre'
             data-tooltip-place='top'
         >
-            <h3>Cuatrimestre {cycle}</h3>
+            <h3>{cycle === "99" ? "Optativas" : `Cuatrimestre ${cycle}`}</h3>
             <img src={`${endpointLocal}img/close.png`} alt="boton-abrir" />
         </button>
         <div className={`subject-list ${open ? "open":""}`}>
