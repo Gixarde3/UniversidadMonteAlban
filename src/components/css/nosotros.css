@@ -29,5 +29,6 @@
 @media(max-width:1199.99px){
     #mision-vision div{
         margin-left: 0;
+        width: 100%;
     }
 }
