@@ -31,7 +31,7 @@ function Posts() {
         setModalOpen(false);
     };
     return (<main>
-        <h1>Posts</h1>
+        <h1>Publicaciones</h1>
         <p>Para ver alguna publicación más en detalle, hazle clic a la imagen</p>
         <section id="publications" className='posts-container' style={{
             
