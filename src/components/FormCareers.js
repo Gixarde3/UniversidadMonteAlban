@@ -42,7 +42,7 @@ function FormCareers() {
         <form action="" onSubmit={handleSubmit} className='form-career'>
             <h2 className='titleSection'>Crear carrera</h2>
             <div className="form-group">
-                <label htmlFor="name">Nombre de la carrera:</label>
+                <label htmlFor="name-career">Nombre de la carrera:</label>
                 <input type="text" name="name-career" id="name-career" value={name} onChange={(event)=>(setName(event.target.value))} placeholder="Ingresa el nombre de la carrera" required />
             </div>
             <div className="form-group">
