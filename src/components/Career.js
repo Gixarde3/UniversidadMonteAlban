@@ -75,10 +75,10 @@ function Career() {
                 }
             }/>
             <h1>{name}</h1>
-            <h2>Perfil de egreso</h2>
-            <p>{graduationProfile}</p>
             <h2>Perfil de ingreso</h2>
             <p>{admissionProfile}</p>
+            <h2>Perfil de egreso</h2>
+            <p>{graduationProfile}</p>
             <h2>Plan cuatrimestral</h2>
             <div id="cycles">
                 {
