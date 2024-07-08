@@ -2,5 +2,5 @@
     "endpoint": "https://backend.umontealban.edu.mx/api",
     "endpointImage": "https://backend.umontealban.edu.mx/images/",
     "endpointFile": "https://backend.umontealban.edu.mx/documents/",
-    "endpointLocal":"https://www.umontealban.edu.mx/"
+    "endpointLocal":"https://umontealban.edu.mx/"
 }
