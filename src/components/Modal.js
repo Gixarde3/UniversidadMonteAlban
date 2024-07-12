@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import config from './config.json';
 import Alert from './Alert';
+import Markdown from 'react-markdown'
 import './css/Modal.css';
 function Modal({ isOpen, id_post, closeModal, imageSrc, imageAlt, title, description, file }) {
   const [alert, setAlert] = useState(null);
@@ -43,7 +44,7 @@ function Modal({ isOpen, id_post, closeModal, imageSrc, imageAlt, title, descrip
       <aside>
         <div id="modal-details">
           <h3 className="modal-title">{title}</h3>
-          <p className='modal-description'>{description}</p>
+          <Markdown className='modal-description'>{description}</Markdown>
           {file && file !== '' ? <button className="button" onClick={handleDownload}>Descargar archivo</button> : ''}
         </div>
       </aside>

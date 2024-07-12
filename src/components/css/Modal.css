@@ -27,7 +27,7 @@
 }
 .modal aside{
     max-height: 80vh;
-    width: 20%;
+    width: 30%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -48,6 +48,9 @@
     /*max-height: 55vh;*/
     overflow-y: scroll;
     overflow-x: hidden;
+}
+#modal-details p{
+    text-align: left;
 }
 #comments-container{
     margin-top: 0.5rem;
