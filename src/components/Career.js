@@ -3,6 +3,7 @@ import config from './config.json';
 import {useState, useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
+import Markdown from 'react-markdown'
 import Subject from './Subject';
 import './css/career.css';
 function Career() {
@@ -76,9 +77,9 @@ function Career() {
             }/>
             <h1>{name}</h1>
             <h2>Perfil de ingreso</h2>
-            <p>{admissionProfile}</p>
+            <Markdown>{admissionProfile}</Markdown>
             <h2>Perfil de egreso</h2>
-            <p>{graduationProfile}</p>
+            <Markdown>{graduationProfile}</Markdown>
             <h2>Plan cuatrimestral</h2>
             <div id="cycles">
                 {
