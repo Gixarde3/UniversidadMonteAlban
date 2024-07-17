@@ -69,7 +69,9 @@ function Career() {
             flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center'
-        }}>
+        }}
+            className='career'
+        >
             <img src={`${endpointLocal}img/logo_azul.png`} alt="Logo universidad Monte Albán" style={
                 {
                     maxWidth: '500px',
