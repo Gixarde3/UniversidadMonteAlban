@@ -25,7 +25,6 @@ import AdminSuggestions from './components/AdminSuggestions';
 import Admission from './components/Admission';
 import SeeAdmission from './components/SeeAdmission';
 import AdminAdmissions from './components/AdminAdmissions';
-import Highschool from './components/Highschool';
 import Privacidad from './components/Privacidad';
 function App() {
   
@@ -44,7 +43,6 @@ function App() {
           <Route path="publicaciones" element={<Layout Page={Posts} Title = "Universidad Monte Albán - Ver todas las publicaciones"/>}></Route>
           <Route path="sugerencia/:url" element={<Layout Page={Suggestion} Title = "Universidad Monte Albán - Ver sugerencia"/>}></Route>
           <Route path="admision/:url" element={<Layout Page={SeeAdmission} Title = "Universidad Monte Albán - Ver mensaje de admisión"/>}></Route>
-          <Route path="highschool" element={<Layout Page={Highschool} Title = "Realiza tu preparatoria abierta en la Universidad Monte Albán"/>}></Route>
           <Route path="admin/">
             <Route index element={<Navigate to="/admin/posts" />} />
             <Route path="posts">
