@@ -14,6 +14,10 @@ function Subject({ cycle, subjects, editar, ids }) {
     const [alert, setAlert] = useState(null);
     const [alertOpen, setAlertOpen] = useState(false);
     const [subjectsState, setSubjectState] = useState(subjects);
+    const nombresMaterias = {
+        "98":"Materias ofertadas",
+        "99":"Materias optativas"
+    }
     const closeAlert = () => {
         setAlert(null);
         setAlertOpen(false);
@@ -44,10 +48,10 @@ function Subject({ cycle, subjects, editar, ids }) {
     return (<div className="subject">
         <button className={`subject-interaction accept ${open ? "open-button":""}`} onClick={() => setOpen(!open)}
             data-tooltip-id='tooltip'
-            data-tooltip-content={cycle === "99" ? 'Ver materias optativas' :'Ver oferta de este cuatrimestre'}
+            data-tooltip-content={nombresMaterias[cycle] !== undefined ? nombresMaterias[cycle] :'Ver oferta de este cuatrimestre'}
             data-tooltip-place='top'
         >
-            <h3>{cycle === "99" ? "Materias optativas" : `Cuatrimestre ${cycle}`}</h3>
+            <h3>{nombresMaterias[cycle] !== undefined ? nombresMaterias[cycle] : `Cuatrimestre ${cycle}`}</h3>
             <img src={`${endpointLocal}img/close.png`} alt="boton-abrir" />
         </button>
         <div className={`subject-list ${open ? "open":""}`}>

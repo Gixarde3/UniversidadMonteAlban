@@ -72,7 +72,6 @@ function Pages() {
                         ))
                         
                     }   
-                    <li><Link to={`${enpointLocal}highschool`}>Preparatoria abierta</Link></li>
                     </ul>
                 </li>
             </ul>

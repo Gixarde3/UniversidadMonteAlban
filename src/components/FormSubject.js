@@ -73,6 +73,7 @@ function FormSubject() {
                     <option value="7">7</option>
                     <option value="8">8</option>
                     <option value="9">9</option>
+                    <option value="98">Materia para preparatoria abierta</option>
                     <option value="99">Optativa</option>
                 </select>
             </div>
